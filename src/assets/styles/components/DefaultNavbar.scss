@@ -1,8 +1,13 @@
-.DefaultNavbar {
-  background-color: blue;
+.defaultNavbar {
+  height: 170px;
+  background-color: none;
   font-family: 'Raleway', sans-serif;
   font-size: 10px;
   &__link {
     letter-spacing: 3px;
+  }
+  &__logo {
+    width: 150px;
+    height: 40px;
   }
 }

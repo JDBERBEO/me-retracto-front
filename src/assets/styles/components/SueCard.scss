@@ -1,0 +1,17 @@
+.sueCard {
+  width: 100%;
+  height: 650px;
+  padding: 0px;
+  background-size: cover;
+  &__title {
+    color: #EB646F;
+  }
+  &__subtitle {
+    font-weight: normal;
+  }
+  &__description {
+    font-weight: lighter;
+    font-size:medium;
+    text-align: left;
+  }
+}
