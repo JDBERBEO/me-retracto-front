@@ -1,0 +1,8 @@
+.DefaultNavbar {
+  background-color: blue;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  &__link {
+    letter-spacing: 3px;
+  }
+}
