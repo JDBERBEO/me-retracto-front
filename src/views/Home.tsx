@@ -14,15 +14,15 @@ export const Home = () => {
       imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1653925607/platform%20Imgs/2_2_raambc.png'
     }, 
     {
-      title: 'Falta de información al consumidor', 
+      title: 'PUBLICIDAD ENGAÑOSA', 
       subtitle: 'Lorem ipsum dolor sit amet', 
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh', 
       background: '#fab816',
       buttonText: 'IR AL DOCUMENTO',
       imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053833/platform%20Imgs/a2_1_ax73mo.png',
     },
     { 
-      title: 'Retracto y desistimiento', 
+      title: 'FALTA DE INFORMACIÓN AL CONSUMIDOR', 
       subtitle: 'Lorem ipsum dolor sit amet', 
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
       background: '#eb646f',
