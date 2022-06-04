@@ -1,0 +1,17 @@
+.preventModal {
+  background-color: #EB646F;
+  border-radius: 70px;
+}
+
+div.modal-content {
+  border-radius: 70px;
+}
+
+.preventModalTitle {
+  color: #EB646F;
+  font-family: 'Raleway', sans-serif;
+  &__text {
+    font-weight: 800;
+    letter-spacing: 5px;
+  }
+}

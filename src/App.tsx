@@ -6,6 +6,7 @@ import {
 import './App.css';
 import { Home } from "./views/Home.tsx";
 import './assets/styles/main.scss';
+import { Form } from "./views/Form.tsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/form" element={<Form />}/>
         </Routes>
       </Router>
     </div>
