@@ -1,6 +1,18 @@
-.buttones {
-  &__main {
-    color: white;
+.mainCardButton {
+    background-color: #fab816;
+    border: 1px solid #fab816;
+    color:  #F3F3F3;
     border-radius: 25px;
-  }
+}
+
+.sueCardButton {
+  background-color: #F3F3F3;
+  border: 1px solid #F3F3F3;
+  border-radius: 25px;
+  // &___misleadingAdver {
+  //   color: #fab816;
+  // }
+  // &__lackInfo {
+  //   color: 
+  // }
 }

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import { Home } from "./views/Home.tsx";
+import './assets/styles/main.scss';
 
 function App() {
   return (

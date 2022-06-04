@@ -1,7 +1,7 @@
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx'
-import '../../assets/styles/components/Button.scss'
+// import '../../assets/styles/components/Button.scss'
 import { TextContainer } from './TextContainer.tsx'
 
 export const SueCard = ({title, subtitle, description, background, imgUrl, buttonText, index}) => {

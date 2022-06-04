@@ -14,3 +14,13 @@
     height: 40px;
   }
 }
+
+.dropdown-menu.show {
+  color: 'white';
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav.show {
+  color: 'white';
+}

@@ -1,9 +1,11 @@
 import React from 'react'
-import { Col, Button } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
+import  Button  from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import '../../assets/styles/components/SueCard.scss'
 
-export const TextContainer = ({title, subtitle, description, background, imgUrl, buttonText, index}) => {
+// import '../../assets/styles/components/SueCard.scss'
+
+export const TextContainer = ({title, subtitle, description, buttonText, index}) => {
   return (
     <Col xs={12} md={6} lg={6}>
       <div className={ index === 0 ? 'sueCard' : 'docCard'}>
@@ -11,7 +13,7 @@ export const TextContainer = ({title, subtitle, description, background, imgUrl,
         <h5 className={ index === 0 ? 'sueCard__subtitle' : 'docCard__subtitle'}>{subtitle}</h5>
         <p className={ index === 0 ? 'sueCard__description' : 'docCard__description'}>{description}</p>
         <Link to='/leasingForm'>
-          <Button variant="warning" className='buttones__main'>
+          < Button bsPrefix={ index === 0 ? 'mainCardButton': 'sueCardButton'} >
           {buttonText}
           </Button>
         </Link>
