@@ -6,7 +6,7 @@ import {
 import './App.css';
 import { Home } from "./views/Home.tsx";
 import './assets/styles/main.scss';
-import { Form } from "./views/Form.tsx";
+import { SueForm } from "./views/SueForm.tsx";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/form" element={<Form />}/>
+          <Route path="/form" element={<SueForm />}/>
         </Routes>
       </Router>
     </div>

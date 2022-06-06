@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Col, Modal, Row } from "react-bootstrap";
 import { IoIosInformationCircleOutline } from 'react-icons/io';
+import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 
 
@@ -21,8 +22,14 @@ export const  PreventModal = () => {
       >
         <Modal.Header closeButton >
           <Modal.Title className="preventModalTitle">
-            <IoIosInformationCircleOutline />
-            <h2 className="preventModalTitle__text">IMPORTANTE</h2>
+            <Row >
+              <Col className="align-items-center justify-content-center">
+                <FiAlertCircle size={70} />
+              </Col>
+              <Col className="align-items-center justify-content-center">
+                <h2 className="preventModalTitle__text">IMPORTANTE</h2>
+              </Col>
+            </Row>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
@@ -32,12 +39,14 @@ export const  PreventModal = () => {
           dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit 
           amet, consectetuer adipiscing elit, sed diam nonummy nibh
           </p>
-          <Link to="/form">
-          <Button>
-            Continue
-          </Button>
-          </Link>
         </Modal.Body>
+        <Modal.Footer>
+          <Link to="/form">
+            <Button>
+              Continue
+            </Button>
+          </Link>
+        </Modal.Footer>
       </Modal>
     </>
   );
