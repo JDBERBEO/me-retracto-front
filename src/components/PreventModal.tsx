@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
-import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 
@@ -34,10 +33,10 @@ export const  PreventModal = () => {
         </Modal.Header>
         <Modal.Body >
           <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem 
-          ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum 
-          dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit 
-          amet, consectetuer adipiscing elit, sed diam nonummy nibh
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem 
+            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum 
+            dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit 
+            amet, consectetuer adipiscing elit, sed diam nonummy nibh
           </p>
         </Modal.Body>
         <Modal.Footer>
