@@ -38,7 +38,7 @@ export const SueFormContainer = () => {
             </Col>
           </Row>
           <Row className="justify-content-center" sm={6}>
-            <Col lg={10}>
+            <Col sm={10} md={10} lg={10}>
               <div className="h-75 d-inline-block">
                 <p style={{fontFamily: 'Raleway, sans-serif',  textAlign: 'left', fontWeight: 800, fontSize: '12px', marginBottom:'0px'}}>Estimado usuario.</p>
                 <p style={{fontFamily: 'Raleway, sans-serif',  textAlign: 'left', fontWeight: 500, fontSize: '10px', letterSpacing: '1px',}}>Tenga en cuenta que el presente formulario está diseñado para allegar reclamaciones por incumplimiento de prestadores turísticos ante la Superintendencia de Industria y Comercio - SIC</p>
