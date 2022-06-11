@@ -1,0 +1,28 @@
+.nextStepButton {
+  border: none;
+  border-radius: 25px;
+  color: #EB646F;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 650;
+  letter-spacing: 2px;
+  // &__stepOne {
+  //   color: 'green';
+  // }
+}
+
+#circle {
+  background: transparent;
+  border-radius: 50%;
+  border:solid white 1px;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
+#circleSelected {
+  background: transparent;
+  border-radius: 50%;
+  border:solid white 3px;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+}
