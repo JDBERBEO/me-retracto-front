@@ -26,7 +26,7 @@ export const claimSlide = createSlice({
 //   }
 // };
 
-export const postClaimAsync = (claim) => async (dispatch) => {
+export const postClaimAsync = (navigate,claim) => async (dispatch) => {
   console.log('claim: ', claim)
   try {
     // console.log(data);
@@ -40,6 +40,7 @@ export const postClaimAsync = (claim) => async (dispatch) => {
       url: `/customer/${claim.claimFields.id}`
     })
     dispatch(postClaim(data))
+    navigate('/formFeedback')
   } catch (err) {
     throw new Error(err);
   }

@@ -1,13 +1,60 @@
+.stepNumberContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.stepCircle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 50%;
+  border:solid white 4px;
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  &__number {
+    color: white;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+}
+
 .nextStepButton {
   border: none;
   border-radius: 25px;
   color: #EB646F;
   font-family: 'Raleway', sans-serif;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: 2px;
-  // &__stepOne {
-  //   color: 'green';
-  // }
+  height: 35px;
+  width: 140px;
+  background-color: white;
+}
+
+.previousStepbutton {
+  border: none;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  height: 35px;
+  width: 140px;
+  background-color: transparent;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 #circle {
@@ -16,7 +63,7 @@
   border:solid white 1px;
   width: 10px;
   height: 10px;
-  margin: 5px;
+  margin: 1px;
 }
 #circleSelected {
   background: transparent;
@@ -24,5 +71,6 @@
   border:solid white 3px;
   width: 10px;
   height: 10px;
-  margin: 5px;
+  margin: 1px;
 }
+

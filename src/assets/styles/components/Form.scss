@@ -1,10 +1,18 @@
+.formTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
 .form-label {
-  margin-right: 15px;
+  margin-right: 10px;
   color: white;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 3px;
   // text-align: left;
-    font-weight: 700;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 .form-input {
@@ -12,51 +20,89 @@
   border: 2px solid white;
   background-color: transparent;
   color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
   height: 55px;
-  width: 500px;
-  margin-left: 15px;
-}
-.form-input::-webkit-input-placeholder {
-  color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+  width: 470px;
+  margin-left: 13px;
+  padding-left: 30px;
 }
 
-.form-input::-webkit-input-placeholder {
-  color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+.form-input:focus, .form-textArea:focus {
+  outline-width: 0;
 }
 
-.form-input:-ms-input-placeholder {
+.form-input::-webkit-input-placeholder, .form-textArea::-webkit-input-placeholder {
   color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  margin-left: 30px;
 }
 
-.form-input:-moz-placeholder {
+
+.form-input::-webkit-input-placeholder, .form-textArea::-webkit-input-placeholder {
   color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  margin-left: 30px;
+ // padding-left: 30px;
 }
 
-.form-input::-moz-placeholder {
+.form-input:-ms-input-placeholder, .form-textArea:-ms-input-placeholder  {
   color: white;
-  font-family: 'Raleway, sans-serif';
-  font-weight: 500;
-  font-size: 10px; 
-  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  margin-left: 30px;
+
 }
 
+.form-input:-moz-placeholder, .form-textArea:-moz-placeholder  {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  margin-left: 30px;
+}
+
+.form-input::-moz-placeholder, .form-textArea::-moz-placeholder {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  margin-left: 30px;
+
+}
+
+.helperText {
+  font-family: 'Raleway', sans-serif;
+  text-align: 'left';
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.form-textArea {
+  border-radius: 25px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  height: 15vh;
+  width: 50vh;
+  margin-left: 13px;
+  padding-left: 30px;
+}
