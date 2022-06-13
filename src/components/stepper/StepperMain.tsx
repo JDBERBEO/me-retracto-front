@@ -60,14 +60,14 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
             { i + 1 === currentStep ? (
             <>  
             <div>
-              <Row style={{backgroundColor:'white', height: '20vh'}} className="align-items-center justify-content-center" sm={6}>
+              <Row style={{backgroundColor:'white', height: '20vh'}} className="align-items-center justify-content-center" >
                 <Col sm={7} md={6} lg={6}>
                   <div>
                     <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 800, color:`${step.backgroundColor}`, fontSize: '20px'}}>RECLAMACIÓN PRESTADOR DE SERVICIOS TURÍSTICOS</h2>
                   </div>
                 </Col>
               </Row>
-              <Row className="justify-content-center" sm={6}>
+              <Row className="justify-content-center">
                 <Col sm={10} md={10} lg={10}>
                   <div className="h-75 d-inline-block">
                     <p style={{fontFamily: 'Raleway, sans-serif',  textAlign: 'left', fontWeight: 800, fontSize: '12px', marginBottom:'0px'}}>Estimado usuario.</p>
@@ -89,16 +89,16 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                   </h2>
                 </div>
               </div>
-            <Row className="align-items-center justify-content-center">
+            <div className="align-items-center justify-content-center" style={{height:'fix-content', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
               <Col sm={9} md={10} lg={10} >
-                <step.element 
+                <step.element
                 setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
                 setNewID={(e) => setNewClaim({ ...newClaim, id: e.target.value })} 
                 setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
                 />
               </Col>
-            </Row>
-              <Row className='align-items-center justify-content-between'>
+            </div>
+              <Row className='align-items-end justify-content-between'>
                 <Col sm={2}>
                   { i === 0 ? null : (
                   <button
@@ -110,12 +110,13 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                   )}
                 </Col>
                 <Col sm={3}>
+                  {/* TODO: REFACTO RBUTTON INTO ONE ITEM */}
                   { i + 1 === steps.length ? (
-                  <button className="nextStepButton"  onClick={handleOnClick}>
+                  <button className={`${step.nextStepButton}`}  onClick={handleOnClick}>
                     ENVIAR
                   </button>
                   ) : (
-                  <button className="nextStepButton"  onClick={goNextStep}>
+                  <button className={`${step.nextStepButton}`}   onClick={goNextStep}>
                     SIGUIENTE
                   </button>
                   )}
@@ -125,8 +126,7 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                   ))}
                   </div>
                 </Col>
-
-            </Row>
+              </Row>
             </div>
             </>
               ): null}
