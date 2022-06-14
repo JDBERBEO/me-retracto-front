@@ -9,9 +9,9 @@ export const  PreventModal = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
+      <button className="nextStepButton__yellow" onClick={() => setShow(true)}>
         conócenos
-      </Button>
+      </button>
 
       <Modal
         show={show}

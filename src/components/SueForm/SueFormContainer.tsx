@@ -127,12 +127,7 @@ const StepTwo = ({
   };
     
   const StepThree = ({
-    goNextStep,
-    goPreviousStep,
-    isFirst,
-    isLast,
-    step,
-    setNewID
+    setNewDefendantName
   }) => {
     return (
       <Form style={{display:'flex', flexDirection: 'column', alignItems: 'left', marginBottom:'15vh'}}>
@@ -144,11 +139,23 @@ const StepTwo = ({
         </p>
         <section style={{marginTop: '8vh'}}>
           <label className='form-label'>NOMBRE DEL PRESTADOR O PRESTADORES DE SERVICIOS TURÍSTICOS **</label>
-          <input className="form-input" type="email" placeholder="Escribe aqui el nombre del prestador del servicio" style={{marginTop: '3vh'}}/>
+          <input 
+          className="form-input" 
+          type="text" 
+          placeholder="Escribe aqui el nombre del prestador del servicio" 
+          style={{marginTop: '3vh'}}
+          onChange={setNewDefendantName}
+          />
         </section>
         <section style={{marginTop: '3vh', marginBottom: '1vh'}}>
           <label className='form-label'>FECHA DE LA RECLAMACIÓN DIRECTA *</label>
-          <input className="form-input" type="email" placeholder="Escribe aqui la fecha de la reclamación directa" style={{marginTop: '3vh'}}/>
+          <input 
+          className="form-input" 
+          type="text" 
+          placeholder="Escribe aqui la fecha de la reclamación directa" 
+          style={{marginTop: '3vh'}}
+          // onChange={setNewDefendantName}
+          />
         </section>
         </div>
       </Form>
@@ -156,13 +163,10 @@ const StepTwo = ({
     };
 
     const StepFour = ({
-      goNextStep,
-      goPreviousStep,
-      isFirst,
-      isLast,
-      step,
       setNewName,
-      setNewClaimerIDNumber
+      setNewClaimerIDNumber,
+      setNewClaimerCity,
+      setNewClaimerAddress
     }) => {
       return (
         <Form  style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'between', marginTop: '4vh', marginBottom:'15vh'}} >
@@ -176,11 +180,11 @@ const StepTwo = ({
         </section>
         <section style={{marginTop: '5vh'}}>
           <label className='form-label'>CIUDAD DE DOMICILIO *</label>
-          <input className="form-input" type="text" placeholder="Escribe aqui tu la ciudad donde te domicilias" onChange={()=>null}/>
+          <input className="form-input" type="text" placeholder="Escribe aqui tu la ciudad donde te domicilias" onChange={setNewClaimerCity}/>
         </section>
         <section style={{marginTop: '5vh'}}>
           <label className='form-label'>DIRECCIÓN EXACTA *</label>
-          <input className="form-input" type="text" placeholder="Escribe aqui tu dirección exacta" onChange={()=>null}/>
+          <input className="form-input" type="text" placeholder="Escribe aqui tu dirección exacta" onChange={setNewClaimerAddress}/>
         </section>
         </Form>
         )

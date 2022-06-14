@@ -93,8 +93,11 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
               <Col sm={9} md={10} lg={10} >
                 <step.element
                 setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
+                setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
                 setNewID={(e) => setNewClaim({ ...newClaim, id: e.target.value })} 
                 setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
+                setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
+                setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
                 />
               </Col>
             </div>
