@@ -98,6 +98,10 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                 setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
                 setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
                 setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
+                setNewDocumentMonth={(e) => setNewClaim({ ...newClaim, documentMonth: e.target.value })}
+                setNewDocumentYear={(e) => setNewClaim({ ...newClaim, documentYear: e.target.value })}
+                setNewFacts={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}
+                setNewProofs={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}
                 />
               </Col>
             </div>

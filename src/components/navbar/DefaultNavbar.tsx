@@ -43,6 +43,7 @@ export const DefaultNavbar = () => {
               <NavDropdown.Item href="#action/3.4" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#link" style={styleNavItem}>CONTÁCTANOS</Nav.Link>
+            <Nav.Link href="/login" style={styleNavItem}>LOGIN</Nav.Link>
           {/* </Nav> */}
         </Container>
     </Navbar>

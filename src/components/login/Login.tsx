@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-export const FeedbackMain = () => {
+export const Login = () => {
   const styleNavDropDownItem = {
     color: "white", 
     fontSize: '15px', 
@@ -17,7 +17,6 @@ export const FeedbackMain = () => {
       fontSize: '15px',
       // borderBottom: 'solid 3px'
     }
-
   return (
     <>
     <Navbar className='defaultNavbar' variant="light">
@@ -38,14 +37,26 @@ export const FeedbackMain = () => {
         {/* </Nav> */}
       </Container>
     </Navbar>
-    <div className='feedbackContainer' style={{backgroundColor: '#FAB816', width: '100%', height:'90vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-      <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 800, color:'white', fontSize: '30px'}}>HAZ LLENADO TU SOLICITUD CORRECTAMENTE</h2>
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-      <Link to='/'>
-        <button style={{backgroundColor: 'transparent', border:'white solid', borderRadius: '25px', fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 500, color:'white', fontSize: '22px' }}>
-        VOLVER A LA PÁGINA INICIAL
-        </button>
-      </Link>
+    <div className='feedbackContainer' style={{backgroundColor: 'white', width: '100%', height:'50vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+
+      <div  style={{backgroundColor: 'white', width: '40%', height:'5vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+        <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 800, color:'#00AC9E', fontSize: '30px'}}>PLATAFORMA</h2>
+      </div>
+      <div  style={{backgroundColor: '#00AC9E', width: '40%', height:'30vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', borderRadius: '25px'}}>
+      <section style={{marginTop: '5vh'}}>
+            <label className='form-label'>USUARIO</label>
+            <input className="form-input" type="email" placeholder="Escribe aqui el mes que aparecerá en el documento" />
+          </section>
+          <section style={{marginTop: '5vh'}}>
+            <label className='form-label'>CONTRASEÑA</label>
+            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento" />
+          </section>
+        <Link to='/suitsTemplates'>
+          <button style={{backgroundColor: 'white', border:'white solid', borderRadius: '25px', fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 500, color:'#00AC9E', fontSize: '22px', marginTop:"1vh" }}>
+            ENTRAR
+          </button>
+        </Link>
+      </div>
     </div>
     </>
   )

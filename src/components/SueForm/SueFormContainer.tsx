@@ -68,14 +68,7 @@ const StepOne = ({
     )
 };
   
-const StepTwo = ({
-  goNextStep,
-  goPreviousStep,
-  isFirst,
-  isLast,
-  step,
-  setNewEmail
-}) => {
+const StepTwo = () => {
   return (
     <Form>
     <section style={{display:'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -113,10 +106,10 @@ const StepTwo = ({
       <Col sm={4}>
         <h4 style={{fontFamily: 'Raleway, sans-serif',  textAlign: 'center', fontWeight: 700, fontSize: '11px', letterSpacing: '1px', color: 'white', marginTop: '7vh', marginBottom: '8vh',}}>AUTORIZA EL TRATAMIENTO DE SUS DATOS PERSONALES *</h4>
         <div style={{display:'flex', flexDirection: 'row', alignItems: 'center', justifyContent:'center'}}>
-          <button className="outlinedButton"  onClick={goNextStep}>
+          <button className="outlinedButton"  onClick={() => console.log('hola')}>
                     No Autorizo
           </button>
-          <button className="nextStepButton__green"  onClick={goNextStep}>
+          <button className="nextStepButton__green"  onClick={() => console.log('hola')}>
                     AUTORIZO
           </button>
         </div>
@@ -191,13 +184,10 @@ const StepTwo = ({
       };
 
     const StepFive = ({
-      goNextStep,
-      goPreviousStep,
-      isFirst,
-      isLast,
-        step,
-        setNewID,
-      setNewClaimerIDNumber
+      setNewID,
+      setNewDocumentMonth,
+      setNewDocumentYear,
+      setNewFacts
     }) => {
       return (
         <Form  style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'between', marginTop: '4vh', marginBottom:'15vh'}} >
@@ -212,11 +202,11 @@ const StepTwo = ({
           </section>
           <section style={{marginTop: '5vh'}}>
             <label className='form-label'>MES PARA EL DOCUMENTO</label>
-            <input className="form-input" type="email" placeholder="Escribe aqui el mes que aparecerá en el documento"/>
+            <input className="form-input" type="email" placeholder="Escribe aqui el mes que aparecerá en el documento" onChange={setNewDocumentMonth}/>
           </section>
           <section style={{marginTop: '5vh'}}>
             <label className='form-label'>AÑO PARA EL DOCUMENTO</label>
-            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento"/>
+            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento" onChange={setNewDocumentYear}/>
           </section>
           <section style={{marginTop: '5vh'}}>
             <label className='form-label'>HECHOS*</label>
@@ -230,7 +220,9 @@ const StepTwo = ({
             1. 1/2/2011 descripción del hecho
             2. 3/4/2011 descripción del hecho
             3. 5/5/2011 descripción del hecho
-            4. 6/6/2011 descripción del hecho'>
+            4. 6/6/2011 descripción del hecho'
+            onChange={setNewFacts}
+            >
             </textarea>
             </div>
           </section>
@@ -239,15 +231,14 @@ const StepTwo = ({
       };
 
     const StepSix = ({
-      setNewID,
-      setNewClaimerIDNumber
+      setNewProofs
     }) => {
       return (
         <Form>
           <section>
             <label className='form-label'>ADJUNTE LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
             <label className='helperText'>Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10 archivos.</label>
-            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento"/>
+            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento" onChange={setNewProofs} />
           </section>
         </Form>
         )
