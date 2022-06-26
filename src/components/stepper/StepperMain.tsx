@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Col, Form, Row, Container } from 'react-bootstrap';
+import React, { useRef, useState } from 'react'
+import { Col, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { postClaimAsync } from '../../store/features/claims/claimsSlice';
@@ -10,10 +10,7 @@ export const StepperMain = ({steps}) => {
   const stepperSelector = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
-  // Every time our currentStep is updated, we are going to trigger this
-  // useEffect(() => {
-  //   moveStepper();
-  // }, [currentStep]);
+
   const [newClaim, setNewClaim] = useState({
     id: "",
     documentMonth: "",
@@ -37,7 +34,7 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
   dispatch(postClaimAsync(navigate, {claimFields: newClaim}));
 };
  
-  const goNextStep = (e) => {
+  const goNextStep = () => {
     const nextStep = currentStep + 1;
     if (nextStep <= steps.length) {
       setCurrentStep(nextStep);
@@ -53,7 +50,6 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
 
   return (
     <div className="stepper stepper-wrapper">
-      {/* This will display our current step */}
       <div className="stepper-selector" ref={stepperSelector}>
         {steps.map((step, i) => (
           <div key={i}>
@@ -117,7 +113,7 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                   )}
                 </Col>
                 <Col sm={3}>
-                  {/* TODO: REFACTO RBUTTON INTO ONE ITEM */}
+                  {/* TODO: REFACTOR BUTTON INTO ONE COMPONENT */}
                   { i + 1 === steps.length ? (
                   <button className={`${step.nextStepButton}`}  onClick={handleOnClick}>
                     ENVIAR
