@@ -1,0 +1,19 @@
+.iconBorder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 50%;
+  border:solid #EB646F 4px;
+  width: 40px;
+  height: 40px;
+  margin: 1px;
+  &__icon {
+    color: #EB646F;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    margin-bottom: 1px;
+  }
+}
