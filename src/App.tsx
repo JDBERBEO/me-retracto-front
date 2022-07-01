@@ -10,6 +10,7 @@ import { SueForm } from "./views/SueForm.tsx";
 import { FeedbackMain } from "./components/SueForm/FeedbackMain.tsx";
 import { Login } from "./components/login/Login.tsx";
 import { SuitsTemplates } from "./components/suitsTemplates/SuitsTemplates.tsx";
+import { TemplateForm } from "./components/suitsTemplates/TemplateForm.tsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/formFeedback" element={<FeedbackMain />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/suitsTemplates" element={<SuitsTemplates />}/>
+          <Route path="/templateForm" element={<TemplateForm />}/>
         </Routes>
       </Router>
     </div>
