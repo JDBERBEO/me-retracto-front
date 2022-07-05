@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Row, Form, Col, Button } from 'react-bootstrap/'
 import { StepperMain } from '../stepper/StepperMain.tsx'
+import { useSelector, useDispatch } from 'react-redux';
+import { getTemplatesAsync, deleteTemplateAsync } from '../../store/features/templates/templatesSlice';
 
 export const SueFormContainer = () => {
 
@@ -189,15 +191,22 @@ const StepTwo = () => {
       setNewDocumentYear,
       setNewFacts
     }) => {
+      const dispatch = useDispatch()
+      const suitsTemplates = useSelector((state) => (state.templates.templates));
+
+      useEffect(() => {
+        dispatch(getTemplatesAsync())
+      }, [])
+      
+      
       return (
         <Form  style={{display:'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'between', marginTop: '4vh', marginBottom:'15vh'}} >
           <section style={{marginTop: '5vh'}}>
             <label className='form-label'>SELECCIONE EL TIPO DE RECLAMO*</label>
             <select onChange={setNewID} className="form-input">
-              <option value="62a0203ab7ef665543db73f9">Retracto y Desistimiento</option>
-              <option value="62a1748b91f2dd1c91cd2140">Falta de Información al Consumidor</option>
-              <option value="62a1778b91f2dd1c91cd2142">Eximentes de la Responsabilidad</option>
-              <option value="62a2b59390feaadcf313fe7b">Publicidad Engañosa</option>
+              {suitsTemplates.map((template) => {
+                return <option value={template._id} key={template._id}>{template.name}</option>
+              })}
             </select> 
           </section>
           <section style={{marginTop: '5vh'}}>
@@ -243,97 +252,3 @@ const StepTwo = () => {
         </Form>
         )
       };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //  {/*<Form.Label>SELECCIONE EL TIPO DE PETICIÓN</Form.Label>
-  // <Form.Select aria-label="Default select example" onChange={(e) => setNewClaim({ ...newClaim, id: e.target.value })}>
-  //   <option value="62a0203ab7ef665543db73f9">Retracto y Desistimiento</option>
-  //   <option value="62a1748b91f2dd1c91cd2140">Falta de Información al Consumidor</option>
-  //   <option value="62a1778b91f2dd1c91cd2142">Eximentes de la Responsabilidad</option>
-  //   <option value="62a2b59390feaadcf313fe7b">Publicidad Engañosa</option>
-  // </Form.Select>  
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>NOMBRE</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>NÚMERO DE IDENTIFICACIÓN *</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, claimerIDNumber: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>CIUDAD DEL DOCUMENTO DE IDENTIFICACIÓN</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, claimerIDCity: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>CELULAR*</Form.Label>
-  //   <Form.Control type="text"/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>CIUDAD DE DOMICILIO</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>DIRECCIÓN</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicEmail">
-  //   <Form.Label>Mes del documento</Form.Label>
-  //   <Form.Control type="email" placeholder="Enter email" onChange={(e) => setNewClaim({ ...newClaim, documentMonth: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicEmail">
-  //   <Form.Label>año del documento</Form.Label>
-  //   <Form.Control type="email" placeholder="Enter email" onChange={(e) => setNewClaim({ ...newClaim, documentYear: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>Nombre del prestador o prestadores de servicios turísticos </Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword" >
-  //   <Form.Label>HECHOS</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>Fecha de la reclamación directa</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, agreementDate: e.target.value })}/>
-  // </Form.Group>
-  // <Form.Group className="mb-3" controlId="formBasicPassword">
-  //   <Form.Label>AÑADIR PRUEBAS</Form.Label>
-  //   <Form.Control type="text" onChange={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}/>
-  // </Form.Group>
-  // <Button variant="primary" type="submit" onClick={handleOnClick}>
-  //   Submit Form
-  // </Button> /*}

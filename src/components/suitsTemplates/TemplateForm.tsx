@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { postTemplateAsync } from '../../store/features/templates/templatesSlice';
 
 export const TemplateForm = () => {
 
@@ -14,7 +15,7 @@ export const TemplateForm = () => {
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
 
-  // const data = New FormData()
+  const data = new FormData()
   const styleNavDropDownItem = {
     color: "white", 
     fontSize: '15px', 
@@ -36,10 +37,17 @@ export const TemplateForm = () => {
 
   const handleOnClick = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-    console.log('newTemplate: ', newTemplate)
+    
+    const payload = {
+      name: newTemplate.name,
+      internalCode: newTemplate.internalCode,
+      file
+    }
+
+    
 
   
-    // dispatch(postClaimAsync(navigate, {claimFields: newClaim}));
+    dispatch(postTemplateAsync(navigate, payload));
   };
 
   return (
@@ -60,9 +68,9 @@ export const TemplateForm = () => {
           <Nav.Link href="#link" style={styleNavItemForm}>CONTÁCTANOS</Nav.Link>
         </Container>
       </Navbar>
-      <div  style={{backgroundColor: '#FAB816', width: '40%', height:'30vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', borderRadius: '25px'}}>
+      <div  className="formContainer">
       <form>
-        <section>
+        <section className="formContainer__section" >
           <label className='form-label'>NOMBRE DEL FORMATO</label>
           <input 
           className="form-input" 
@@ -70,7 +78,7 @@ export const TemplateForm = () => {
           placeholder="Escribe aqui el nombre de tu nuevo formato de demanda"
           onChange={(e) => setTemplate({ ...newTemplate, name: e.target.value })} />
         </section>
-        <section>
+        <section className="formContainer__section">
           <label className='form-label'>CÓDIGO INTERNO</label>
           <input 
           className="form-input" 
@@ -79,21 +87,27 @@ export const TemplateForm = () => {
           onChange={(e) => setTemplate({ ...newTemplate, internalCode: e.target.value })}
           />
         </section>
-        <section>
-          <label>Select a file:</label>
+        <section className="formContainer__section">
+          <label className='form-label'>SELECCIONA EL ARCHIVO:</label>
           <input 
             type="file" 
             id="file"
             multiple
             onChange={changeProfilePhoto}
+            style={{color:'white'}}
               />
         </section>
-        <section>
-        <button 
-        className={'nextStepButton__yellow'}
-        onClick={handleOnClick}>
-          ENVIAR
-        </button>
+        <section className='formContainer__section' >
+          <Link to={'/suitsTemplates'}>
+            <button className={'nextStepButton__yellow'} >
+              ATRÁS
+            </button>
+          </Link>
+          <button 
+            className={'nextStepButton__yellow'}
+            onClick={handleOnClick}>
+              ENVIAR 
+          </button>
         </section>
       </form>
       </div>
