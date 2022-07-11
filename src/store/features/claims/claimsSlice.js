@@ -6,11 +6,15 @@ export const claimSlide = createSlice({
   name: "claim",
   initialState: {
     data: [],
+    updateClaim: ''
   },
   reducers: {
     postClaim: (state, action) => {
       state.data.push(action.payload);
     },
+    updateClaim: (state, action) =>{
+      state.updateClaim =  action.payload
+    }
   }
 });
 
@@ -30,6 +34,25 @@ export const postClaimAsync = (navigate,claim) => async (dispatch) => {
   }
 };
 
-export const { postClaim } = claimSlide.actions;
+export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
+  console.log('claim: ', payload.file)
+  try {
+    const { data } = await axios({
+      method: "PUT",
+      baseURL: API_URL,
+      data: payload,
+      url: `/lawyer/${payload.id}`,
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+    dispatch(updateClaim(data))
+    navigate('/formFeedback')
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+export const { postClaim, updateClaim } = claimSlide.actions;
 
 export default claimSlide.reducer;

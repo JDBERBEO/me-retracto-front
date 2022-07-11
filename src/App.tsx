@@ -11,6 +11,9 @@ import { FeedbackMain } from "./components/SueForm/FeedbackMain.tsx";
 import { Login } from "./components/login/Login.tsx";
 import { SuitsTemplates } from "./components/suitsTemplates/SuitsTemplates.tsx";
 import { TemplateForm } from "./components/suitsTemplates/TemplateForm.tsx";
+import { SuitsTable } from "./components/lawyerModule/SuitsTable.tsx";
+import { EditedClaimForm } from "./components/lawyerModule/EditedClaimForm.tsx";
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/suitsTemplates" element={<SuitsTemplates />}/>
           <Route path="/templateForm" element={<TemplateForm />}/>
+          <Route path="/lawyerClaims" element={<SuitsTable />}/>
+          <Route path="/EditedClaimForm/:id" element={<EditedClaimForm />}/>
         </Routes>
       </Router>
     </div>

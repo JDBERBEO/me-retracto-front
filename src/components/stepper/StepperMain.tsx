@@ -106,7 +106,9 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                 <step.element
                 setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
                 setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
-                setNewID={(e) => setNewClaim({ ...newClaim, id: e.target.value })} 
+                setNewID={(e) => {
+                  console.log('id: ', newClaim.id)
+                  return setNewClaim({ ...newClaim, id: e.target.value })}} 
                 setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
                 setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
                 setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
