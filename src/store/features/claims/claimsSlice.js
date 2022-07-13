@@ -6,7 +6,8 @@ export const claimSlide = createSlice({
   name: "claim",
   initialState: {
     data: [],
-    updateClaim: ''
+    updateClaim: '',
+    claims: []
   },
   reducers: {
     postClaim: (state, action) => {
@@ -14,12 +15,14 @@ export const claimSlide = createSlice({
     },
     updateClaim: (state, action) =>{
       state.updateClaim =  action.payload
+    },
+    getClaims: (state, action) => {
+      state.claims = action.payload
     }
   }
 });
 
 export const postClaimAsync = (navigate,claim) => async (dispatch) => {
-  console.log('claim: ', claim)
   try {
     const { data } = await axios({
       method: "POST",
@@ -53,6 +56,15 @@ export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
   }
 };
 
-export const { postClaim, updateClaim } = claimSlide.actions;
+export const getClaimsAsync = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${API_URL}/lawyer`);
+    dispatch(getClaims(response.data));
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+export const { postClaim, updateClaim, getClaims } = claimSlide.actions;
 
 export default claimSlide.reducer;

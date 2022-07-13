@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getTemplatesAsync, deleteTemplateAsync } from '../../store/features/templates/templatesSlice';
+import { getClaimsAsync } from '../../store/features/claims/claimsSlice';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 export const SuitsTable = () => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state) => (state.templates.templates));
+  const suitsTemplates = useSelector((state) => (state.claims.claims));
   const [id, setId] = useState('')
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ export const SuitsTable = () => {
     
     useEffect(() => {
       //getClaims
-      dispatch()
+      dispatch(getClaimsAsync())
     }, []);
   return (
     <div>
@@ -94,6 +94,7 @@ export const SuitsTable = () => {
             </thead>
             <tbody>
               {suitsTemplates.map((template) => {
+                console.log('template: ', template)
                 return <tr key={template._id}>
                         <td style={{display:'flex', flexDirection: 'row', alignItems: 'start', justifyContent: 'center', color: 'white', marginRight:'40px', 
                               marginLeft: '40px', borderBottom: 'solid 1px',}}>

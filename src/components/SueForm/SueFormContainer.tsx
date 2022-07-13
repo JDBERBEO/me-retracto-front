@@ -204,6 +204,7 @@ const StepTwo = () => {
           <section style={{marginTop: '5vh'}}>
             <label className='form-label'>SELECCIONE EL TIPO DE RECLAMO*</label>
             <select onChange={setNewID} className="form-input">
+              <option>selecciona una opción...</option>
               {suitsTemplates.map((template) => {
                 return <option value={template._id} key={template._id}>{template.name}</option>
               })}
