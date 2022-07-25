@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate,  } from 'react-router-dom'
+import { postLoginAsync } from '../../store/features/admin/adminSlice'
 
 export const Login = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [user, setUser] = useState({
+    email: '',
+    password: ''
+  })
+
+  // const {email, password } = user
   const styleNavDropDownItem = {
     color: "white", 
     fontSize: '15px', 
@@ -17,6 +27,23 @@ export const Login = () => {
       fontSize: '15px',
       // borderBottom: 'solid 3px'
     }
+
+  const handleOnChange = (e) => {
+    const {name, value } = e.target
+    console.log('value: ', value)
+    console.log('name: ', name)
+    setUser({
+      ...user,
+      [name]:value
+    })
+    console.log('user: ', user)
+  }
+
+  const handleOnSubmit = (user) => {
+    // e.preventDefault()
+    dispatch(postLoginAsync(user, navigate))
+  }
+  
   return (
     <>
     <Navbar className='defaultNavbar' variant="light">
@@ -37,26 +64,29 @@ export const Login = () => {
         {/* </Nav> */}
       </Container>
     </Navbar>
-    <div className='feedbackContainer' style={{backgroundColor: 'white', width: '100%', height:'50vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+    <div className='feedbackContainer' style={{backgroundColor: '#00AC9E', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', padding: '20px', margin: '20px', borderRadius: '50px'}}>
 
-      <div  style={{backgroundColor: 'white', width: '40%', height:'5vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-        <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 800, color:'#00AC9E', fontSize: '30px'}}>PLATAFORMA</h2>
+      <div  style={{backgroundColor: '#00AC9E', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', borderRadius: "50px", padding:'5px'}}>
+        <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 800, color:'white', fontSize: '30px'}}>LOGIN</h2>
       </div>
-      <div  style={{backgroundColor: '#00AC9E', width: '40%', height:'30vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', borderRadius: '25px'}}>
-      <section style={{marginTop: '5vh'}}>
-            <label className='form-label'>USUARIO</label>
-            <input className="form-input" type="email" placeholder="Escribe aqui el mes que aparecerá en el documento" />
-          </section>
+      <form  onSubmit={(e) => {
+        e.preventDefault()
+        handleOnSubmit(user)
+        }} style={{backgroundColor: '#00AC9E', width: '40%', height:'30vh', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', margin: '40px'}}>
+        <section style={{marginTop: '5vh'}}>
+          <label className='form-label' htmlFor='email'>EMAIL</label>
+          <input onChange={handleOnChange} className="form-input" id="email" name="email" value={user.email} type="text" placeholder="Escribe aqui el nombre de usuario registrado" />
+        </section>
           <section style={{marginTop: '5vh'}}>
-            <label className='form-label'>CONTRASEÑA</label>
-            <input className="form-input" type="email" placeholder="Escribe aqui el año que aparecerá en el documento" />
+            <label className='form-label' htmlFor='password'>CONTRASEÑA</label>
+            <input onChange={handleOnChange} className="form-input" id="password" name="password" value={user.password} type="password" placeholder="Escribe aqui la contraseña" />
           </section>
-        <Link to='/suitsTemplates'>
-          <button style={{backgroundColor: 'white', border:'white solid', borderRadius: '25px', fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 500, color:'#00AC9E', fontSize: '22px', marginTop:"1vh" }}>
+        {/* <Link to='/suitsTemplates'> */}
+          <button style={{backgroundColor: 'white', border:'white solid', borderRadius: '25px', fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 500, color:'#00AC9E', fontSize: '22px', marginTop:"20px" }}>
             ENTRAR
           </button>
-        </Link>
-      </div>
+        {/* </Link> */}
+      </form>
     </div>
     </>
   )

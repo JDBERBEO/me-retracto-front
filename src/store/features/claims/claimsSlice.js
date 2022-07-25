@@ -7,7 +7,8 @@ export const claimSlide = createSlice({
   initialState: {
     data: [],
     updateClaim: '',
-    claims: []
+    claims: [],
+    error: false,
   },
   reducers: {
     postClaim: (state, action) => {
@@ -18,11 +19,14 @@ export const claimSlide = createSlice({
     },
     getClaims: (state, action) => {
       state.claims = action.payload
+    },
+    updateError: (state, action) => {
+      state.error = action.payload
     }
   }
 });
 
-export const postClaimAsync = (navigate,claim) => async (dispatch) => {
+export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch) => {
   try {
     const { data } = await axios({
       method: "POST",
@@ -32,8 +36,11 @@ export const postClaimAsync = (navigate,claim) => async (dispatch) => {
     })
     dispatch(postClaim(data))
     navigate('/formFeedback')
+    sendEmail(e)
   } catch (err) {
-    throw new Error(err);
+    dispatch(updateError(true))
+    navigate('/formFeedback')
+    // throw new Error(err);
   }
 };
 
@@ -52,9 +59,14 @@ export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
     dispatch(updateClaim(data))
     navigate('/formFeedback')
   } catch (err) {
-    throw new Error(err);
+    dispatch(updateError(true))
+    navigate('/formFeedback')
   }
 };
+
+export const cleanError = () => async (dispatch) => {
+  dispatch(updateError(false))
+}
 
 export const getClaimsAsync = () => async (dispatch) => {
   try {
@@ -65,6 +77,6 @@ export const getClaimsAsync = () => async (dispatch) => {
   }
 };
 
-export const { postClaim, updateClaim, getClaims } = claimSlide.actions;
+export const { postClaim, updateClaim, getClaims, updateError } = claimSlide.actions;
 
 export default claimSlide.reducer;

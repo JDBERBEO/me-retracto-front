@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { postClaimAsync } from '../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
+
 
 
 export const StepperMain = ({steps}) => {
@@ -11,7 +12,6 @@ export const StepperMain = ({steps}) => {
   const stepperSelector = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
-  const form = useRef();
 
   const [newClaim, setNewClaim] = useState({
     id: "",
@@ -32,7 +32,7 @@ export const StepperMain = ({steps}) => {
 const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
   e.preventDefault();
 
-  emailjs.sendForm('service_cc2049t', 'template_n112mw8', form.current , 'P04vzZkGfMSd-ijUi')
+  emailjs.send('service_cc2049t', 'template_n112mw8', {} , 'P04vzZkGfMSd-ijUi')
     .then((result) => {
         console.log(result.text);
     }, (error) => {
@@ -44,8 +44,7 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
   e.preventDefault()
   console.log('newClaim: ', newClaim)
 
-  dispatch(postClaimAsync(navigate, {claimFields: newClaim}));
-  sendEmail(e)
+  dispatch(postClaimAsync(navigate, {claimFields: newClaim}, sendEmail, e));
 };
  
   const goNextStep = () => {
@@ -101,8 +100,6 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
               </div>
             <div className="align-items-center justify-content-center" style={{height:'fix-content', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
               <Col sm={9} md={10} lg={10} >
-                <form ref={form}>
-
                 <step.element
                 setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
                 setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
@@ -117,7 +114,6 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
                 setNewFacts={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}
                 setNewProofs={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}
                 />
-                </form>
               </Col>
             </div>
               <Row className='align-items-end justify-content-between'>

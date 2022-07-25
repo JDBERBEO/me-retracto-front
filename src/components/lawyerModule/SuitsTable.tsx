@@ -5,6 +5,8 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
+import templatesSlice from '../../store/features/templates/templatesSlice';
+import { claimsStatusTraductor } from '../../helpers/claimsStatusTraductor';
 
 export const SuitsTable = () => {
   const dispatch = useDispatch()
@@ -48,6 +50,7 @@ export const SuitsTable = () => {
       //getClaims
       dispatch(getClaimsAsync())
     }, []);
+
   return (
     <div>
       <Navbar className='defaultNavbar' variant="light">
@@ -82,6 +85,7 @@ export const SuitsTable = () => {
             <col span={1} style={{backgroundColor:'#00AC9E' }} />
             <col span={2} style={{backgroundColor:'#00AC9E' }} />
             <col style={{backgroundColor:'#00AC9E'}} />
+            <col style={{backgroundColor:'#00AC9E'}} />
           </colgroup>
             <thead>
             <tr>
@@ -93,6 +97,9 @@ export const SuitsTable = () => {
               </th>
               <th style={{background: '#00AC9E'}}>
                 <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'justify', fontWeight: 800, color:'white', fontSize: '30px', paddingRight:'40px', paddingLeft: '40px'}}>PARTES</h2>
+              </th>
+              <th style={{background: '#00AC9E'}}>
+                <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'justify', fontWeight: 800, color:'white', fontSize: '30px', paddingRight:'40px', paddingLeft: '40px'}}>ESTADO</h2>
               </th>
             </tr>
             </thead>
@@ -132,8 +139,6 @@ export const SuitsTable = () => {
                               color: 'white',
                               marginRight:'40px', 
                               marginLeft: '40px',
-                              // borderBottom: 'solid 1px',
-                              // paddingBottom: '10px'
                           }} >
                             {new Date(template.createdAt).toDateString()}
                           </p>
@@ -149,11 +154,24 @@ export const SuitsTable = () => {
                               color: 'white',
                               marginRight:'40px', 
                               marginLeft: '40px',
-                              // borderBottom: 'solid 1px',
-                              // paddingBottom: '10px'
                           }} >
                             Demandado:{template.defendant}<br/>
                             Demandante: {template.claimer}
+                          </p>
+                        </td>
+                        <td>
+                          <p 
+                            style={{
+                              fontFamily: 'Raleway, sans-serif',  
+                              textAlign: 'center', 
+                              fontWeight: 400, 
+                              fontSize: '15px', 
+                              letterSpacing: '1px', 
+                              color: 'white',
+                              marginRight:'40px', 
+                              marginLeft: '40px',
+                          }} >
+                            { template.status ? claimsStatusTraductor(template.status): ""}
                           </p>
                         </td>
                       </tr>

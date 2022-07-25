@@ -7,7 +7,8 @@ export const templatesSlice = createSlice({
   initialState: {
     templates: [],
     newTemplate: {},
-    deleted: {}
+    deleted: {},
+    error: false
   },
   reducers: {
     postTemplate: (state, action ) => {
@@ -19,6 +20,9 @@ export const templatesSlice = createSlice({
     deleteTemplates: (state, action) => {
       state.deleted= action.payload;
     },
+    updateError: (state, action) => {
+      state.error = action.payload
+    }
   }
 })
 
@@ -46,8 +50,8 @@ export const postTemplateAsync = (navigate, payload) => async (dispatch) => {
     dispatch(postTemplate([data]))
     navigate('/formFeedback')
   } catch (err) {
-    throw new Error(err);
-  }
+    dispatch(updateError(true))
+    navigate('/formFeedback')  }
 };
 
 export const deleteTemplateAsync = (id) => async (dispatch) => {
@@ -63,6 +67,10 @@ export const deleteTemplateAsync = (id) => async (dispatch) => {
   }
 };
 
-export const { postTemplate, getTemplates } = templatesSlice.actions;
+export const cleanError = () => async (dispatch) => {
+  dispatch(updateError(false))
+}
+
+export const { postTemplate, getTemplates, updateError } = templatesSlice.actions;
 
 export default templatesSlice.reducer;
