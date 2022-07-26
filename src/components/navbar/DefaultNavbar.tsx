@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import '../../assets/styles/components/DefaultNavbar.scss'
 
 export const DefaultNavbar = () => {
+  const [isAllowed, setstate] = useState(true);
+
+  const logout = () => {
+    console.log()
+    localStorage.removeItem('admin')
+    localStorage.removeItem('lawyer')
+  }
   const styleNavDropDownItem = {
     color: "white", 
     fontSize: '15px', 
@@ -27,6 +34,12 @@ export const DefaultNavbar = () => {
       // borderBottom: 'solid 3px'
     }
 
+
+  useEffect(() => {
+    let token = localStorage.getItem("lawyer") || localStorage.getItem("admin")
+    setstate(token);
+  }, []);
+
   return (
     <Navbar className='defaultNavbar' variant="light">
         <Container>
@@ -34,7 +47,6 @@ export const DefaultNavbar = () => {
         </Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Container className='justify-content-between'>
-          {/* <Nav className='justify-content-space-around'> */}
             <Nav.Link href="/" className='DefaultNavbar__link' style={styleNavItem}>NOSOTROS</Nav.Link>
             <NavDropdown title={<span style={styleNavItem}>DOCUMENTOS</span>} id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1" style={styleNavDropDownItem}>Publicidad Engañosa</NavDropdown.Item>
@@ -43,8 +55,7 @@ export const DefaultNavbar = () => {
               <NavDropdown.Item href="#action/3.4" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#link" style={styleNavItem}>CONTÁCTANOS</Nav.Link>
-            <Nav.Link href="/login" style={styleNavItem}>LOGIN</Nav.Link>
-          {/* </Nav> */}
+            { !isAllowed ? <Nav.Link href="/login" style={styleNavItem}>LOGIN</Nav.Link> : <Nav.Link href="/" style={styleNavItem} onClick={logout}>LOGOUT</Nav.Link>}
         </Container>
     </Navbar>
   )
