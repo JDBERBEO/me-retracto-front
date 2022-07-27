@@ -64,6 +64,26 @@ export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
   }
 };
 
+export const updateClaimStatusAsync = (navigate, payload) => async (dispatch) => {
+  try {
+    const { data } = await axios({
+      method: "PUT",
+      baseURL: API_URL,
+      data: payload,
+      url: `/lawyer/updateClaimStatus/${payload.id}`,
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
+    dispatch(updateClaim(data))
+    navigate('/formFeedback')
+  } catch (err) {
+    dispatch(updateError(true))
+    navigate('/formFeedback')
+  }
+};
+
+
 export const cleanError = () => async (dispatch) => {
   dispatch(updateError(false))
 }

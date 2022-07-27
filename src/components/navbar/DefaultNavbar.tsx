@@ -2,31 +2,21 @@ import React, { useEffect, useState} from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import '../../assets/styles/components/DefaultNavbar.scss'
 
-export const DefaultNavbar = () => {
+export const DefaultNavbar = ({type}) => {
   const [isAllowed, setstate] = useState(true);
 
   const logout = () => {
-    console.log()
     localStorage.removeItem('admin')
     localStorage.removeItem('lawyer')
   }
   const styleNavDropDownItem = {
-    color: "white", 
+    color: type === 'white' ? 'white' : 'black',
     fontSize: '15px', 
     fontWeight: 'bold', 
     letterSpacing: '5px', }
   
     const styleNavItem = { 
-      color: 'white',
-      fontFamily: 'Raleway, sans-serif',
-      letterSpacing: '3px',
-      fontWeight: 450,
-      fontSize: '15px',
-      // borderBottom: 'solid 3px'
-    }
-
-    const styleNavItemForm = { 
-      color: 'black',
+      color: type === 'white' ? 'white' : 'black',
       fontFamily: 'Raleway, sans-serif',
       letterSpacing: '3px',
       fontWeight: 450,

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx'
@@ -12,7 +13,7 @@ export const SueCard = ({title, subtitle, description, background, imgUrl, butto
         
         <Row>
           <Col>
-            <DefaultNavbar />
+            <DefaultNavbar type={'white'}/>
           </Col>
         </Row>): null
       }

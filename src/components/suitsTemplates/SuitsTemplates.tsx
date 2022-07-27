@@ -5,27 +5,13 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 
 export const SuitsTemplates = () => {
   const dispatch = useDispatch()
   const suitsTemplates = useSelector((state) => (state.templates.templates));
   const [id, setId] = useState('')
 
-  // console.log('suitsTemplates: ', suitsTemplates)
-  const styleNavDropDownItem = {
-    color: "white", 
-    fontSize: '15px', 
-    fontWeight: 'bold', 
-    letterSpacing: '5px', }
-
-    const styleNavItemForm = { 
-      color: 'black',
-      fontFamily: 'Raleway, sans-serif',
-      letterSpacing: '3px',
-      fontWeight: 450,
-      fontSize: '15px',
-      // borderBottom: 'solid 3px'
-    }
 
     const handleOnClick = (id) => {
       dispatch(deleteTemplateAsync(id))
@@ -33,10 +19,7 @@ export const SuitsTemplates = () => {
     }
     
     const handleOnChange = (e) => {
-      console.log('me ejecuté')
       const value = e.target.value
-      // console.log('value: ', value)
-      // console.log(e.target.checked)
       setId(value)
       if (e.target.checked === false) {
         setId('')
@@ -48,22 +31,7 @@ export const SuitsTemplates = () => {
     }, []);
   return (
     <div>
-      <Navbar className='defaultNavbar' variant="light">
-        <Container>
-        <Navbar.Brand href="/"><img src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" alt="logo" className='defaultNavbar__logo'/></Navbar.Brand>
-        </Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Container className='justify-content-between'>
-          <Nav.Link href="/" className='DefaultNavbar__link' style={styleNavItemForm}>NOSOTROS</Nav.Link>
-            <NavDropdown title={<span style={styleNavItemForm}>DOCUMENTOS</span>} id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1" style={styleNavDropDownItem}>Publicidad Engañosa</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2" style={styleNavDropDownItem}>Falta de Información al Consumidor</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3" style={styleNavDropDownItem}>Retracto y Desistimiento</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
-            </NavDropdown>
-          <Nav.Link href="#link" style={styleNavItemForm}>CONTÁCTANOS</Nav.Link>
-        </Container>
-      </Navbar>
+      <DefaultNavbar />
       <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'right', paddingRight:'340px'}}>
       <Link to='/templateForm'>
           <button style={{border: 'none', background: 'transparent'}}>
@@ -79,7 +47,6 @@ export const SuitsTemplates = () => {
         </div>
       </div>
       <div style={{display:'flex', flexDirection:'row', alignItems:'start', justifyContent:'center'}}>
-        {/* <div style={{borderRadius:'50px'}}> */}
           <table>
           <colgroup>
             <col span={1} style={{backgroundColor:'#4E4B99' }} />
@@ -112,8 +79,6 @@ export const SuitsTemplates = () => {
                               color: 'white',
                               marginRight:'40px', 
                               marginLeft: '40px',
-                              // borderBottom: 'solid 1px',
-                              // paddingBottom: '10px'
                             }} >
                               {template.name}
                             </p>
@@ -130,8 +95,6 @@ export const SuitsTemplates = () => {
                               color: 'white',
                               marginRight:'40px', 
                               marginLeft: '40px',
-                              // borderBottom: 'solid 1px',
-                              // paddingBottom: '10px'
                           }} >
                             {new Date(template.createdAt).toDateString()}
                           </p>
@@ -140,7 +103,6 @@ export const SuitsTemplates = () => {
                       })}
             </tbody>
           </table>
-        {/* </div> */}
       </div>
         <div style={{display:'flex', flexDirection:'row', justifyContent: 'center'}}>
           
