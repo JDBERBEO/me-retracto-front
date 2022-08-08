@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { postClaimAsync } from '../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
+import { useForm } from 'react-hook-form';
+import {object,string, bool, boolean} from 'yup'
+import { yupResolver } from "@hookform/resolvers/yup";
 
 
 
@@ -13,21 +16,21 @@ export const StepperMain = ({steps}) => {
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
 
-  const [newClaim, setNewClaim] = useState({
-    id: "",
-    documentMonth: "",
-    documentYear: "",
-    agreementDate: "",
-    claimerName: "",
-    claimerIDNumber: "",
-    claimerIDCity: "",
-    claimerCity: "",
-    claimerAddress: "",
-    claimerEmail: "",
-    defendantName: "",
-    facts:"",
-    proofs: ""
-});
+//   const [newClaim, setNewClaim] = useState({
+//     id: "",
+//     documentMonth: "",
+//     documentYear: "",
+//     agreementDate: "",
+//     claimerName: "",
+//     claimerIDNumber: "",
+//     claimerIDCity: "",
+//     claimerCity: "",
+//     claimerAddress: "",
+//     claimerEmail: "",
+//     defendantName: "",
+//     facts:"",
+//     proofs: ""
+// });
 
 const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
   e.preventDefault();
@@ -40,14 +43,15 @@ const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
     });
 }
 
-const handleOnClick = (e: { preventDefault: () => void }) => {
-  e.preventDefault()
-  console.log('newClaim: ', newClaim)
+const handleOnClick = (e: { preventDefault: () => void }, values) => {
+  // e.preventDefault()
+   console.log('newClaim: ', values)
 
-  dispatch(postClaimAsync(navigate, {claimFields: newClaim}, sendEmail, e));
+   dispatch(postClaimAsync(navigate, {claimFields: values}, sendEmail, e));
 };
  
   const goNextStep = () => {
+    // console.log(await handleSubmit())
     const nextStep = currentStep + 1;
     if (nextStep <= steps.length) {
       setCurrentStep(nextStep);
@@ -55,6 +59,8 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
   };
  
   const goPreviousStep = () => {
+    // handleSubmit()
+
     const previousStep = currentStep - 1;
     if (previousStep >= 1) {
       setCurrentStep(previousStep);
@@ -101,50 +107,34 @@ const handleOnClick = (e: { preventDefault: () => void }) => {
             <div className="align-items-center justify-content-center" style={{height:'fix-content', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
               <Col sm={9} md={10} lg={10} >
                 <step.element
-                setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
-                setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
-                setNewID={(e) => {
-                  console.log('id: ', newClaim.id)
-                  return setNewClaim({ ...newClaim, id: e.target.value })}} 
-                setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
-                setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
-                setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
-                setNewDocumentMonth={(e) => setNewClaim({ ...newClaim, documentMonth: e.target.value })}
-                setNewDocumentYear={(e) => setNewClaim({ ...newClaim, documentYear: e.target.value })}
-                setNewFacts={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}
-                setNewProofs={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}
+                  i={i}
+                  goPreviousStep={goPreviousStep}
+                  steps={steps}
+                  step={step}
+                  handleOnClick={handleOnClick}
+                  goNextStep={goNextStep}
+                  currentStep={currentStep}
+                  sendEmail={sendEmail}
+                // register={register}
+                // errors = {errors}
+                // handleSubmit = {handleSubmit}
+                // {...register }
+                // setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
+                // setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
+                // setNewID={(e) => {
+                //   console.log('id: ', newClaim.id)
+                //   return setNewClaim({ ...newClaim, id: e.target.value })}} 
+                // setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
+                // setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
+                // setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
+                // setNewDocumentMonth={(e) => setNewClaim({ ...newClaim, documentMonth: e.target.value })}
+                // setNewDocumentYear={(e) => setNewClaim({ ...newClaim, documentYear: e.target.value })}
+                // setNewFacts={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}
+                // setNewProofs={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}
                 />
               </Col>
             </div>
-              <Row className='align-items-end justify-content-between'>
-                <Col sm={2}>
-                  { i === 0 ? null : (
-                  <button
-                    className="previousStepbutton"
-                    onClick={goPreviousStep}
-                  >
-                    ATRÁS
-                  </button>
-                  )}
-                </Col>
-                <Col sm={3}>
-                  {/* TODO: REFACTOR BUTTON INTO ONE COMPONENT */}
-                  { i + 1 === steps.length ? (
-                  <button className={`${step.nextStepButton}`}  onClick={handleOnClick} >
-                    ENVIAR
-                  </button>
-                  ) : (
-                  <button className={`${step.nextStepButton}`}   onClick={goNextStep} >
-                    SIGUIENTE
-                  </button>
-                  )}
-                  <div className='stepsContainer' >
-                  {steps.map((step, i) =>(
-                  <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
-                  ))}
-                  </div>
-                </Col>
-              </Row>
+
             </div>
             </>
               ): null}
