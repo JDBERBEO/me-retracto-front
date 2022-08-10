@@ -29,6 +29,7 @@ export const postLoginAsync = (user, navigate) => async (dispatch) => {
     })
     console.log('data: ', data)
     localStorage.setItem('admin', data.token)
+    updateError(false)
     navigate('/suitsTemplates')
   } catch (err) {
     dispatch(updateError(true))

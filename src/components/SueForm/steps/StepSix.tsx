@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const StepSix = ({
-  // setNewProofs
   i,
   goPreviousStep,
   steps,
@@ -24,15 +23,11 @@ export const StepSix = ({
   const filledClaim = useSelector((state) => (state.claims.filledClaim));
 
   const schema = object({
-    proofs: string().required('Se requiere agregar las pruebas')
+    proofs: string().required('Este campo es requerido*')
   })
 
   const uploadState = (data) => {
-    console.log('data: ', data)
     dispatch(fillClaimAsync(data))
-    // if(i + 1 !== steps.length) {
-    //   goNextStep()
-    // }
     }
 
     const sendClaim =  (data, e) => {
@@ -45,7 +40,7 @@ export const StepSix = ({
       }
 
       console.log('completedClaim: ', completedClaim)
-      dispatch(postClaimAsync(navigate, filledClaim, sendEmail, e))
+      dispatch(postClaimAsync(navigate, completedClaim, sendEmail, e))
       uploadState(data)
     }
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
@@ -54,14 +49,18 @@ export const StepSix = ({
 
   return (
     <Form>
-      <section>
-        <label className='form-label'>ADJUNTE LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
-        <label className='helperText'>Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10 archivos.</label>
-        <input {...register('proofs')} className="form-input" type="text" placeholder="Escribe aqui el año que aparecerá en el documento" />
-        <span style={{fontFamily: 'Raleway, sans-serif',  textAlign: 'center', fontWeight: 700, fontSize: '11px', letterSpacing: '1px', color: 'white', marginTop: '7vh', marginBottom: '8vh',}}>{
-        errors?.proofs?.message}</span>
+      <section style={{display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center'}}>
+        <div>
+          <label className='form-label'>ADJUNTE LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
+          <label className='helperText'>Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10 archivos.</label>
+        </div>
+        <div style={{display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'start', marginTop:'30px', marginBottom: '30px', minHeight:'100px'}}>
+          <input {...register('proofs')} className="form-input" type="text" placeholder="Escribe aqui el año que aparecerá en el documento" />
+          <span className="form-label">
+            {errors?.proofs?.message}</span>
+        </div>
       </section>
-      <Row className='align-items-end justify-content-between'>
+      <Row className='align-items-start justify-content-between'>
           <Col sm={2}>
             { i === 0 ? null : (
               <button
@@ -73,6 +72,7 @@ export const StepSix = ({
                   )}
                 </Col>
                 <Col sm={3}>
+                <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
                   <button className={`${step.nextStepButton}`}  onClick={handleSubmit(sendClaim)} >
                     ENVIAR
                   </button>
@@ -81,6 +81,7 @@ export const StepSix = ({
                   <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
                   ))}
                   </div>
+                </div>
                 </Col>
       </Row>
     </Form>

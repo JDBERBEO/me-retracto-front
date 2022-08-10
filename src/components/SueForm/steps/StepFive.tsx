@@ -108,14 +108,13 @@ export const StepFive = ({
                 </Col>
                 <Col sm={3}>
                 <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
-
                   <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
                     SIGUIENTE
                   </button>
                   <div className='stepsContainer' >
-                  {steps.map((step, i) =>(
-                  <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
-                  ))}
+                    {steps.map((step, i) =>(
+                    <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
+                    ))}
                   </div>
                 </div>
                 </Col>

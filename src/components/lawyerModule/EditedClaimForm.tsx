@@ -56,11 +56,11 @@ export const EditedClaimForm = () => {
             style={{color:'white'}}
               />
         </section>
-        <section className='formContainer__section' >
+        <section className='formContainer__section' style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
           <button 
             className={'nextStepButton__yellow'}
             onClick={handleOnClick}>
-              ENVIAR 
+              ACTUALIZAR
           </button>
         </section>
       </form>
@@ -85,10 +85,19 @@ export const EditedClaimForm = () => {
           <button 
             className={'nextStepButton__yellow'}
             onClick={handleOnClickStatus}>
-              ENVIAR 
+              ACTUALIZAR 
           </button>
         </section>
       </form>
+      </div>
+      <div  className="formContainer">
+        <form>
+          <section className='formContainer__section' >
+            <button>
+              ENVIAR DOCUMENTO A USUARIO
+            </button>
+          </section>
+        </form>
       </div>
     </div>
   )

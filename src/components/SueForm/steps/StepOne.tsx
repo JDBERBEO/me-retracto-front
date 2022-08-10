@@ -20,7 +20,7 @@ export const StepOne = ({
   const dispatch = useDispatch()
 
   const schema = object({
-    email: string().email('El correo es inválido*').required('El correo es requerido*'),
+    claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
   })
 
   const uploadState = (data) => {
@@ -37,10 +37,10 @@ export const StepOne = ({
       <section style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height:'35vh', width: '100%'}}>
         <div>
           <label className='form-label' >CORREO*</label>
-          <input className="form-input" type="email" placeholder="Escribe aqui tu correo electrónico" {...register('email')}/>
+          <input className="form-input" type="email" placeholder="Escribe aqui tu correo electrónico" {...register('claimerEmail')}/>
         </div>
         <div >
-          <span className='form-label'>{errors?.email?.message}</span>
+          <span className='form-label'>{errors?.claimerEmail?.message}</span>
         </div>
       </section>
       <Row className='flex-row-reverse'>

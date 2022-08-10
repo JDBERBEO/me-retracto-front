@@ -19,7 +19,7 @@ export const StepThree = ({
 
   const schema = object({
     defendantName: string().required('Este campo es requerido*'),
-    directClaimDate: string().required('Este campo es requerido*'),
+    agreementDate: string().required('Este campo es requerido*'),
   })
 
   const uploadState = (data) => {
@@ -54,7 +54,7 @@ export const StepThree = ({
         </div>
       </section>
       <section style={{marginTop: '3vh', marginBottom: '60px', display:'flex', flexDirection: 'column'}}>
-        <label className='form-label'>FECHA DE LA RECLAMACIÓN DIRECTA *</label>
+        <label className='form-label'>FECHA EN SE ADQUIRIÓ EL SERVICIO*</label>
         <div style={{alignItems: 'center', }}>
           <input 
           className="form-input" 
@@ -62,9 +62,9 @@ export const StepThree = ({
           placeholder="Escribe aqui la fecha de la reclamación directa" 
           style={{marginTop: '3vh'}}
           // onChange={setNewDefendantName}
-          {...register('directClaimDate')}
+          {...register('agreementDate')}
           />
-          <span className='form-label' style={{marginLeft: '10px'}}>{errors?.directClaimDate?.message}</span>
+          <span className='form-label' style={{marginLeft: '10px'}}>{errors?.agreementDate?.message}</span>
         </div>
       </section>
       <Row className='align-items-start justify-content-between'>
