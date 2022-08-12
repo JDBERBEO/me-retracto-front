@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -44,30 +45,30 @@ export const EditedClaimForm = () => {
   return (
     <div>
       <DefaultNavbar />
-      <div  className="formContainer">
-      <form>
-        <section className="formContainer__section">
-          <label className='form-label'>SELECCIONA EL ARCHIVO:</label>
-          <input 
-            type="file" 
-            id="file"
-            multiple
-            onChange={changeFile}
-            style={{color:'white'}}
-              />
-        </section>
-        <section className='formContainer__section' style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-          <button 
-            className={'nextStepButton__yellow'}
-            onClick={handleOnClick}>
-              ACTUALIZAR
-          </button>
-        </section>
-      </form>
-      </div>
+        <div  className="formContainer">
+            <form>
+              <section className="formContainer__section-column">
+                <label className='form-label'>SELECCIONA EL ARCHIVO:</label>
+                <input 
+                  type="file" 
+                  id="file"
+                  multiple
+                  onChange={changeFile}
+                  style={{color:'white'}}
+                    />
+              </section>
+              <section className='formContainer__section-column'>
+                <button 
+                  className={'nextStepButton__yellow'}
+                  onClick={handleOnClick}>
+                    ACTUALIZAR
+                </button>
+              </section>
+            </form>
+        </div>
       <div  className="formContainerPurple">
       <form>
-        <section>
+        <section className="formContainer__section-column">
           <label className='form-label' htmlFor='userType'>SELECCIONA EL ESTADO </label>
           <select  onChange={handleOnChange} className="form-input" id="userType" name="userType" value={user.userType} >
             <option>selecciona una opción...</option>
