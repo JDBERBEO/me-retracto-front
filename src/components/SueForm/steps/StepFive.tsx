@@ -8,10 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
 
 export const StepFive = ({
-  // setNewID,
-  // setNewDocumentMonth,
-  // setNewDocumentYear,
-  // setNewFacts
   i,
   goPreviousStep,
   steps,
@@ -36,7 +32,7 @@ export const StepFive = ({
     goNextStep()
   }
 
-  const { register, setValue, trigger, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  const { register, setValue, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
 
   
   useEffect(() => {

@@ -10,6 +10,8 @@ export const claimSlide = createSlice({
     claims: [],
     error: false,
     filledClaim: {},
+    loading: false,
+    feedbackModal: false
   },
   reducers: {
     postClaim: (state, action) => {
@@ -29,6 +31,12 @@ export const claimSlide = createSlice({
       // const info = action.payload
       state.filledClaim = {...state.filledClaim, ...action.payload}
     },
+    updateLoading: ( state, action ) => {
+      state.loading = action.payload
+    },
+    openModal: ( state, action ) => {
+      state.feedbackModal = action.payload
+    }
     // getFilledClaim: (state, action) => {
     //   state.claim =action.payload
     // }
@@ -37,10 +45,15 @@ export const claimSlide = createSlice({
 
 export const fillClaimAsync = (info) => async (dispatch) => {
   try {
-    console.log('info: ', info)
     dispatch(fillClaim(info))
   } catch (error) {
-    console.error('error: ', error)
+  }
+}
+
+export const closeModalAsync = () => async (dispatch) => {
+  try {
+    dispatch(openModal(false))
+  } catch (error) {
   }
 }
 export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch) => {
@@ -65,8 +78,8 @@ export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch
   }
 };
 
-export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
-  console.log('claim: ', payload.file)
+export const updateClaimAsync = (payload) => async (dispatch) => {
+  dispatch(updateLoading(true))
   try {
     const { data } = await axios({
       method: "PUT",
@@ -78,14 +91,17 @@ export const updateClaimAsync = (navigate, payload) => async (dispatch) => {
       }
     })
     dispatch(updateClaim(data))
-    navigate('/formFeedback')
+    dispatch(updateLoading(false))
+    dispatch(openModal({open: true, operationStatus: 'success', message: 'El archivo se ha actualizado con éxito.'}))
   } catch (err) {
+    dispatch(updateLoading(false))
     dispatch(updateError(true))
-    navigate('/formFeedback')
+    dispatch(openModal({open: true, operationStatus: 'failed', status: err.response.status, message: 'No se ha podido cargar ningún archivo. Recuerda que debes seleccionar un archivo antes.'}))
   }
 };
 
 export const updateClaimStatusAsync = (navigate, payload) => async (dispatch) => {
+  dispatch(updateLoading(true))
   try {
     const { data } = await axios({
       method: "PUT",
@@ -97,10 +113,12 @@ export const updateClaimStatusAsync = (navigate, payload) => async (dispatch) =>
       }
     })
     dispatch(updateClaim(data))
-    navigate('/formFeedback')
+    dispatch(updateLoading(false))
+    dispatch(openModal({open: true, operationStatus: 'success', message: 'El estado de revisón se ha actualizado con éxito.'}))
   } catch (err) {
+    dispatch(updateLoading(false))
     dispatch(updateError(true))
-    navigate('/formFeedback')
+    dispatch(openModal({open: true, operationStatus: 'failed', status: err.response.status, message: 'No se ha podido actualizar el estado de revisión.'}))
   }
 };
 
@@ -127,6 +145,6 @@ export const getClaimsAsync = () => async (dispatch) => {
 //   }
 // };
 
-export const { postClaim, updateClaim, getClaims, updateError, fillClaim, getFilledClaim } = claimSlide.actions;
+export const { postClaim, updateClaim, getClaims, updateError, fillClaim, getFilledClaim, updateLoading, openModal } = claimSlide.actions;
 
 export default claimSlide.reducer;
