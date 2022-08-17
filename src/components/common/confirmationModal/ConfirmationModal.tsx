@@ -1,15 +1,42 @@
 import React, { useState } from "react";
 import { Col, Modal, Row } from "react-bootstrap";
 import { FiAlertCircle } from 'react-icons/fi';
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
+import { getOneClaimAsync } from "../../../store/features/claims/claimsSlice";
+import emailjs from 'emailjs-com';
 
 
-export const  ConfimationModal = () => {
+export const  ConfimationModal = ({claimId}) => {
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch()
+  const claim = useSelector((state) => state.claims.currentClaim)
 
+  const handleOnClick = () => {
+    setShow(true)
+    dispatch(getOneClaimAsync(claimId))
+  }
+  
+  const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
+    e.preventDefault();
+    console.log('calimer: ', claim.claim.claimer)
+    emailjs.send("service_cc2049t","template_wh3iaz4",{
+      claimer_name: claim.claim.claimer,
+      file_url: claim.claim.fileUrl,
+      claimer_email:claim.claim.claimerEmail
+
+      }, 'P04vzZkGfMSd-ijUi').then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      setShow(false)
+
+  }
+  console.log('claim: ', claim)
   return (
     <>
-      <button className="containerButton__size-m__yellow" onClick={() => setShow(true)}>
+      <button className="containerButton__size-m__yellow" onClick={handleOnClick}>
         ENVIAR DOCUMENTO
       </button>
       <Modal
@@ -39,7 +66,7 @@ export const  ConfimationModal = () => {
           <button className="containerButton__purple" onClick={() => setShow(false)}>
             Cancelar
           </button>
-          <button className="containerButton__red">
+          <button className="containerButton__red" onClick={sendEmail}>
             Confirmar
           </button>
         </Modal.Footer>

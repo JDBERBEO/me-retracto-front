@@ -11,7 +11,8 @@ export const claimSlide = createSlice({
     error: false,
     filledClaim: {},
     loading: false,
-    feedbackModal: false
+    feedbackModal: false,
+    currentClaim: {}
   },
   reducers: {
     postClaim: (state, action) => {
@@ -27,8 +28,6 @@ export const claimSlide = createSlice({
       state.error = action.payload
     },
     fillClaim: (state, action) => {
-      console.log('action: ', action.payload)
-      // const info = action.payload
       state.filledClaim = {...state.filledClaim, ...action.payload}
     },
     updateLoading: ( state, action ) => {
@@ -36,6 +35,10 @@ export const claimSlide = createSlice({
     },
     openModal: ( state, action ) => {
       state.feedbackModal = action.payload
+    },
+    getClaim: (state, action) => {
+      console.log('action: ', action.payload)
+      state.currentClaim = action.payload
     }
     // getFilledClaim: (state, action) => {
     //   state.claim =action.payload
@@ -136,6 +139,20 @@ export const getClaimsAsync = () => async (dispatch) => {
   }
 };
 
+export const getOneClaimAsync = (id) => async (dispatch) => {
+  console.log('claim id', id)
+  try {
+    const { data } = await axios({
+      method: "GET",
+      baseURL: API_URL,
+      url: `/lawyer/getClaim/${id}`,
+    })
+    dispatch(getClaim(data))
+  } catch (error) {
+    console.error('error:', error)
+  }
+}
+
 // export const getFilledClaimAsync = () => async (dispatch) => {
 //   try {
 //     const response = await axios.get(`${API_URL}/lawyer`);
@@ -145,6 +162,6 @@ export const getClaimsAsync = () => async (dispatch) => {
 //   }
 // };
 
-export const { postClaim, updateClaim, getClaims, updateError, fillClaim, getFilledClaim, updateLoading, openModal } = claimSlide.actions;
+export const { postClaim, updateClaim, getClaims, updateError, fillClaim, getFilledClaim, updateLoading, openModal, getClaim } = claimSlide.actions;
 
 export default claimSlide.reducer;

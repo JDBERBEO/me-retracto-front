@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { updateClaimAsync, updateClaimStatusAsync } from '../../store/features/claims/claimsSlice';
+import { getOneClaimAsync, updateClaimAsync, updateClaimStatusAsync } from '../../store/features/claims/claimsSlice';
 import { FeedbackModal } from '../common/feedbackModal/FeedbackModal.tsx';
 import { Loader } from '../common/spinner/Loader.tsx';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
@@ -111,7 +111,7 @@ export const EditedClaimForm = () => {
         </form>
           <div  className="formContainer">
             <section className='formContainer__section' >
-              <ConfimationModal />
+              <ConfimationModal claimId={id} />
             </section>
           </div>
     </div>
