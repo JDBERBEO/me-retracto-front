@@ -13,6 +13,8 @@ export const SuitsTable = () => {
   const [id, setId] = useState('')
   const navigate = useNavigate()
 
+  const token = localStorage.getItem("admin");
+
     const handleOnClick = (id) => {
       if(id) {
         navigate(`/EditedClaimForm/${id}`)
@@ -44,6 +46,11 @@ export const SuitsTable = () => {
             </div>
           </button>
       {/* </Link> */}
+      { token ? (<div className="stepNumberContainer">
+          <div className='iconBorder'>
+            <button className='iconBorder__icon' style={{backgroundColor: 'transparent', border:'none'}} onClick={() => handleOnClick(id)}><RiDeleteBin6Line /></button>
+          </div>
+        </div>): null}
       </div>
       <div style={{display:'flex', flexDirection:'row', alignItems:'start', justifyContent:'center'}}>
         {/* <div style={{borderRadius:'50px'}}> */}

@@ -39,9 +39,9 @@ export const  PreventModal = () => {
         </Modal.Body>
         <Modal.Footer>
           <Link to="/form">
-            <Button>
-              Continue
-            </Button>
+            <button className="containerButton__red">
+              Continuar
+            </button>
           </Link>
         </Modal.Footer>
       </Modal>
