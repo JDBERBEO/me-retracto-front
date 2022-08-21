@@ -26,7 +26,6 @@ export const postLawyerLoginAsync = (user, navigate) => async (dispatch) => {
       data: user,
       url: 'lawyer/signin'
     })
-    console.log('data: ', data)
     localStorage.setItem('lawyer', data.token)
     updateError(false)
     navigate('/lawyerClaims')

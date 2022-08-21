@@ -19,7 +19,6 @@ export const adminSlice = createSlice({
 });
 
 export const postLoginAsync = (user, navigate) => async (dispatch) => {
-  console.log('user: ', user)
   try {
     const { data } = await axios({
       method: "POST",
@@ -27,7 +26,6 @@ export const postLoginAsync = (user, navigate) => async (dispatch) => {
       data: user,
       url: `/administrator/signin`
     })
-    console.log('data: ', data)
     localStorage.setItem('admin', data.token)
     updateError(false)
     navigate('/suitsTemplates')

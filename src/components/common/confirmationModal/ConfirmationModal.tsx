@@ -19,7 +19,6 @@ export const  ConfimationModal = ({claimId}) => {
   
   const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
     e.preventDefault();
-    console.log('calimer: ', claim.claim.claimer)
     emailjs.send("service_cc2049t","template_wh3iaz4",{
       claimer_name: claim.claim.claimer,
       file_url: claim.claim.fileUrl,
@@ -33,7 +32,6 @@ export const  ConfimationModal = ({claimId}) => {
       setShow(false)
 
   }
-  console.log('claim: ', claim)
   return (
     <>
       <button className="containerButton__size-m__yellow" onClick={handleOnClick}>

@@ -37,7 +37,6 @@ export const claimSlide = createSlice({
       state.feedbackModal = action.payload
     },
     getClaim: (state, action) => {
-      console.log('action: ', action.payload)
       state.currentClaim = action.payload
     }
     // getFilledClaim: (state, action) => {
@@ -140,7 +139,6 @@ export const getClaimsAsync = () => async (dispatch) => {
 };
 
 export const getOneClaimAsync = (id) => async (dispatch) => {
-  console.log('claim id', id)
   try {
     const { data } = await axios({
       method: "GET",
@@ -150,6 +148,19 @@ export const getOneClaimAsync = (id) => async (dispatch) => {
     dispatch(getClaim(data))
   } catch (error) {
     console.error('error:', error)
+  }
+}
+
+export const deleteClaimAsync = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios({
+      method: "DELETE",
+      baseURL: API_URL,
+      url: `/administrator/deleteClaims/${id}`
+    })
+    dispatch(getClaims(data))
+  } catch (error) {
+    throw new Error(error)
   }
 }
 

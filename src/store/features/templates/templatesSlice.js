@@ -36,7 +36,6 @@ export const getTemplatesAsync = () => async (dispatch) => {
 };
 
 export const postTemplateAsync = (navigate, payload) => async (dispatch) => {
-  console.log('template: ', payload)
   try {
     const { data } = await axios({
       method: "POST",

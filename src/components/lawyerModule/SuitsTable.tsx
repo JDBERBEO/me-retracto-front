@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getClaimsAsync } from '../../store/features/claims/claimsSlice';
+import { deleteClaimAsync, getClaimsAsync } from '../../store/features/claims/claimsSlice';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 
 export const SuitsTable = () => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state) => (state.claims.claims));
+  const suitsTemplates = useSelector((state:any) => (state.claims.claims));
   const [id, setId] = useState('')
   const navigate = useNavigate()
 
@@ -22,7 +22,6 @@ export const SuitsTable = () => {
     }
     
     const handleOnChange = (e) => {
-      console.log('me ejecuté')
       const value = e.target.value
       setId(value)
       if (e.target.checked === false) {
@@ -30,6 +29,10 @@ export const SuitsTable = () => {
       }
     }
     
+    const handleDeleteClaim = (id) => {
+      dispatch(deleteClaimAsync(id))
+    }
+
     useEffect(() => {
       //getClaims
       dispatch(getClaimsAsync())
@@ -48,7 +51,7 @@ export const SuitsTable = () => {
       {/* </Link> */}
       { token ? (<div className="stepNumberContainer">
           <div className='iconBorder'>
-            <button className='iconBorder__icon' style={{backgroundColor: 'transparent', border:'none'}} onClick={() => handleOnClick(id)}><RiDeleteBin6Line /></button>
+            <button className='iconBorder__icon' style={{backgroundColor: 'transparent', border:'none'}} onClick={() => handleDeleteClaim(id)}><RiDeleteBin6Line /></button>
           </div>
         </div>): null}
       </div>
