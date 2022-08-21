@@ -29,3 +29,66 @@
   width: 140px;
   background-color: transparent;
 }
+
+.containerButton {
+  &__red {
+    color: #EB646F;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    height: 35px;
+    width: 140px;
+    background-color: white;
+  }
+  &__green {
+    color: #00AC9E;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    height: 35px;
+    width: 140px;
+    background-color: white;
+  }
+  &__white {
+    color: white;
+  }
+  &__yellow {
+    color: #FAB816;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    height: 35px;
+    width: 140px;
+    background-color: white;
+  }
+  &__purple {
+    color: #4E4B99;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    height: 35px;
+    width: 140px;
+    background-color: white;
+  }
+  &__size-m {
+    width: 280;
+    &__yellow {
+      color: #FAB816;
+      border: none;
+      border-radius: 25px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      height: 35px;
+      background-color: white;
+    }
+  }
+}

@@ -25,14 +25,12 @@ export const StepTwo = ({
     })
 
     const uploadState = (data) => {
-      console.log('data: ', data)
       dispatch(fillClaimAsync(data))
         goNextStep()
       }
 
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
-    console.log('errors: ', errors)
 
   return (
     <Form>

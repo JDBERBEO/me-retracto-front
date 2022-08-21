@@ -31,14 +31,12 @@ export const StepFour = ({
     })
 
     const uploadState = (data) => {
-      console.log('data: ', data)
       dispatch(fillClaimAsync(data))
         goNextStep()
       }
 
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
-    console.log('errors: ', errors)
   return (
     <Form  style={{display:'flex', flexDirection:'column', alignItems: 'start', justifyContent: 'between', marginTop: '4vh', marginBottom:'15vh'}} >
     <div style={{width:'930px', flexDirection:'column', alignItems: 'center', justifyContent: 'center'}}>

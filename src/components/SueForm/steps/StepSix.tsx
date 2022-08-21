@@ -31,21 +31,15 @@ export const StepSix = ({
     }
 
     const sendClaim =  (data, e) => {
-      console.log('data StepTwo: ', data)
-      console.log('filledClaim: ', filledClaim)
-      console.log('e', e)
       const completedClaim = {
         ...data,
         ...filledClaim
       }
 
-      console.log('completedClaim: ', completedClaim)
       dispatch(postClaimAsync(navigate, completedClaim, sendEmail, e))
       uploadState(data)
     }
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
-
-    console.log('errors: ', errors)
 
   return (
     <Form>

@@ -8,10 +8,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
 
 export const StepFive = ({
-  // setNewID,
-  // setNewDocumentMonth,
-  // setNewDocumentYear,
-  // setNewFacts
   i,
   goPreviousStep,
   steps,
@@ -21,7 +17,7 @@ export const StepFive = ({
   currentStep
 }) => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state) => (state.templates.templates));
+  const suitsTemplates = useSelector((state: any) => (state.templates.templates));
 
   const schema = object({
     id: string().required('Este campo es requerido*'),
@@ -31,12 +27,11 @@ export const StepFive = ({
   })
 
   const uploadState = (data) => {
-    console.log('data: ', data)
     dispatch(fillClaimAsync(data))
     goNextStep()
   }
 
-  const { register, setValue, trigger, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  const { register, setValue, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
 
   
   useEffect(() => {
@@ -50,8 +45,8 @@ export const StepFive = ({
       <section style={{marginTop: '5vh', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
         <label className='form-label' style={{width: '175px'}}>SELECCIONE EL TIPO DE RECLAMO*</label>
         <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-          <select {...register('id')} className="form-input" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
-            <option value="">selecciona una opción...</option>
+          <select {...register('id')} className="form-select-basic" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
+            <option value="">Selecciona una opción...</option>
             {suitsTemplates.map((template) => {
               return <option value={template._id} key={template._id}>{template.name}</option>
             })}

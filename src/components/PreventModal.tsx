@@ -1,8 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
-
 
 export const  PreventModal = () => {
   const [show, setShow] = useState(false);
@@ -12,7 +11,6 @@ export const  PreventModal = () => {
       <button className="nextStepButton__yellow" onClick={() => setShow(true)}>
         conócenos
       </button>
-
       <Modal
         show={show}
         onHide={() => setShow(false)}
@@ -41,9 +39,9 @@ export const  PreventModal = () => {
         </Modal.Body>
         <Modal.Footer>
           <Link to="/form">
-            <Button>
-              Continue
-            </Button>
+            <button className="containerButton__red">
+              Continuar
+            </button>
           </Link>
         </Modal.Footer>
       </Modal>

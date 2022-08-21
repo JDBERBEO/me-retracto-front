@@ -26,6 +26,35 @@
   margin-top: 5vh;
 }
 
+.form-select-basic {
+  border-radius: 25px;
+  border: 2px solid white;
+  background-color: #EB646F;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  height: 55px;
+  width: 470px;
+  margin-left: 13px;
+  padding-left: 30px;
+  border-color: aliceblue;
+}
+
+.form-select-basic:focus, .form-select-basic:hover {
+  border-radius: 25px;
+  border: 2px solid white;
+  outline: none;
+  background-color: #EB646F;
+  border: 2px solid white;
+  
+}
+
+.form-select-basic option {
+  font-family: 'Raleway', sans-serif;
+}
+
 .form-input {
   border-radius: 25px;
   border: 2px solid white;
@@ -40,6 +69,7 @@
   margin-left: 13px;
   padding-left: 30px;
 }
+
 
 .form-input:focus, .form-textArea:focus {
   outline-width: 0;

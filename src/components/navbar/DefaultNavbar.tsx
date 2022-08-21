@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
 import '../../assets/styles/components/DefaultNavbar.scss'
 
 export const DefaultNavbar = ({type}) => {
-  const [isAllowed, setstate] = useState(true);
+  const [isAllowed, setstate] = useState<string | null | boolean>(true);
 
   const logout = () => {
     localStorage.removeItem('admin')

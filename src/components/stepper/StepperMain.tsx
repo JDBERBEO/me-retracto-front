@@ -16,22 +16,6 @@ export const StepperMain = ({steps}) => {
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
 
-//   const [newClaim, setNewClaim] = useState({
-//     id: "",
-//     documentMonth: "",
-//     documentYear: "",
-//     agreementDate: "",
-//     claimerName: "",
-//     claimerIDNumber: "",
-//     claimerIDCity: "",
-//     claimerCity: "",
-//     claimerAddress: "",
-//     claimerEmail: "",
-//     defendantName: "",
-//     facts:"",
-//     proofs: ""
-// });
-
 const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
   e.preventDefault();
 
@@ -45,13 +29,10 @@ const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
 
 const handleOnClick = (e: { preventDefault: () => void }, values) => {
   // e.preventDefault()
-   console.log('newClaim: ', values)
-
    dispatch(postClaimAsync(navigate, {claimFields: values}, sendEmail, e));
 };
  
   const goNextStep = () => {
-    // console.log(await handleSubmit())
     const nextStep = currentStep + 1;
     if (nextStep <= steps.length) {
       setCurrentStep(nextStep);
@@ -59,7 +40,6 @@ const handleOnClick = (e: { preventDefault: () => void }, values) => {
   };
  
   const goPreviousStep = () => {
-    // handleSubmit()
 
     const previousStep = currentStep - 1;
     if (previousStep >= 1) {
