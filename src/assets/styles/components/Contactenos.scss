@@ -1,0 +1,36 @@
+.contactenos-box {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactenos-input {
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: transparent;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  height: 55px;
+  width: 350px;
+  margin: 10px;
+  padding-left: 30px;
+}
+
+.form-text-area {
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: transparent;
+  color: black;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  height: 200px;
+  width: 350px;
+  margin: 10px;
+  padding: 30px;
+}

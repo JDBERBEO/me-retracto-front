@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react'
 import { Col, Row } from 'react-bootstrap';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { postClaimAsync } from '../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
-import { useForm } from 'react-hook-form';
-import {object,string, bool, boolean} from 'yup'
-import { yupResolver } from "@hookform/resolvers/yup";
 
 
 
@@ -95,22 +92,6 @@ const handleOnClick = (e: { preventDefault: () => void }, values) => {
                   goNextStep={goNextStep}
                   currentStep={currentStep}
                   sendEmail={sendEmail}
-                // register={register}
-                // errors = {errors}
-                // handleSubmit = {handleSubmit}
-                // {...register }
-                // setNewEmail={(e) => setNewClaim({ ...newClaim, claimerEmail: e.target.value })} 
-                // setNewDefendantName={(e) => setNewClaim({ ...newClaim, defendantName: e.target.value })} 
-                // setNewID={(e) => {
-                //   console.log('id: ', newClaim.id)
-                //   return setNewClaim({ ...newClaim, id: e.target.value })}} 
-                // setNewName={(e) => setNewClaim({ ...newClaim, claimerName: e.target.value })}
-                // setNewClaimerCity={(e) => setNewClaim({ ...newClaim, claimerCity: e.target.value })}
-                // setNewClaimerAddress={(e) => setNewClaim({ ...newClaim, claimerAddress: e.target.value })}
-                // setNewDocumentMonth={(e) => setNewClaim({ ...newClaim, documentMonth: e.target.value })}
-                // setNewDocumentYear={(e) => setNewClaim({ ...newClaim, documentYear: e.target.value })}
-                // setNewFacts={(e) => setNewClaim({ ...newClaim, facts: e.target.value })}
-                // setNewProofs={(e) => setNewClaim({ ...newClaim, proofs: e.target.value })}
                 />
               </Col>
             </div>

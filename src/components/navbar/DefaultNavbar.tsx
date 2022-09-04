@@ -26,12 +26,14 @@ export const DefaultNavbar = ({type}) => {
 
 
   useEffect(() => {
-    let token = localStorage.getItem("lawyer") || localStorage.getItem("admin")
+    const admin = localStorage.getItem("admin")
+    const lawyer = localStorage.getItem("lawyer")
+    let token = lawyer || admin
     setstate(token);
   }, []);
 
   return (
-    <Navbar className='defaultNavbar' variant="light">
+    <Navbar className='defaultNavbar' variant="light" expand="lg" >
         <Container>
         <Navbar.Brand href="/"><img src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" alt="logo" className='defaultNavbar__logo'/></Navbar.Brand>
         </Container>
@@ -45,6 +47,10 @@ export const DefaultNavbar = ({type}) => {
               <NavDropdown.Item href="#action/3.4" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#link" style={styleNavItem}>CONTÁCTANOS</Nav.Link>
+            { !isAllowed ? null : (<NavDropdown title={<span style={styleNavItem}>REGISTROS</span>} id="basic-nav-dropdown">
+              <NavDropdown.Item href="/lawyerClaims" style={styleNavDropDownItem}>- Demandas</NavDropdown.Item>
+              { localStorage.getItem("admin") ? <NavDropdown.Item href="/suitsTemplates" style={styleNavDropDownItem}>- Formatos</NavDropdown.Item>: null}
+            </NavDropdown>)}
             { !isAllowed ? <Nav.Link href="/login" style={styleNavItem}>LOGIN</Nav.Link> : <Nav.Link href="/" style={styleNavItem} onClick={logout}>LOGOUT</Nav.Link>}
         </Container>
     </Navbar>

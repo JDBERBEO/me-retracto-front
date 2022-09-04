@@ -31,7 +31,6 @@ export const StepOne = ({
 
   const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
   return (
-
     <Form>
       {/* <pre>{console.log(errors)}</pre> */}
       <section style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height:'35vh', width: '100%'}}>
