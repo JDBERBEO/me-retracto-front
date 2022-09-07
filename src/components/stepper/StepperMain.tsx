@@ -51,7 +51,6 @@ const handleOnClick = (e: { preventDefault: () => void }, values) => {
           <div key={i}>
             { i + 1 === currentStep ? (
             <>  
-            <div>
               <Row style={{backgroundColor:'white', height: '20vh'}} className="align-items-center justify-content-center" >
                 <Col sm={7} md={6} lg={6}>
                   <div>
@@ -67,22 +66,22 @@ const handleOnClick = (e: { preventDefault: () => void }, values) => {
                   </div>
                 </Col>
               </Row>
-            </div>
-            <div style={{backgroundColor:`${step.backgroundColor}`, height:'max-content', display:'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-              <div className='formTitle'>
-                <div className="stepNumberContainer">
-                  <div className='stepCircle'>
-                    <p className='stepCircle__number'>{step.stepNumber}</p>
+              <Row style={{backgroundColor:`${step.backgroundColor}`}}>
+                <Col sm={12}>
+                  <div className='formTitle'>
+                    <div className="stepNumberContainer">
+                      <div className='stepCircle'>
+                        <p className='stepCircle__number'>{step.stepNumber}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 700, color:'white', fontSize: '20px', marginBottom: '0px', marginLeft: '30px'}}>
+                        {step.title}
+                      </h2>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h2 style={{fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'center', fontWeight: 700, color:'white', fontSize: '20px', marginBottom: '0px', marginLeft: '30px'}}>
-                    {step.title}
-                  </h2>
-                </div>
-              </div>
-            <div className="align-items-center justify-content-center" style={{height:'fix-content', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-              <Col sm={9} md={10} lg={10} >
+                </Col>
+                {/* <Col> */}
                 <step.element
                   i={i}
                   goPreviousStep={goPreviousStep}
@@ -93,10 +92,8 @@ const handleOnClick = (e: { preventDefault: () => void }, values) => {
                   currentStep={currentStep}
                   sendEmail={sendEmail}
                 />
-              </Col>
-            </div>
-
-            </div>
+                {/* </Col> */}
+              </Row>
             </>
               ): null}
           </div>

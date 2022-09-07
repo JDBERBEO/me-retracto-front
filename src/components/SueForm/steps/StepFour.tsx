@@ -8,10 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const StepFour = ({
-  // setNewName,
-  // setNewClaimerIDNumber,
-  // setNewClaimerCity,
-  // setNewClaimerAddress
   i,
   goPreviousStep,
   steps,
@@ -38,69 +34,59 @@ export const StepFour = ({
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
   return (
-    <Form  style={{display:'flex', flexDirection:'column', alignItems: 'start', justifyContent: 'between', marginTop: '4vh', marginBottom:'15vh'}} >
-    <div style={{width:'930px', flexDirection:'column', alignItems: 'center', justifyContent: 'center'}}>
-    <section style={{marginTop: '5vh', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-      <label className='form-label' style={{width: '175px'}}>NOMBRE *</label>
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-        <input className="form-input" type="text" placeholder="Escribe aqui tu nombre" 
-          {...register('claimerName')}
-          />
-        <span className='form-label' style={{marginLeft:'10px'}}>{errors?.claimerName?.message}</span>
+    <>
+    <Col className='d-flex flex-column justify-content-center align-items-center mb-3 mt-3' xs={12}>
+      <div style={{marginTop: '40px'}}>
+        <label className='form-label' style={{width: '175px', marginLeft: '20px'}}>NOMBRE *</label>
+          <input className="form-input" type="text" placeholder="Escribe aqui tu nombre" 
+            {...register('claimerName')}
+            />
       </div>
-    </section>
-    <section style={{marginTop: '5vh', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-      <label className='form-label' style={{width: '175px'}}>NÚMERO DE IDENTIFICACIÓN *</label>
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerName?.message}</span>
+      <div style={{marginTop: '40px'}}>
+      <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>NÚMERO DE IDENTIFICACIÓN *</label>
         <input className="form-input" type="text" placeholder="Escribe aqui tu documento de identifiación"
           {...register('claimerIDNumber')}
         />
-        <span className='form-label' style={{marginLeft:'10px'}}>{errors?.claimerIDNumber?.message}</span>
       </div>
-    </section>
-    <section style={{marginTop: '5vh', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-      <label className='form-label' style={{width: '175px'}}>CIUDAD DE DOMICILIO *</label>
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerIDNumber?.message}</span>
+      <div style={{marginTop: '40px'}}>
+      <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>CIUDAD DE DOMICILIO *</label>
         <input className="form-input" type="text" placeholder="Escribe aqui tu la ciudad donde te domicilias" 
           {...register('claimerCity')}
-        />
-        <span className='form-label' style={{marginLeft:'10px'}}>{errors?.claimerCity?.message}</span>
+          />
       </div>
-    </section>
-    <section style={{marginTop: '5vh', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'center', marginBottom: '80px'}}>
-      <label className='form-label' style={{width: '175px'}}>DIRECCIÓN EXACTA *</label>
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerCity?.message}</span>
+      <div style={{marginTop: '40px'}}>
+      <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>DIRECCIÓN EXACTA *</label>
         <input className="form-input" type="text" placeholder="Escribe aqui tu dirección exacta" 
           {...register('claimerAddress')}
-        />
-        <span className='form-label' style={{marginLeft:'10px'}}>{errors?.claimerAddress?.message}</span>
+          />
       </div>
-    </section>
-    <Row className='align-items-start justify-content-between'>
-          <Col sm={2}>
-            { i === 0 ? null : (
-              <button
-                    className="previousStepbutton"
-                    onClick={goPreviousStep}
-                  >
-                    ATRÁS
-                  </button>
-                  )}
-                </Col>
-                <Col sm={3}>
-                <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
-                  <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
-                    SIGUIENTE
-                  </button>
-                  <div className='stepsContainer' >
-                  {steps.map((step, i) =>(
-                  <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
-                  ))}
-                  </div>
-                </div>
-                </Col>
-      </Row>
+        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerAddress?.message}</span>
+    </Col>
+    <Col xs={6} className='d-flex justify-content-center align-items-start'>
+      { i === 0 ? null : (
+        <button
+          className="previousStepbutton"
+          onClick={goPreviousStep}
+        >
+          ATRÁS
+        </button>
+      )}
+    </Col>
+    <Col xs={6}>
+      <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
+        <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
+          SIGUIENTE
+        </button>
+        <div className='stepsContainer' >
+          {steps.map((step, i) =>(
+            <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
+          ))}
+        </div>
       </div>
-    </Form>
+      </Col>
+    </>
     )
   };
