@@ -42,42 +42,39 @@ export const StepSix = ({
     const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
   return (
-    <Form>
-      <section style={{display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'center'}}>
-        <div>
-          <label className='form-label'>ADJUNTE LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
-          <label className='helperText'>Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10 archivos.</label>
-        </div>
-        <div style={{display: 'flex', flexDirection:'column', alignItems: 'center', justifyContent: 'start', marginTop:'30px', marginBottom: '30px', minHeight:'100px'}}>
-          <input {...register('proofs')} className="form-input" type="text" placeholder="Escribe aqui el año que aparecerá en el documento" />
-          <span className="form-label">
-            {errors?.proofs?.message}</span>
-        </div>
-      </section>
-      <Row className='align-items-start justify-content-between'>
-          <Col sm={2}>
-            { i === 0 ? null : (
-              <button
-                    className="previousStepbutton"
-                    onClick={goPreviousStep}
-                  >
-                    ATRÁS
-                  </button>
-                  )}
-                </Col>
-                <Col sm={3}>
-                <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
-                  <button className={`${step.nextStepButton}`}  onClick={handleSubmit(sendClaim)} >
-                    ENVIAR
-                  </button>
-                  <div className='stepsContainer' >
-                  {steps.map((step, i) =>(
-                  <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
-                  ))}
-                  </div>
-                </div>
-                </Col>
-      </Row>
-    </Form>
+    <>
+    <Col className='d-flex flex-column justify-content-start align-items-start mb-3 mt-3 ms-3' xs={12}>
+      <label className='form-label'>DESCRIBA LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
+      <label className='helperText'>Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10 archivos.</label>
+    </Col>
+    <Col className='d-flex flex-column justify-content-center align-items-center mb-5 mt-5' xs={12}>
+      <input {...register('proofs')} className="form-input" type="text" placeholder="Escribe aqui el año que aparecerá en el documento" />
+        <span className="form-label">
+          {errors?.proofs?.message}
+        </span>
+    </Col>
+    <Col xs={6}>
+      { i === 0 ? null : (
+        <button
+          className="previousStepbutton"
+          onClick={goPreviousStep}
+        >
+          ATRÁS
+        </button>
+      )}
+    </Col>
+    <Col xs={6}>
+      <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginBottom: '15px'}}>
+        <button className={`${step.nextStepButton}`}  onClick={handleSubmit(sendClaim)} >
+          ENVIAR
+        </button>
+      <div className='stepsContainer' >
+        {steps.map((step, i) =>(
+          <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
+        ))}
+      </div>
+      </div>
+    </Col>
+    </>
     )
   };
