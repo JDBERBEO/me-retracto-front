@@ -23,7 +23,7 @@ export const StepFive = ({
   const suitsTemplates = useSelector((state: any) => (state.templates.templates));
 
   const schema = object({
-    id: string().required('Este campo es requerido*'),
+    // id: string().required('Este campo es requerido*'),
     documentMonth: string().required('Este campo es requerido*'),
     documentYear: string().required('Este campo es requerido*'),
     facts: string().required('Este campo es requerido*'),
@@ -34,7 +34,7 @@ export const StepFive = ({
     goNextStep()
   }
 
-  const { register, setValue, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  const { register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
 
   
   useEffect(() => {
@@ -45,7 +45,7 @@ export const StepFive = ({
   return (
     <>
     <Col className='d-flex flex-column justify-content-center align-items-center mb-3 mt-3' xs={12}>
-      <div style={{marginTop: '40px'}}>
+      {/* <div style={{marginTop: '40px'}}>
         <label className='form-label' style={{width: '175px', marginLeft: '20px'}}>SELECCIONE EL TIPO DE RECLAMO*</label>
           <select style={{width: '400px'}} {...register('id')} className="form-select-basic" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
             <option value="">Selecciona una opción...</option>
@@ -56,7 +56,7 @@ export const StepFive = ({
             })}
           </select> 
       </div>
-      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.id?.message}</span>
+      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.id?.message}</span> */}
       
       <div style={{marginTop: '40px'}}>
         <label className='form-label' style={{width: '175px'}}>MES PARA EL DOCUMENTO</label>

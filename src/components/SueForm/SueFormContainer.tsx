@@ -15,7 +15,7 @@ export const SueFormContainer = () => {
       <StepperMain steps={[
         {
           stepNumber: "1",
-          title: 'ESCRIBE TU CORREO ELECTRÓNICO',
+          title: 'SELECCIONA EL TIPO DE DEMANDA',
           backgroundColor: '#EB646F',
           nextStepButton: 'nextStepButton__red',
           element: stepProps => <StepOne {...stepProps} />,

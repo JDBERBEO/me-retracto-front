@@ -24,6 +24,7 @@ export const StepFour = ({
       claimerIDNumber: string().required('Este campo es requerido*'),
       claimerCity: string().required('Este campo es requerido*'),
       claimerAddress: string().required('Este campo es requerido*'),
+      claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
     })
 
     const uploadState = (data) => {
@@ -64,6 +65,13 @@ export const StepFour = ({
           />
       </div>
         <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerAddress?.message}</span>
+      <div style={{marginTop: '40px'}}>
+      <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>CORREO ELECTRÓNICO *</label>
+        <input className="form-input" type="text" placeholder="Escribe aqui tu dirección exacta" 
+          {...register('claimerEmail')}
+          />
+      </div>
+        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerEmail?.message}</span>
     </Col>
     <Col xs={6} className='d-flex justify-content-center align-items-start'>
       { i === 0 ? null : (

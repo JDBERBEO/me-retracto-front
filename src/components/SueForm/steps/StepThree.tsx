@@ -53,7 +53,7 @@ export const StepThree = ({
             <span className='form-label' style={{marginLeft: '10px'}}>{errors?.defendantName?.message}</span>
         {/* </section>  */}
         {/* <section style={{marginTop: '50px', marginBottom: '60px',}}> */}
-          <label className='form-label' style={{marginTop: '50px'}}>FECHA EN SE ADQUIRIÓ EL SERVICIO*</label>
+          <label className='form-label' style={{marginTop: '50px'}}>FECHA EN QUE SE ADQUIRIÓ EL SERVICIO*</label>
             <input 
             className="form-input" 
             type="text" 

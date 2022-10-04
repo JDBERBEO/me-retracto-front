@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
+import { ContactUs } from '../components/contactUs/ContactUs.tsx'
 import { SueCard } from '../components/SueCard/SueCard.tsx'
 
 
@@ -29,7 +30,7 @@ export const Home = () => {
       subtitle: 'Lorem ipsum dolor sit amet', 
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh', 
       background: '#fab816',
-      buttonText: 'IR AL DOCUMENTO',
+      buttonText: 'INICIA TU DEMANDA',
       imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053833/platform%20Imgs/a2_1_ax73mo.png',
     },
     { 
@@ -37,7 +38,7 @@ export const Home = () => {
       subtitle: 'Lorem ipsum dolor sit amet', 
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
       background: '#eb646f',
-      buttonText: 'IR AL DOCUMENTO',
+      buttonText: 'INICIA TU DEMANDA',
       imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053822/platform%20Imgs/a3_1_ppqexe.png'
     },
     {
@@ -45,7 +46,7 @@ export const Home = () => {
       subtitle: 'Lorem ipsum dolor sit amet', 
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
       background: '#4e4b99',
-      buttonText: 'IR AL DOCUMENTO',
+      buttonText: 'INICIA TU DEMANDA',
       imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053830/platform%20Imgs/a4_1_yy5idp.png'
     },
   ]
@@ -67,24 +68,11 @@ export const Home = () => {
         )
       })
     }
-    <Row>
-      <Col className='d-flex justify-content-center align-items-center'>
-        <div className='sueCard'>
-          <h1 className='sueCard__title'>CONTÁCTENOS</h1>
-          <h5 className='sueCard__subtitle'>amet, consectetuer adipiscing elit, </h5>
-          <p className='sueCard__description'>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh </p>
-        </div>
-      </Col>
-      <Col >
-        <div className='contactenos-box'>
-          <input className='contactenos-input' placeholder='Nombre...' />
-          <textarea className='form-text-area' placeholder='Mensaje...'/>
-          <button className='containerButton__yellow' style={{backgroundColor: '#FAB816', color: 'white'}}>ENVIAR</button>
-        </div>
-      </Col>
+    <Row className='mt-5'>
+      <ContactUs />
     </Row>
-    <Row>
-      <Col className='d-flex justify-content-start align-items-center' xs={12} md={4}>
+    <Row className='mt-5'  style={{backgroundColor: '#F3F3F3'}}>
+      <Col className='d-flex justify-content-start align-items-center mt-5 mb-5' xs={12} md={4}>
         <div>
           <h5 className='sueCard_subtitle'>Lorem ipsum dolor sit</h5>
           <p className='sueCard_description'>amet, consectetuer</p>
@@ -92,7 +80,7 @@ export const Home = () => {
           <p className='sueCard_description'>adipiscing elit</p>
         </div>
       </Col>
-      <Col className='d-flex justify-content-center align-items-center' xs={12} md={4}>
+      <Col className='d-flex justify-content-center align-items-center mt-5 mb-5' xs={12} md={4}>
         <div>
           <img 
             src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" 
@@ -101,7 +89,7 @@ export const Home = () => {
           />
         </div>
       </Col>
-      <Col className='d-flex justify-content-end align-items-center text-align-right'>
+      <Col className='d-flex justify-content-end align-items-center text-align-right mt-5 mb-5'>
         <div style={{textAlign: 'right'}}>
           <h5 className='sueCard_subtitle'>Lorem ipsum dolor sit</h5>
           <p className='sueCard_description'>amet, consectetuer</p>
