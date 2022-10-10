@@ -5,18 +5,18 @@ const API_URL = "http://localhost:4000";
 export const claimSlide = createSlice({
   name: "claim",
   initialState: {
-    data: [],
+    previousCheckoutClaim: {},
     updateClaim: '',
     claims: [],
     error: false,
     filledClaim: {},
     loading: false,
     feedbackModal: false,
-    currentClaim: {}
+    currentClaim: {},
   },
   reducers: {
     postClaim: (state, action) => {
-      state.data.push(action.payload);
+      state.previousCheckoutClaim = action.payload
     },
     updateClaim: (state, action) =>{
       state.updateClaim =  action.payload
@@ -70,7 +70,8 @@ export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch
       url: `/customer/${completeClaim.claimFields.id}`
     })
     dispatch(postClaim(data))
-    navigate('/formFeedback')
+
+    // navigate('/formFeedback')
     sendEmail(e)
   } catch (err) {
     console.log('err:', err)

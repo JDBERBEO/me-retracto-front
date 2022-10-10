@@ -28,18 +28,20 @@ export const StepSix = ({
 
   const uploadState = (data) => {
     dispatch(fillClaimAsync(data))
+    goNextStep()
     }
 
-    const sendClaim =  (data, e) => {
+  const sendClaim =  (data, e) => {
       const completedClaim = {
         ...data,
         ...filledClaim
       }
 
       dispatch(postClaimAsync(navigate, completedClaim, sendEmail, e))
-      uploadState(data)
-    }
-    const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+      .then(() => uploadState(data))
+  }
+
+  const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
 
   return (
     <>

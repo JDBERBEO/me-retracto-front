@@ -7,6 +7,7 @@ import { StepThree } from './steps/StepThree.tsx';
 import { StepFour } from './steps/StepFour.tsx';
 import { StepFive } from './steps/StepFive.tsx';
 import { StepSix } from './steps/StepSix.tsx';
+import { StepSeven } from './steps/StepSeven.tsx';
 
 export const SueFormContainer = () => {
 
@@ -54,6 +55,13 @@ export const SueFormContainer = () => {
           title: 'PRUEBAS DOCUMENTALES',
           nextStepButton: 'nextStepButton__green',
           element: stepProps => <StepSix {...stepProps} />,
+        },
+        {
+          stepNumber: "7",
+          backgroundColor: '#00AC9E',
+          title: '¡HEMOS CREADO TU DEMANDA EXITÓSAMENTE!',
+          nextStepButton: 'nextStepButton__green',
+          element: stepProps => <StepSeven {...stepProps} />,
         },
       ]} />
     </div>
