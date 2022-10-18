@@ -5,7 +5,7 @@ import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx'
 // import '../../assets/styles/components/Button.scss'
 import { TextContainer } from './TextContainer.tsx'
 
-export const SueCard = ({title, subtitle, description, background, imgUrl, imgsUrl, buttonText, index}) => {
+export const SueCard = ({title, subtitle, description, background, imgUrl, imgsUrl, buttonText,buttonColor, id, index}) => {
   return (
     <div className='sueCard' style={index === 0 ? {backgroundImage:`url(${background})`} : {backgroundColor:`${background}`}}>
       {
@@ -13,7 +13,7 @@ export const SueCard = ({title, subtitle, description, background, imgUrl, imgsU
         
         <Row>
           <Col>
-            <DefaultNavbar type={'white'}/>
+            <DefaultNavbar type={'white'} />
           </Col>
         </Row>): null
       }
@@ -21,7 +21,7 @@ export const SueCard = ({title, subtitle, description, background, imgUrl, imgsU
         { index % 2 === 0 ? (
           <>
           <Col xs={12} md={6}>
-            <TextContainer title={title} subtitle={subtitle} description={description} background={background} imgUrl={imgUrl} buttonText={buttonText} index={index} />
+            <TextContainer title={title} subtitle={subtitle} description={description} background={background} imgUrl={imgUrl} buttonText={buttonText} buttonColor={buttonColor} id={id} index={index} />
           </Col>
           <Col className="align-items-center">
             <img src={imgUrl} style={{maxWidth: "100%"}}/>
@@ -33,7 +33,7 @@ export const SueCard = ({title, subtitle, description, background, imgUrl, imgsU
           <img src={imgUrl} style={{maxWidth: "100%"}}/>
         </Col>
         <Col xs={12} md={ index === 1 ? 12 : 6}>
-          <TextContainer title={title} subtitle={subtitle} description={description} background={background} imgUrl={imgUrl} imgsUrl={imgsUrl} buttonText={buttonText} index={index} />
+          <TextContainer title={title} subtitle={subtitle} description={description} background={background} imgUrl={imgUrl} imgsUrl={imgsUrl} buttonText={buttonText} buttonColor={buttonColor} id={id} index={index} />
         </Col>
         </>
         )}

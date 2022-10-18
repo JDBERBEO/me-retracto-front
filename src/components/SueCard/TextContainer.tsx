@@ -2,12 +2,12 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { PreventModal } from '../PreventModal.tsx'
 
-export const TextContainer = ({title, subtitle, description, buttonText, index, imgsUrl}) => {
+export const TextContainer = ({title, subtitle, description, buttonText, buttonColor, id, index, imgsUrl}) => {
 
   return (
     <>
       { index === 1 ? (
-      <div className='stepsDescriptionCard'>
+      <div className='stepsDescriptionCard mt-5'>
         <h1>{title}</h1>
         <h5>{subtitle}</h5>
         <Row className='pt-5 mt-5'>
@@ -33,12 +33,12 @@ export const TextContainer = ({title, subtitle, description, buttonText, index, 
           </Col>
         </Row>
       </div>): null}
-      <div className={ index === 0 ? 'sueCard' : 'docCard'}>
-        <h1 className={ index === 0 ? 'sueCard__title' : 'docCard__title'}>{title}</h1>
+      { index !== 1 ? (<div className={ index === 0 ? 'sueCard' : 'docCard'}>
+        <h1 id={`${id}`} className={ index === 0 ? 'sueCard__title' : 'docCard__title'}>{title}</h1>
         <h5 className={ index === 0 ? 'sueCard__subtitle' : 'docCard__subtitle'}>{subtitle}</h5>
         <p className={ index === 0 ? 'sueCard__description' : 'docCard__description'}>{description}</p>
-        <PreventModal buttonText={buttonText} index={index} />
-      </div>
+        <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
+      </div>): null}
     </>
   )
 }

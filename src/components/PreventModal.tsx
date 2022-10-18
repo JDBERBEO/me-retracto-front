@@ -3,13 +3,13 @@ import { Button, Col, Modal, Row } from "react-bootstrap";
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 
-export const  PreventModal = ({buttonText, index}) => {
+export const  PreventModal = ({buttonText, index, buttonColor}) => {
   const [show, setShow] = useState(false);
 
   return (
     <>
       <button 
-        className={index === 0? "mainCardButton" : "nextStepButton__yellow"} 
+        className={buttonColor} 
         onClick={() => setShow(true)}
       >
         {buttonText}

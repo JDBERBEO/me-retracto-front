@@ -93,5 +93,25 @@
       height: 35px;
       background-color: white;
     }
+    &__red {
+      color: #EB646F;
+      border: none;
+      border-radius: 25px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      height: 35px;
+      background-color: white;
+    }
+    &__purple {
+      color: #4E4B99;
+      border: none;
+      border-radius: 25px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      height: 35px;
+      background-color: white;
+    }
   }
 }

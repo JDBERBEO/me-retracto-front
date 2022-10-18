@@ -35,9 +35,10 @@ export const ContactUs = () => {
     dispatch(    postContactUsAsync(data)
     )
     console.log('data: ', data)
+    reset({name: '', email: '', message: ''})
   }
 
-  const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+  const { register, handleSubmit, formState: {errors}, reset} = useForm({resolver: yupResolver(schema), defaultValues: {name: '', email: '', message: ''}})
 
   return (
     <>

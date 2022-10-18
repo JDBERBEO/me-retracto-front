@@ -28,8 +28,10 @@ export const postContactUsAsync = (contactUs) => async (dispatch) => {
     })
     updateError(false)
     postContactUs(data)
+    alert('TU MENSAJE HA SIDO ENVIADO CORRECTAMENTE')
   } catch (err) {
     dispatch(updateError(true))
+    alert('UPPS..ALGO SALIÓ MAL Y TÚ MENSAJE NO HA SIDO ENVIADO CORRECTAMENTE')
     console.error(err.data)
   }
 };

@@ -41,10 +41,10 @@ export const DefaultNavbar = ({type}) => {
         <Container className='justify-content-between'>
             <Nav.Link href="/" className='DefaultNavbar__link' style={styleNavItem}>NOSOTROS</Nav.Link>
             <NavDropdown title={<span style={styleNavItem}>DOCUMENTOS</span>} id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1" style={styleNavDropDownItem}>Publicidad Engañosa</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2" style={styleNavDropDownItem}>Falta de Información al Consumidor</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3" style={styleNavDropDownItem}>Retracto y Desistimiento</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
+              <NavDropdown.Item href="/#misleadingAdvertisement" style={styleNavDropDownItem}>Publicidad Engañosa</NavDropdown.Item>
+              <NavDropdown.Item href="/#missingInfo" style={styleNavDropDownItem}>Falta de Información al Consumidor</NavDropdown.Item>
+              <NavDropdown.Item href="/#withdrawalRight" style={styleNavDropDownItem}>Retracto y Desistimiento</NavDropdown.Item>
+              <NavDropdown.Item href="/#exclusionLiability" style={styleNavDropDownItem}>Eximentes de Responsabilidad</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#link" style={styleNavItem}>CONTÁCTANOS</Nav.Link>
             { !isAllowed ? null : (<NavDropdown title={<span style={styleNavItem}>REGISTROS</span>} id="basic-nav-dropdown">

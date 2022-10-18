@@ -12,7 +12,8 @@ export const Home = () => {
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh', 
       background:'https://res.cloudinary.com/me-retracto/image/upload/v1653931005/platform%20Imgs/main_xl9nki_nkce93.png', 
       buttonText:'CONÓCENOS',
-      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1653925607/platform%20Imgs/2_2_raambc.png'
+      buttonColor: 'mainCardButton',
+      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1653925607/platform%20Imgs/2_2_raambc.png',
     }, 
     {
       title: 'Lorem ipsum dolor sit', 
@@ -23,7 +24,8 @@ export const Home = () => {
         greenArrow: 'https://res.cloudinary.com/me-retracto/image/upload/v1661999792/platform%20Imgs/green_arrow_iesyrj.png',
         redArrow: 'https://res.cloudinary.com/me-retracto/image/upload/v1661999789/platform%20Imgs/red_arrow_wmfroa.png',
         yellowArrow: 'https://res.cloudinary.com/me-retracto/image/upload/v1661999785/platform%20Imgs/yellow_arrow_zf5gja.png'
-      }
+      },
+      buttonColor: ''
     },
     {
       title: 'PUBLICIDAD ENGAÑOSA', 
@@ -31,7 +33,9 @@ export const Home = () => {
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh', 
       background: '#fab816',
       buttonText: 'INICIA TU DEMANDA',
+      buttonColor: 'containerButton__size-m__yellow',
       imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053833/platform%20Imgs/a2_1_ax73mo.png',
+      id: 'misleadingAdvertisement'
     },
     { 
       title: 'FALTA DE INFORMACIÓN AL CONSUMIDOR', 
@@ -39,15 +43,19 @@ export const Home = () => {
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
       background: '#eb646f',
       buttonText: 'INICIA TU DEMANDA',
-      imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053822/platform%20Imgs/a3_1_ppqexe.png'
+      buttonColor: 'containerButton__size-m__red',
+      imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053822/platform%20Imgs/a3_1_ppqexe.png',
+      id: 'missingInfo'
     },
     {
-      title: 'Eximentes de responsabilidad', 
+      title: 'DERECHO DE RETRACTO', 
       subtitle: 'Lorem ipsum dolor sit amet', 
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh', 
       background: '#4e4b99',
       buttonText: 'INICIA TU DEMANDA',
-      imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053830/platform%20Imgs/a4_1_yy5idp.png'
+      buttonColor: 'containerButton__size-m__purple',
+      imgUrl:'https://res.cloudinary.com/me-retracto/image/upload/v1654053830/platform%20Imgs/a4_1_yy5idp.png',
+      id: 'withdrawalRight'
     },
   ]
   return (
@@ -60,9 +68,11 @@ export const Home = () => {
             subtitle={document.subtitle} 
             description={document.description} 
             background={document.background} 
-            buttonText={document.buttonText} 
+            buttonText={document.buttonText}
+            buttonColor={document.buttonColor}
             imgUrl={document.imgUrl}
             imgsUrl={document.imgsUrl}
+            id={document.id}
             index={i}/>
           </Row>
         )
