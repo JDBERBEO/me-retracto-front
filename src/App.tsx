@@ -16,6 +16,7 @@ import { SuitsTable } from "./components/lawyerModule/SuitsTable.tsx";
 import { EditedClaimForm } from "./components/lawyerModule/EditedClaimForm.tsx";
 import { AdminRoutes } from "./router/AdminRoutes.tsx";
 import { LawyerRoutes } from "./router/LawyerRoutes.tsx";
+import { AboutUs } from "./views/AboutUs";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/aboutUs" element={<AboutUs />}/>
           <Route path="/form" element={<SueForm />}/>
           <Route path="/formFeedback" element={<FeedbackMain />}/>
           <Route path="/login" element={<Login />}/>

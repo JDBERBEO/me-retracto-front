@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
-import { Form, Row, Col } from 'react-bootstrap/'
-import { useSelector, useDispatch } from 'react-redux';
+import { Col } from 'react-bootstrap/'
+import { useDispatch } from 'react-redux';
 import { getTemplatesAsync } from '../../../store/features/templates/templatesSlice';
 import { useForm } from 'react-hook-form';
 import {object,string} from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
-import Tippy from '@tippy.js/react';
-import 'tippy.js/dist/tippy.css'
-import ReactTooltip from 'react-tooltip';
 
 export const StepFive = ({
   i,
@@ -20,13 +17,14 @@ export const StepFive = ({
   currentStep
 }) => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state: any) => (state.templates.templates));
 
   const schema = object({
     // id: string().required('Este campo es requerido*'),
     documentMonth: string().required('Este campo es requerido*'),
     documentYear: string().required('Este campo es requerido*'),
     facts: string().required('Este campo es requerido*'),
+    //TODO: use number validation
+    price: string().required('Este campo es requerido')
   })
 
   const uploadState = (data) => {
@@ -45,19 +43,6 @@ export const StepFive = ({
   return (
     <>
     <Col className='d-flex flex-column justify-content-center align-items-center mb-3 mt-3' xs={12}>
-      {/* <div style={{marginTop: '40px'}}>
-        <label className='form-label' style={{width: '175px', marginLeft: '20px'}}>SELECCIONE EL TIPO DE RECLAMO*</label>
-          <select style={{width: '400px'}} {...register('id')} className="form-select-basic" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
-            <option value="">Selecciona una opción...</option>
-            {suitsTemplates.map((template, i) => {
-              return (
-                  <option value={template._id} key={template._id} title="TEXTO DE PRUEBA: La publicidad engañosa consiste en que en existe una inconsistencia entre lo ofertada por el proveedor y lo adquirido por el consumidor." >{template.name}</option>
-                  )
-            })}
-          </select> 
-      </div>
-      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.id?.message}</span> */}
-      
       <div style={{marginTop: '40px'}}>
         <label className='form-label' style={{width: '175px'}}>MES PARA EL DOCUMENTO</label>
           <input {...register('documentMonth')} className="form-input" type="text" placeholder="Escribe aqui el mes que aparecerá en el documento"/>
@@ -68,6 +53,11 @@ export const StepFive = ({
           <input {...register('documentYear')} className="form-input" type="text" placeholder="Escribe aqui el año que aparecerá en el documento"/>
       </div>
       <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.documentYear?.message}</span>
+      <div style={{marginTop: '40px'}}>
+        <label className='form-label' style={{width: '175px'}}>PRECIO DE LAS PRETENSIONES</label>
+          <input {...register('price')} className="form-input" type="text" placeholder="Escribe aqui el precio de tus pretensiones"/>
+      </div>
+      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.price?.message}</span>
       </Col>
       <Col className='d-flex flex-column justify-content-center align-items-center mb-3 mt-3' xs={12}>
       

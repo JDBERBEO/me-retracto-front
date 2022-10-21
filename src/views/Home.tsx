@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Row, Container } from 'react-bootstrap'
+import { FooterMain } from '../components/common/footer/FooterMain'
 import { ContactUs } from '../components/contactUs/ContactUs.tsx'
 import { SueCard } from '../components/SueCard/SueCard.tsx'
 
@@ -82,31 +83,7 @@ export const Home = () => {
       <ContactUs />
     </Row>
     <Row className='mt-5'  style={{backgroundColor: '#F3F3F3'}}>
-      <Col className='d-flex justify-content-start align-items-center mt-5 mb-5' xs={12} md={4}>
-        <div>
-          <h5 className='sueCard_subtitle'>Lorem ipsum dolor sit</h5>
-          <p className='sueCard_description'>amet, consectetuer</p>
-          <p className='sueCard_description'>adipiscing elit</p>
-          <p className='sueCard_description'>adipiscing elit</p>
-        </div>
-      </Col>
-      <Col className='d-flex justify-content-center align-items-center mt-5 mb-5' xs={12} md={4}>
-        <div>
-          <img 
-            src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" 
-            alt="main-logo"
-            className='defaultNavbar__logo'
-          />
-        </div>
-      </Col>
-      <Col className='d-flex justify-content-end align-items-center text-align-right mt-5 mb-5'>
-        <div style={{textAlign: 'right'}}>
-          <h5 className='sueCard_subtitle'>Lorem ipsum dolor sit</h5>
-          <p className='sueCard_description'>amet, consectetuer</p>
-          <p className='sueCard_description'>adipiscing elit</p>
-          <p className='sueCard_description'>adipiscing elit</p>
-        </div>
-      </Col>
+      <FooterMain />
     </Row>
   </Container>
   )

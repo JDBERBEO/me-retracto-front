@@ -39,7 +39,7 @@ export const DefaultNavbar = ({type}) => {
         </Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Container className='justify-content-between'>
-            <Nav.Link href="/" className='DefaultNavbar__link' style={styleNavItem}>NOSOTROS</Nav.Link>
+            <Nav.Link href="/aboutUs" className='DefaultNavbar__link' style={styleNavItem}>NOSOTROS</Nav.Link>
             <NavDropdown title={<span style={styleNavItem}>DOCUMENTOS</span>} id="basic-nav-dropdown">
               <NavDropdown.Item href="/#misleadingAdvertisement" style={styleNavDropDownItem}>Publicidad Engañosa</NavDropdown.Item>
               <NavDropdown.Item href="/#missingInfo" style={styleNavDropDownItem}>Falta de Información al Consumidor</NavDropdown.Item>
