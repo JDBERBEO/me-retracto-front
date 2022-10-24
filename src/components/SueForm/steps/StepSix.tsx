@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { Form, Row, Col } from 'react-bootstrap';
+import React from 'react'
+import { Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import {object,string, bool, boolean} from 'yup'
+import {object,string} from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,8 +36,10 @@ export const StepSix = ({
         ...data,
         ...filledClaim
       }
-
-      dispatch(postClaimAsync(navigate, completedClaim, sendEmail, e))
+      console.log('completedClaim: ', completedClaim)
+      completedClaim.payment= {status: 'not paid'}
+      // dispatch(postClaimAsync(completedClaim, sendEmail, e))
+      dispatch(postClaimAsync(completedClaim))
       .then(() => uploadState(data))
   }
 

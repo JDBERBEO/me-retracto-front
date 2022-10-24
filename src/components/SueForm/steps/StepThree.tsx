@@ -28,7 +28,7 @@ export const StepThree = ({
     goNextStep()
   }
 
-  const { register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur', resolver: yupResolver(schema)})
+  const { register, handleSubmit, formState: {errors}} = useForm({mode: 'onBlur', resolver: yupResolver(schema), defaultValues: {defendantName: 'ErnestoPerez', agreementDate: '20 de septiembre de 03'}})
 
 
   return (

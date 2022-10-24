@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const axios = require("axios");
-const API_URL = "http://localhost:4000";
+const API_URL = "https://shrouded-brook-05229.herokuapp.com";
 
 export const contactUsSlice = createSlice({
   name: "contactUs",

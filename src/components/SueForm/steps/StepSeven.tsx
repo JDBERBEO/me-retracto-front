@@ -10,17 +10,16 @@ export const StepSeven = () => {
 
   const checkout = new WidgetCheckout({
     currency: 'COP',
-    amountInCents: previousCheckoutClaim.newClaim.payment.amount,
-    reference: previousCheckoutClaim.newClaim._id,
+    amountInCents: previousCheckoutClaim.claimCreated.payment.amount,
+    reference: previousCheckoutClaim.claimCreated._id,
     publicKey: 'pub_test_SyUVrIhwhjflROZsU0f133Pl3z6Bm2TZ',
     redirectUrl: 'http://localhost:3000/', // Opcional
   })
 
   const payment = (e) => {
-    // e.preventDefault()
-    console.log('previousCheckoutClaim: ', previousCheckoutClaim.newClaim)
+    e.preventDefault()
     checkout.open(function ( result ) {
-      e.preventDefault()
+      // e.preventDefault()
       const transaction = result.transaction
       console.log('Transaction ID: ', transaction.id)
       console.log('Transaction object: ', transaction)

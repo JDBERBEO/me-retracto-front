@@ -29,7 +29,7 @@ export const StepTwo = ({
         goNextStep()
       }
 
-    const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+    const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema), defaultValues: {acceptTerms: true}})
 
 
   return (

@@ -21,7 +21,7 @@ export const StepFour = ({
   const dispatch = useDispatch()
     const schema = object({
       claimerName: string().required('Este campo es requerido*'),
-      claimerIDNumber: string().required('Este campo es requerido*'),
+      claimerIdNumber: string().required('Este campo es requerido*'),
       claimerCity: string().required('Este campo es requerido*'),
       claimerAddress: string().required('Este campo es requerido*'),
       claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
@@ -32,7 +32,7 @@ export const StepFour = ({
         goNextStep()
       }
 
-    const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+    const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema), defaultValues: {claimerName: 'manglar', claimerIdNumber: '1024863', claimerCity:'bogotá', claimerAddress:'cllae 5 numero 3333', claimerEmail: 'manglar@gmail.com' }})
 
   return (
     <>
@@ -47,10 +47,10 @@ export const StepFour = ({
       <div style={{marginTop: '40px'}}>
       <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>NÚMERO DE IDENTIFICACIÓN *</label>
         <input className="form-input" type="text" placeholder="Escribe aqui tu documento de identifiación"
-          {...register('claimerIDNumber')}
+          {...register('claimerIdNumber')}
         />
       </div>
-        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerIDNumber?.message}</span>
+        <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.claimerIdNumber?.message}</span>
       <div style={{marginTop: '40px'}}>
       <label className='form-label' style={{width: '175px', marginLeft: '5px'}}>CIUDAD DE DOMICILIO *</label>
         <input className="form-input" type="text" placeholder="Escribe aqui tu la ciudad donde te domicilias" 

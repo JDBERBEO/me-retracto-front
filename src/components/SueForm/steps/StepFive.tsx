@@ -24,7 +24,7 @@ export const StepFive = ({
     documentYear: string().required('Este campo es requerido*'),
     facts: string().required('Este campo es requerido*'),
     //TODO: use number validation
-    price: string().required('Este campo es requerido')
+    casePrice: string().required('Este campo es requerido')
   })
 
   const uploadState = (data) => {
@@ -55,9 +55,9 @@ export const StepFive = ({
       <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.documentYear?.message}</span>
       <div style={{marginTop: '40px'}}>
         <label className='form-label' style={{width: '175px'}}>PRECIO DE LAS PRETENSIONES</label>
-          <input {...register('price')} className="form-input" type="text" placeholder="Escribe aqui el precio de tus pretensiones"/>
+          <input {...register('casePrice')} className="form-input" type="text" placeholder="Escribe aqui el precio de tus pretensiones"/>
       </div>
-      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.price?.message}</span>
+      <span className='form-label' style={{marginLeft:'90px', marginTop:'10px'}}>{errors?.casePrice?.message}</span>
       </Col>
       <Col className='d-flex flex-column justify-content-center align-items-center mb-3 mt-3' xs={12}>
       

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const axios = require("axios");
-const API_URL = "http://localhost:4000";
+const API_URL = "https://shrouded-brook-05229.herokuapp.com";
 
 export const claimSlide = createSlice({
   name: "claim",
@@ -58,7 +58,7 @@ export const closeModalAsync = () => async (dispatch) => {
   } catch (error) {
   }
 }
-export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch) => {
+export const postClaimAsync = (claim) => async (dispatch) => {
   const completeClaim = {
     claimFields: claim
   }
@@ -72,11 +72,11 @@ export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch
     dispatch(postClaim(data))
 
     // navigate('/formFeedback')
-    sendEmail(e)
+    // sendEmail(e)
   } catch (err) {
-    console.log('err:', err)
+    console.dir('err:', err)
     dispatch(updateError(true))
-    navigate('/formFeedback')
+    // navigate('/formFeedback')
     // throw new Error(err);
   }
 };
