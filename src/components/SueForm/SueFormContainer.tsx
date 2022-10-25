@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { Container, Row, Form, Col, Button } from 'react-bootstrap/'
+import React from 'react'
 import { StepperMain } from '../stepper/StepperMain.tsx'
 import { StepOne } from './steps/StepOne.tsx';
 import { StepTwo } from './steps/StepTwo.tsx';
@@ -51,9 +50,9 @@ export const SueFormContainer = () => {
         },
         {
           stepNumber: "6",
-          backgroundColor: '#00AC9E',
+          backgroundColor: '#4E4B99',
           title: 'PRUEBAS DOCUMENTALES',
-          nextStepButton: 'nextStepButton__green',
+          nextStepButton: 'nextStepButton__purple',
           element: stepProps => <StepSix {...stepProps} />,
         },
         {

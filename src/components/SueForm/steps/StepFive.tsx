@@ -32,7 +32,7 @@ export const StepFive = ({
     goNextStep()
   }
 
-  const { register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  const { register, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema), defaultValues: {documentMonth: 'septiembre', documentYear: '2022', facts: 'que problema tan tetranutra', casePrice: '20000'}})
 
   
   useEffect(() => {

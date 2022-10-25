@@ -13,7 +13,7 @@ export const StepSeven = () => {
     amountInCents: previousCheckoutClaim.claimCreated.payment.amount,
     reference: previousCheckoutClaim.claimCreated._id,
     publicKey: 'pub_test_SyUVrIhwhjflROZsU0f133Pl3z6Bm2TZ',
-    redirectUrl: 'http://localhost:3000/', // Opcional
+    redirectUrl: 'http://localhost:3000/transactionResult', // Opcional
   })
 
   const payment = (e) => {

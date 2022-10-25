@@ -5,7 +5,6 @@ import {object,string} from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 export const StepSix = ({
   i,
@@ -19,8 +18,7 @@ export const StepSix = ({
 }) => {
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const filledClaim = useSelector((state) => (state.claims.filledClaim));
+  const filledClaim = useSelector((state:any) => (state.claims.filledClaim));
 
   const schema = object({
     proofs: string().required('Este campo es requerido*')
@@ -43,7 +41,7 @@ export const StepSix = ({
       .then(() => uploadState(data))
   }
 
-  const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+  const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema), defaultValues: { proofs: 'factura chimba'}})
 
   return (
     <>

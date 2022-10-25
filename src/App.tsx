@@ -17,6 +17,7 @@ import { EditedClaimForm } from "./components/lawyerModule/EditedClaimForm.tsx";
 import { AdminRoutes } from "./router/AdminRoutes.tsx";
 import { LawyerRoutes } from "./router/LawyerRoutes.tsx";
 import { AboutUs } from "./views/AboutUs";
+import { TransactionResult } from "./components/transaction/TransactionResult";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/form" element={<SueForm />}/>
           <Route path="/formFeedback" element={<FeedbackMain />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/transactionResult" element={<TransactionResult />} />
           <Route element={<LawyerRoutes /> || <AdminRoutes />}>
             <Route path="/lawyerClaims" element={<SuitsTable />}/>
             <Route path="/EditedClaimForm/:id" element={<EditedClaimForm />}/>
