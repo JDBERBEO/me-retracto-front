@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Modal, Row } from "react-bootstrap";
+import { Col, Modal, Row } from "react-bootstrap";
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom'
 
@@ -8,12 +8,14 @@ export const  PreventModal = ({buttonText, index, buttonColor}) => {
 
   return (
     <>
-      <button 
-        className={buttonColor} 
-        onClick={() => setShow(true)}
-      >
-        {buttonText}
-      </button>
+      { index === 0 ? null : (
+        <button 
+          className={buttonColor} 
+          onClick={() => setShow(true)}
+        >
+          {buttonText}
+        </button>
+      )}
       <Modal
         show={show}
         onHide={() => setShow(false)}

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const axios = require("axios");
-const API_URL = "https://shrouded-brook-05229.herokuapp.com";
+const API_URL = process.env.REACT_APP_SERVER_URL
 
 export const claimSlide = createSlice({
   name: "claim",
@@ -145,6 +145,18 @@ export const getOneClaimAsync = (id) => async (dispatch) => {
       method: "GET",
       baseURL: API_URL,
       url: `/lawyer/getClaim/${id}`,
+    })
+    dispatch(getClaim(data))
+  } catch (error) {
+    console.error('error:', error)
+  }
+}
+export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      baseURL: API_URL,
+      url: `/customer/getClaim/${transactionId}`,
     })
     dispatch(getClaim(data))
   } catch (error) {
