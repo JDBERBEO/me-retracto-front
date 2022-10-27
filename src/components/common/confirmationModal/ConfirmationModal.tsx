@@ -24,7 +24,7 @@ export const  ConfimationModal = ({claimId}) => {
       file_url: claim.claim.fileUrl,
       claimer_email:claim.claim.claimerEmail
 
-      }, process.env.EMAIL_KEY).then((result) => {
+      }, process.env.REACT_APP_EMAIL_KEY).then((result) => {
           console.log(result.text);
       }, (error) => {
           console.log(error.text);
