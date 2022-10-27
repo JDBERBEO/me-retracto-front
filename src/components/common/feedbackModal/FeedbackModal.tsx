@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import { FiAlertCircle } from 'react-icons/fi';
 import { useSelector, useDispatch } from "react-redux";
