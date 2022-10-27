@@ -16,7 +16,7 @@ export const StepperMain = ({steps}) => {
 const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
   e.preventDefault();
 
-  emailjs.send('service_cc2049t', 'template_n112mw8', {} , 'P04vzZkGfMSd-ijUi')
+  emailjs.send('service_cc2049t', 'template_n112mw8', {} , process.env.EMAIL_KEY)
     .then((result) => {
         console.log(result.text);
     }, (error) => {

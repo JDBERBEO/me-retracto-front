@@ -12,17 +12,13 @@ export const StepSeven = () => {
     currency: 'COP',
     amountInCents: previousCheckoutClaim.claimCreated.payment.amount,
     reference: previousCheckoutClaim.claimCreated._id,
-    publicKey: 'pub_test_SyUVrIhwhjflROZsU0f133Pl3z6Bm2TZ',
-    redirectUrl: 'http://localhost:3000/transactionResult', // Opcional
+    publicKey: process.env.REACT_APP_WOMPI_KEY,
+    redirectUrl: process.env.REACT_APP_REDIRECT_URL, // Opcional
   })
 
   const payment = (e) => {
     e.preventDefault()
     checkout.open(function ( result ) {
-      // e.preventDefault()
-      const transaction = result.transaction
-      console.log('Transaction ID: ', transaction.id)
-      console.log('Transaction object: ', transaction)
     })
   }
 
