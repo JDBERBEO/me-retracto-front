@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 const axios = require("axios");
-const API_URL = "http://localhost:4000";
+const API_URL = process.env.REACT_APP_SERVER_URL
 
 export const claimSlide = createSlice({
   name: "claim",
   initialState: {
-    data: [],
+    previousCheckoutClaim: {},
     updateClaim: '',
     claims: [],
     error: false,
     filledClaim: {},
     loading: false,
     feedbackModal: false,
-    currentClaim: {}
+    currentClaim: {},
   },
   reducers: {
     postClaim: (state, action) => {
-      state.data.push(action.payload);
+      state.previousCheckoutClaim = action.payload
     },
     updateClaim: (state, action) =>{
       state.updateClaim =  action.payload
@@ -58,7 +58,7 @@ export const closeModalAsync = () => async (dispatch) => {
   } catch (error) {
   }
 }
-export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch) => {
+export const postClaimAsync = (claim) => async (dispatch) => {
   const completeClaim = {
     claimFields: claim
   }
@@ -70,12 +70,13 @@ export const postClaimAsync = (navigate, claim, sendEmail, e) => async (dispatch
       url: `/customer/${completeClaim.claimFields.id}`
     })
     dispatch(postClaim(data))
-    navigate('/formFeedback')
-    sendEmail(e)
+
+    // navigate('/formFeedback')
+    // sendEmail(e)
   } catch (err) {
-    console.log('err:', err)
+    console.dir('err:', err)
     dispatch(updateError(true))
-    navigate('/formFeedback')
+    // navigate('/formFeedback')
     // throw new Error(err);
   }
 };
@@ -144,6 +145,18 @@ export const getOneClaimAsync = (id) => async (dispatch) => {
       method: "GET",
       baseURL: API_URL,
       url: `/lawyer/getClaim/${id}`,
+    })
+    dispatch(getClaim(data))
+  } catch (error) {
+    console.error('error:', error)
+  }
+}
+export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) => {
+  try {
+    const { data } = await axios({
+      method: "GET",
+      baseURL: API_URL,
+      url: `/customer/getClaim/${transactionId}`,
     })
     dispatch(getClaim(data))
   } catch (error) {

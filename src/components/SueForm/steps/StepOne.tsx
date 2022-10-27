@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect} from 'react'
 import { Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import {object,string} from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
-import { useDispatch } from 'react-redux';
+import { getTemplatesAsync } from '../../../store/features/templates/templatesSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const StepOne = ({
   // setNewEmail,
@@ -18,33 +19,44 @@ export const StepOne = ({
   currentStep
 }) => {
   const dispatch = useDispatch()
+  const suitsTemplates = useSelector((state: any) => (state.templates.templates));
 
   const schema = object({
-    claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
+    id: string().required('Este campo es requerido*'),
+    // claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
   })
 
   const uploadState = (data) => {
-    console.log('data: ', data)
     dispatch(fillClaimAsync(data))
     goNextStep()
   }
 
-  const { register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
-  return (
+  useEffect(() => {
+    dispatch(getTemplatesAsync())
+  }, [])
 
+  const { register, setValue, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  return (
     <Form>
-      {/* <pre>{console.log(errors)}</pre> */}
       <section style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height:'35vh', width: '100%'}}>
         <div>
-          <label className='form-label' >CORREO*</label>
-          <input className="form-input" type="email" placeholder="Escribe aqui tu correo electrónico" {...register('claimerEmail')}/>
+          <label className='form-label' >SELECCIONE EL TIPO DE RECLAMO*</label>
+          <select style={{width: '400px'}} {...register('id')} className="form-select-basic" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
+            <option value="">Selecciona una opción...</option>
+            {suitsTemplates.map((template, i) => {
+              return (
+                  <option value={template._id} key={template._id} title="TEXTO DE PRUEBA: La publicidad engañosa consiste en que en existe una inconsistencia entre lo ofertada por el proveedor y lo adquirido por el consumidor." >{template.name}</option>
+                  )
+            })}
+          </select> 
+          {/* <input className="form-input" type="email" placeholder="Escribe aqui tu correo electrónico" {...register('claimerEmail')}/> */}
         </div>
         <div >
-          <span className='form-label'>{errors?.claimerEmail?.message}</span>
+          <span className='form-label'>{errors?.id?.message}</span>
         </div>
       </section>
       <Row className='flex-row-reverse'>
-                <Col sm={3}>
+                <Col xs={6}>
                   <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'start', marginBottom: '15px' }}>
                     <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
                       SIGUIENTE

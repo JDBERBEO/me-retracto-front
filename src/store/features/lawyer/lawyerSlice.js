@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const axios = require("axios");
-const API_URL = "http://localhost:4000";
+const API_URL = process.env.REACT_APP_SERVER_URL
 
 export const lawyerSlice = createSlice({
   name: "lawyer",

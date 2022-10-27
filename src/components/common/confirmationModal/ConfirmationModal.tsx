@@ -19,12 +19,12 @@ export const  ConfimationModal = ({claimId}) => {
   
   const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
     e.preventDefault();
-    emailjs.send("service_cc2049t","template_wh3iaz4",{
+    emailjs.send('service_cc2049t',"template_wh3iaz4",{
       claimer_name: claim.claim.claimer,
       file_url: claim.claim.fileUrl,
       claimer_email:claim.claim.claimerEmail
 
-      }, 'P04vzZkGfMSd-ijUi').then((result) => {
+      }, process.env.EMAIL_KEY).then((result) => {
           console.log(result.text);
       }, (error) => {
           console.log(error.text);

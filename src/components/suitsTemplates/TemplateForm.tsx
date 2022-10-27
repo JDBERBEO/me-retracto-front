@@ -10,7 +10,8 @@ export const TemplateForm = () => {
   const [file, setFile] = useState(null)
   const [newTemplate, setTemplate] = useState({
     name: '',
-    internalCode:''
+    internalCode:'',
+    price: 0
   });
   const dispatch = useDispatch<any>()
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ export const TemplateForm = () => {
     const payload = {
       name: newTemplate.name,
       internalCode: newTemplate.internalCode,
+      price: newTemplate.price,
       file
     }  
     dispatch(postTemplateAsync(navigate, payload));
@@ -50,6 +52,15 @@ export const TemplateForm = () => {
           type="text" 
           placeholder="Escribe aqui el código interno"
           onChange={(e) => setTemplate({ ...newTemplate, internalCode: e.target.value })}
+          />
+        </section>
+        <section className="formContainer__section">
+          <label className='form-label'>AGREGA EL PRECIO EN CENTAVOS</label>
+          <input 
+          className="form-input" 
+          type="text" 
+          placeholder="Escribe aqui el código interno"
+          onChange={(e) => setTemplate({ ...newTemplate, price: parseInt(e.target.value) })}
           />
         </section>
         <section className="formContainer__section">

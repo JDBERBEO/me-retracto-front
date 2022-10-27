@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 30px;
 }
 
 .form-label {
@@ -23,7 +23,36 @@
   letter-spacing: 3px;
   font-weight: 600;
   font-size: 14px;
-  margin-top: 5vh;
+  margin-top: 15px;
+}
+
+.form-select-basic {
+  border-radius: 25px;
+  border: 2px solid white;
+  background-color: #EB646F;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px; 
+  letter-spacing: 2px;
+  height: 55px;
+  width: 470px;
+  margin-left: 13px;
+  padding-left: 30px;
+  border-color: aliceblue;
+}
+
+.form-select-basic:focus, .form-select-basic:hover {
+  border-radius: 25px;
+  border: 2px solid white;
+  outline: none;
+  background-color: #EB646F;
+  border: 2px solid white;
+  
+}
+
+.form-select-basic option {
+  font-family: 'Raleway', sans-serif;
 }
 
 .form-select-basic {
@@ -65,7 +94,7 @@
   font-size: 12px; 
   letter-spacing: 2px;
   height: 55px;
-  width: 470px;
+  width: 400px;
   margin-left: 13px;
   padding-left: 30px;
 }
@@ -142,8 +171,8 @@
   font-weight: 400;
   font-size: 12px; 
   letter-spacing: 2px;
-  height: 50vh;
-  width: 80vh;
+  height: 250px;
+  width: 100%;
   margin-left: 13px;
   padding: 30px;
 }
