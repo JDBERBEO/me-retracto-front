@@ -132,7 +132,15 @@ export const cleanError = () => async (dispatch) => {
 
 export const getClaimsAsync = () => async (dispatch) => {
   try {
-    const response = await axios.get(`${API_URL}/lawyer`);
+    const token = localStorage.getItem('Lawyer')
+    const response = await axios({
+      method: "GET",
+      baseURL: API_URL,
+      url: '/lawyer',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
     dispatch(getClaims(response.data));
   } catch (err) {
     throw new Error(err);
