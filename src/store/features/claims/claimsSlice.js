@@ -132,7 +132,7 @@ export const cleanError = () => async (dispatch) => {
 
 export const getClaimsAsync = () => async (dispatch) => {
   try {
-    const token = localStorage.getItem('lawyer')
+    const token = localStorage.getItem('lawyer' || 'admin')
     const response = await axios({
       method: "GET",
       baseURL: API_URL,
