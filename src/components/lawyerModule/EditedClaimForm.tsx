@@ -54,7 +54,7 @@ export const EditedClaimForm = () => {
     <div>
       <DefaultNavbar />
       <FeedbackModal />
-        { loading ? <Loader />: null }    
+        { loading ? <Loader variant={'warning'} />: null }    
         <form>
           <div  className="formContainer">
             <section className="formContainer__section-column">

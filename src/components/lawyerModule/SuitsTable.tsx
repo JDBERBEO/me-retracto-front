@@ -6,10 +6,11 @@ import { RiDeleteBin6Line } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
 import { claimsStatusTraductor } from '../../helpers/claimsStatusTraductor';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
+import { LoadingMain } from '../common/LoadingMain.tsx';
 
 export const SuitsTable = () => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state:any) => (state.claims.claims));
+  const { claims:suitsTemplates, loading } = useSelector((state:any) => (state.claims));
   const [id, setId] = useState('')
   const navigate = useNavigate()
 
@@ -37,7 +38,8 @@ export const SuitsTable = () => {
       //getClaims
       dispatch(getClaimsAsync())
     }, []);
-
+  
+    if (loading) return <LoadingMain  variant={'success'}/>
   return (
     <div>
       <DefaultNavbar />
@@ -82,7 +84,6 @@ export const SuitsTable = () => {
             </thead>
             <tbody>
               {suitsTemplates.map((template) => {
-                console.log('template: ', template)
                 return <tr key={template._id}>
                         <td style={{display:'flex', flexDirection: 'row', alignItems: 'start', justifyContent: 'center', color: 'white', marginRight:'40px', 
                               marginLeft: '40px', borderBottom: 'solid 1px',}}>
@@ -101,7 +102,7 @@ export const SuitsTable = () => {
                               // borderBottom: 'solid 1px',
                               // paddingBottom: '10px'
                             }} >
-                              {template.name}
+                              {template.templateType}
                             </p>
                           </a>
                         </td>
@@ -132,8 +133,8 @@ export const SuitsTable = () => {
                               marginRight:'40px', 
                               marginLeft: '40px',
                           }} >
-                            Demandado:{template.defendant}<br/>
-                            Demandante: {template.claimer}
+                            Demandado:{template.claimFields.defendantName}<br/>
+                            Demandante: {template.claimFields.claimerName}
                           </p>
                         </td>
                         <td>
@@ -148,7 +149,7 @@ export const SuitsTable = () => {
                               marginRight:'40px', 
                               marginLeft: '40px',
                           }} >
-                            { template.status ? claimsStatusTraductor(template.status): ""}
+                            { template.revisionStatus ? claimsStatusTraductor(template.revisionStatus): ""}
                           </p>
                         </td>
                       </tr>

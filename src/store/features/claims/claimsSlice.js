@@ -84,13 +84,15 @@ export const postClaimAsync = (claim) => async (dispatch) => {
 export const updateClaimAsync = (payload) => async (dispatch) => {
   dispatch(updateLoading(true))
   try {
+    const token = localStorage.getItem('lawyer') || localStorage.getItem('admin')
     const { data } = await axios({
       method: "PUT",
       baseURL: API_URL,
       data: payload,
       url: `/lawyer/${payload.id}`,
       headers: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "multipart/form-data",
+        'Authorization': `Bearer ${token}`
       }
     })
     dispatch(updateClaim(data))
@@ -106,13 +108,15 @@ export const updateClaimAsync = (payload) => async (dispatch) => {
 export const updateClaimStatusAsync = (navigate, payload) => async (dispatch) => {
   dispatch(updateLoading(true))
   try {
+    const token = localStorage.getItem('lawyer') || localStorage.getItem('admin')
     const { data } = await axios({
       method: "PUT",
       baseURL: API_URL,
       data: payload,
       url: `/lawyer/updateClaimStatus/${payload.id}`,
       headers: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "multipart/form-data",
+        'Authorization': `Bearer ${token}`
       }
     })
     dispatch(updateClaim(data))
@@ -131,8 +135,9 @@ export const cleanError = () => async (dispatch) => {
 }
 
 export const getClaimsAsync = () => async (dispatch) => {
+  dispatch(updateLoading(true))
   try {
-    const token = localStorage.getItem('lawyer' || 'admin')
+    const token = localStorage.getItem('lawyer') || localStorage.getItem('admin')
     const response = await axios({
       method: "GET",
       baseURL: API_URL,
@@ -141,18 +146,24 @@ export const getClaimsAsync = () => async (dispatch) => {
         'Authorization': `Bearer ${token}`
       }
     });
+    dispatch(updateLoading(false))
     dispatch(getClaims(response.data));
   } catch (err) {
+    dispatch(updateLoading(false))
     throw new Error(err);
   }
 };
 
 export const getOneClaimAsync = (id) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('lawyer') || localStorage.getItem('admin')
     const { data } = await axios({
       method: "GET",
       baseURL: API_URL,
       url: `/lawyer/getClaim/${id}`,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
     dispatch(getClaim(data))
   } catch (error) {
@@ -185,14 +196,6 @@ export const deleteClaimAsync = (id) => async (dispatch) => {
   }
 }
 
-// export const getFilledClaimAsync = () => async (dispatch) => {
-//   try {
-//     const response = await axios.get(`${API_URL}/lawyer`);
-//     dispatch(getClaims(response.data));
-//   } catch (err) {
-//     throw new Error(err);
-//   }
-// };
 
 export const { postClaim, updateClaim, getClaims, updateError, fillClaim, getFilledClaim, updateLoading, openModal, getClaim } = claimSlide.actions;
 
