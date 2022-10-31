@@ -31,6 +31,18 @@
   height: 35px;
   width: 140px;
   background-color: transparent;
+  &__red {
+    border: solid 2px #EB646F;
+    border-radius: 25px;
+    color: #EB646F;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 2px;
+    height: 35px;
+    width: 340px;
+    background-color: transparent;
+  }
 }
 
 .containerButton {

@@ -10,7 +10,7 @@ import emailjs from 'emailjs-com';
 export const  ConfimationModal = ({claimId}) => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch()
-  const claim = useSelector((state) => state.claims.currentClaim)
+  const claim = useSelector((state:any) => state.claims.currentClaim)
 
   const handleOnClick = () => {
     setShow(true)
