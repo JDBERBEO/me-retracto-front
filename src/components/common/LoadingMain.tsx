@@ -11,8 +11,6 @@ export const LoadingMain = ({variant}) => {
           <Loader variant={variant} />
           <p className='sueCard_description'>Cargando...</p>
         </Col>
-        <Col>
-        </Col>
       </Row>
     </>
   )

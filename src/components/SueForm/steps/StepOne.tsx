@@ -6,24 +6,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
 import { getTemplatesAsync } from '../../../store/features/templates/templatesSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { Loader } from '../../common/spinner/Loader.tsx';
 
 export const StepOne = ({
-  // setNewEmail,
-  // handleSubmit
-  i,
-  goPreviousStep,
   steps,
   step,
-  handleOnClick,
   goNextStep,
   currentStep
 }) => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state: any) => (state.templates.templates));
+  const { templates, loading} = useSelector((state: any) => (state.templates));
 
   const schema = object({
     id: string().required('Este campo es requerido*'),
-    // claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*'),
   })
 
   const uploadState = (data) => {
@@ -36,6 +31,19 @@ export const StepOne = ({
   }, [])
 
   const { register, setValue, handleSubmit, formState: {errors}} = useForm({mode: 'onChange', resolver: yupResolver(schema)})
+  
+  if (loading) return <Row>
+    <Col>
+    <Row >
+        <Col xs={12} className='d-flex flex-column align-items-center justify-content-center' style={{height: '550px'}}>
+          <Loader variant={'danger'} />
+          <p className='form-label mt-5'>Cargando...</p>
+        </Col>
+      </Row>
+    </Col>
+  </Row>
+    
+
   return (
     <Form>
       <section style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height:'35vh', width: '100%'}}>
@@ -43,7 +51,7 @@ export const StepOne = ({
           <label className='form-label' >SELECCIONE EL TIPO DE RECLAMO*</label>
           <select style={{width: '400px'}} {...register('id')} className="form-select-basic" onChange={(e) => setValue('id', e.target.value, { shouldValidate: true })}>
             <option value="">Selecciona una opción...</option>
-            {suitsTemplates.map((template, i) => {
+            {!!templates && templates.map((template, i) => {
               return (
                   <option value={template._id} key={template._id} title="TEXTO DE PRUEBA: La publicidad engañosa consiste en que en existe una inconsistencia entre lo ofertada por el proveedor y lo adquirido por el consumidor." >{template.name}</option>
                   )
@@ -56,21 +64,19 @@ export const StepOne = ({
         </div>
       </section>
       <Row className='flex-row-reverse'>
-                <Col xs={6}>
-                  <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'start', marginBottom: '15px' }}>
-                    <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
-                      SIGUIENTE
-                    </button>
-                    <div className='stepsContainer' >
-                    {steps.map((step, i) =>(
-                      <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
-                    ))}
-                    </div>
-                  </div>
-                </Col>
+        <Col xs={6}>
+          <div style={{display:'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'start', marginBottom: '15px' }}>
+            <button className={`${step.nextStepButton}`}   onClick={handleSubmit(uploadState)} >
+              SIGUIENTE
+            </button>
+            <div className='stepsContainer' >
+              {steps.map((_, i) =>(
+                <div id={i === currentStep - 1 ? 'circleSelected' :  'circle'} key={i}></div>
+              ))}
+            </div>
+          </div>
+        </Col>
       </Row>
     </Form>
-
-    
     )
 };

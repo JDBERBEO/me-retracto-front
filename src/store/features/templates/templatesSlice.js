@@ -8,7 +8,8 @@ export const templatesSlice = createSlice({
     templates: [],
     newTemplate: {},
     deleted: {},
-    error: false
+    error: false,
+    loading: false
   },
   reducers: {
     postTemplate: (state, action ) => {
@@ -22,14 +23,19 @@ export const templatesSlice = createSlice({
     },
     updateError: (state, action) => {
       state.error = action.payload
-    }
+    },
+    updateLoading: ( state, action ) => {
+      state.loading = action.payload
+    },
   }
 })
 
 export const getTemplatesAsync = () => async (dispatch) => {
+  dispatch(updateLoading(true))
   try {
     const response = await axios.get(`${API_URL}/administrator`);
     dispatch(getTemplates(response.data));
+    dispatch(updateLoading(false))
   } catch (err) {
     throw new Error(err);
   }
@@ -70,6 +76,6 @@ export const cleanError = () => async (dispatch) => {
   dispatch(updateError(false))
 }
 
-export const { postTemplate, getTemplates, updateError } = templatesSlice.actions;
+export const { postTemplate, getTemplates, updateError, updateLoading } = templatesSlice.actions;
 
 export default templatesSlice.reducer;

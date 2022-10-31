@@ -6,14 +6,15 @@ import { Link } from 'react-router-dom';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
+import { LoadingMain } from '../common/LoadingMain.tsx';
 
 export const SuitsTemplates = () => {
   const dispatch = useDispatch()
-  const suitsTemplates = useSelector((state) => (state.templates.templates));
+  const { templates, loading} = useSelector((state) => (state.templates));
 
   let rows 
-  if (!!suitsTemplates) {
-    rows = suitsTemplates.map((template) => {
+  if (!!templates) {
+    rows = templates.map((template) => {
       return {
         id: template._id,
         docType: template.name,
@@ -62,6 +63,9 @@ export const SuitsTemplates = () => {
     useEffect(() => {
       dispatch(getTemplatesAsync())
     }, []);
+
+    if (loading) return <LoadingMain variant={'danger'} />
+    
   return (
     <div>
       <DefaultNavbar />
