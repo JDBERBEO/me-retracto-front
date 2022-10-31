@@ -67,30 +67,33 @@ export const SuitsTemplates = () => {
       <DefaultNavbar />
       <Box
       sx={{
-        height: 300,
+        height: 600,
         width: '100%',
         '& .super-app-theme--header': {
           fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'justify', fontWeight: 1000, color:'white', fontSize: '30px', paddingRight:'40px', paddingLeft: '40px'
         },
       }}
     >
-      <DataGrid rows={rows} columns={columns} sx={{
-          backgroundColor:'#4E4B99',
-          boxShadow: 2,
-          border: 2,
-          borderRadius: '25px',
-          fontFamily: 'Raleway, sans-serif',  
-          textAlign: 'center', 
-          fontWeight: 400, 
-          fontSize: '15px', 
-          letterSpacing: '1px', 
-          color: 'white',
-          marginRight:'40px', 
-          marginLeft: '40px',
-          borderColor: 'white',
-          '& .MuiDataGrid-cell:hover': {
-            color: '#F3F3F3',
-          },
+      <DataGrid 
+          rows={rows} 
+          columns={columns} 
+          sx={{
+            backgroundColor:'#4E4B99',
+            boxShadow: 2,
+            border: 2,
+            borderRadius: '25px',
+            fontFamily: 'Raleway, sans-serif',  
+            textAlign: 'center', 
+            fontWeight: 400, 
+            fontSize: '15px', 
+            letterSpacing: '1px', 
+            color: 'white',
+            marginRight:'40px', 
+            marginLeft: '40px',
+            borderColor: 'white',
+            '& .MuiDataGrid-cell:hover': {
+              color: '#F3F3F3',
+            },
         }}/>
     </Box>
       {/* </div> */}
