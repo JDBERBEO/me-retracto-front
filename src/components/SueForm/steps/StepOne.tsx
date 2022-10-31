@@ -78,5 +78,5 @@ export const StepOne = ({
         </Col>
       </Row>
     </Form>
-    )
+  )
 };

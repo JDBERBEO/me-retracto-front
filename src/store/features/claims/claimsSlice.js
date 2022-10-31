@@ -185,10 +185,15 @@ export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) 
 
 export const deleteClaimAsync = (id) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('admin')
     const { data } = await axios({
       method: "DELETE",
       baseURL: API_URL,
-      url: `/administrator/deleteClaims/${id}`
+      url: `/administrator/deleteClaims/${id}`,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+
     })
     dispatch(getClaims(data))
   } catch (error) {

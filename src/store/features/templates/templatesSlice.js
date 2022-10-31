@@ -43,13 +43,15 @@ export const getTemplatesAsync = () => async (dispatch) => {
 
 export const postTemplateAsync = (navigate, payload) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('admin')
     const { data } = await axios({
       method: "POST",
       baseURL: API_URL,
       data: payload,
       url: `/administrator`,
       headers: {
-        "Content-Type": "multipart/form-data"
+        "Content-Type": "multipart/form-data",
+        'Authorization': `Bearer ${token}`
       }
     })
     dispatch(postTemplate([data]))
@@ -61,10 +63,12 @@ export const postTemplateAsync = (navigate, payload) => async (dispatch) => {
 
 export const deleteTemplateAsync = (id) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('admin')
     const { data } = await axios({
       method: "DELETE",
       baseURL: API_URL,
       url: `/administrator/${id}`,
+      'Authorization': `Bearer ${token}`
     })
     dispatch(getTemplates(data))
   } catch (err) {
