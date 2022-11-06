@@ -12,10 +12,8 @@ import Box from '@mui/material/Box';
 export const SuitsTable = () => {
   const dispatch = useDispatch()
   const { claims, loading } = useSelector((state:any) => (state.claims));
-  const [id, setId] = useState('')
   const navigate = useNavigate()
 
-  console.log('claims: ', claims)
   let rows 
   if(!!claims) {
     rows = claims.map((claim) => {
@@ -97,20 +95,11 @@ export const SuitsTable = () => {
       }
     }
     
-    const handleOnChange = (e) => {
-      const value = e.target.value
-      setId(value)
-      if (e.target.checked === false) {
-        setId('')
-      }
-    }
-    
     const handleDeleteClaim = (id) => {
       dispatch(deleteClaimAsync(id))
     }
 
     useEffect(() => {
-      //getClaims
       dispatch(getClaimsAsync())
     }, []);
   

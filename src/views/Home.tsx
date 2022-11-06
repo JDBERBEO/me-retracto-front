@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Row, Container } from 'react-bootstrap'
+import { Row, Container } from 'react-bootstrap'
 import { FooterMain } from '../components/common/footer/FooterMain'
 import { ContactUs } from '../components/contactUs/ContactUs.tsx'
 import { SueCard } from '../components/SueCard/SueCard.tsx'
