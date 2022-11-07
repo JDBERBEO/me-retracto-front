@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import {object,string} from 'yup'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ConfimationModal } from '../common/confirmationModal/ConfirmationModal.tsx';
+import Select, { components } from "react-select";
 
 export const EditedClaimForm = () => {
 
@@ -50,6 +51,36 @@ export const EditedClaimForm = () => {
     setFile(e.target.files[0]);
   }
 
+  const { Option } = components;
+  const customOption = props => {
+    return (
+        <><Option {...props} /></>
+    );
+  };
+
+  const options = [
+    {
+      value: "notChecked",
+      label:"Sin revisar"
+    },
+    {
+      value: 'underStudy',
+      label: 'En revisión'
+    },
+    {
+      value: 'analysisCompleted',
+      label: 'Revisión Finalizada'
+    }
+  ]
+
+  const NoOptionsMessage = props => {
+    return (
+      <components.NoOptionsMessage {...props}>
+        <span className="custom-css-class">no hay opciones relacionadas</span> 
+      </components.NoOptionsMessage>
+    );
+  };
+
   return (
     <div>
       <DefaultNavbar />
@@ -81,7 +112,7 @@ export const EditedClaimForm = () => {
           <div  className="formContainerPurple">
             <section className="formContainer__section-column">
               <label className='form-label' htmlFor='userType'>SELECCIONA EL ESTADO </label>
-              <select  
+              {/* <select  
                 className="form-input" 
                 id="claimStatus" 
                 {...register('claimStatus')} 
@@ -92,10 +123,127 @@ export const EditedClaimForm = () => {
                 <option value={"underStudy"}>En revisión</option>
                 <option value={"analysisCompleted"}>Revisión Finalizada</option>
               </select>
-              <span className='form-label'>{errors?.claimStatus?.message}</span>
-          
+              <span className='form-label'>{errors?.claimStatus?.message}</span> */}
+              <Select
+                {...register('claimStatus')} onChange={(option) => setValue('claimStatus', option?.value, { shouldValidate: true })}
+                components={{
+                  Option: customOption,
+                  NoOptionsMessage
+                }}
+                className="basic-single"
+                classNamePrefix="select"
+                name={'loquesea'}
+                isSearchable={false}
+                options={options}
+                placeholder={'Selecciona una opción...'}
+                styles={{
+                  menu: base => ({
+                    ...base,
+                    marginTop: '5px',
+                    background: "transparent",
+                    borderRadius: 25,
+                    border: "2px solid white",
+                    color: 'white'
+                  }),
+                  control: (base, state) => ({
+                    // none of react-select's styles are passed to <Control />
+                    color: 'white',
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginWeft: '30px',
+                    background: "transparent",
+                    borderRadius: 25,
+                    display: "flex",
+                    height: '55px',
+                    width: '400px',
+                    border: state.isFocused
+                    ? "2px solid white"
+                    : "2px solid white",
+                    // This line disable the blue border
+                    boxShadow: state.isFocused ? 0 : 0,
+                    "&:hover": {
+                      border: state.isFocused
+                      ? "2px solid white"
+                      : "2px solid white"
+                    },
+                  }),
+                  singleValue: base => ({
+                    ...base,
+                    color: "#fff"
+                  }),
+                  dropdownIndicator: base => ({
+                    ...base,
+                    color: "white" // Custom colour
+                  }),
+                  noOptionsMessage: base => ({
+                    ...base,
+                    color: "white", // Custom colour
+                  }),
+                  container: (provided, state) => ({
+                    ...provided,
+                    marginTop: 8,
+                    color: 'white',
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginWeft: '30px',
+                  }),
+                  valueContainer: (provided, state) => ({
+                    ...provided,
+                    overflow: "visible",
+                    color: 'white',
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginWeft: '30px',
+                  }),
+                  placeholder: (provided, state) => ({
+                    ...provided,
+                    color: 'white',
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginLeft: '30px',
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    color: state.isSelected ? 'white': "white",
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginWeft: '30px',
+                    padding: 10,
+                    background: state.isSelected ? "transparent" : null,
+                    borderRadius: '25px',
+                    
+                    "&:hover": {
+                      color: state.isSelected ? 'white': "white",
+                      borderRadius: '25px',
+                      border: "2px solid white",
+                      backgroundColor:  state.isFocused ? '#4B0082': '#4B0082' 
+                    },
+                  }),
+                  input: (provided, state) => ({
+                    ...provided,
+                    color: 'white',
+                    fontFamily: "'Raleway', 'sans-serif'",
+                    fontWeight: 400,
+                    fontSize: '12px',
+                    letterSpacing: '2px',
+                    marginWeft: '30px',
+                    padding: 10,
+                  }),
+                }}
+              />
+            <span className='form-label'>{errors?.claimStatus?.message}</span>
             </section>
-            <section className='formContainer__section' >
+            <section className='formContainer__section' style={{marginTop: '100px'}} >
               <Link to={'/lawyerClaims'}>
                 <button className={'nextStepButton__yellow'} >
                   ATRÁS

@@ -93,7 +93,7 @@ const NoOptionsMessage = props => {
                 className="basic-single"
                 classNamePrefix="select"
                 name={'loquesea'}
-                // style={{color:'white'}}
+                isSearchable={false}
                 options={options}
                 placeholder={'Selecciona una opción...'}
                 styles={{
