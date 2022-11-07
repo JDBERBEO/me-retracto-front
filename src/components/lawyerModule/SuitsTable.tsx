@@ -23,7 +23,8 @@ export const SuitsTable = () => {
         claimDate:  new Date( claim.createdAt).toDateString(),
         claimerName: claim.claimFields.claimerName,
         defendantName: claim.claimFields.defendantName,
-        revisionStatus: claimsStatusTraductor(claim.revisionStatus)
+        revisionStatus: claimsStatusTraductor(claim.revisionStatus),
+        fileUrl: claim.fileUrl
       }
     })
   }
@@ -34,7 +35,27 @@ export const SuitsTable = () => {
       field: 'templateType',
       headerClassName: 'header',
       headerAlign: 'center',
-      width: 300
+      width: 300,
+      renderCell: (params) => {
+        return <>
+          <a href={`${params.row.fileUrl}`} style={{textDecoration: 'none'}} key={params.row._id}>
+                          <p 
+                            style={{
+                              fontFamily: 'Raleway, sans-serif',  
+                              textAlign: 'center', 
+                              fontWeight: 400, 
+                              fontSize: '15px', 
+                              letterSpacing: '1px', 
+                              color: 'white',
+                              marginRight:'40px', 
+                              marginLeft: '40px',
+                              marginTop: '10px'
+                            }} >
+                              {params.row.templateType}
+                            </p>
+                          </a>
+        </>
+      }
     },
     {
       headerName: 'FECHA DE RECLAMACIÓN',
