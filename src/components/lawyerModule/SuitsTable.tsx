@@ -16,7 +16,7 @@ export const SuitsTable = () => {
 
   let rows 
   if(!!claims) {
-    rows = claims.map((claim) => {
+    rows = claims.filter((claim) => claim.payment.status === "APPROVED").map((claim => {
       return {
         id: claim._id,
         templateType: claim.templateType,
@@ -26,7 +26,7 @@ export const SuitsTable = () => {
         revisionStatus: claimsStatusTraductor(claim.revisionStatus),
         fileUrl: claim.fileUrl
       }
-    })
+    }))
   }
 
   const columns: GridColDef[] = [
