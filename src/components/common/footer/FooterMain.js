@@ -15,7 +15,7 @@ export const FooterMain = () => {
       <Col className='d-flex justify-content-center align-items-center mt-5 mb-5' xs={12} md={4}>
         <div>
           <img 
-            src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" 
+            src="https://res.cloudinary.com/me-retracto/image/upload/v1667914984/platform%20Imgs/reducedLogo_jxkj1w.png" 
             alt="main-logo"
             className='defaultNavbar__logo'
           />
