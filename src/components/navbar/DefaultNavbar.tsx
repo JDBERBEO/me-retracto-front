@@ -35,7 +35,7 @@ export const DefaultNavbar = ({type}) => {
   return (
     <Navbar className='defaultNavbar' variant="light" expand="lg" >
         <Container>
-        <Navbar.Brand href="/"><img src="https://res.cloudinary.com/me-retracto/image/upload/v1653857763/platform%20Imgs/logo_uny6n2.png" alt="logo" className='defaultNavbar__logo'/></Navbar.Brand>
+        <Navbar.Brand href="/"><img src="https://res.cloudinary.com/me-retracto/image/upload/v1667914984/platform%20Imgs/reducedLogo_jxkj1w.png" alt="logo"/></Navbar.Brand>
         </Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Container className='justify-content-between'>
