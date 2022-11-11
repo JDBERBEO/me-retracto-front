@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { postTemplateAsync } from '../../store/features/templates/templatesSlice';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
+import { useForm } from 'react-hook-form';
+import { object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const TemplateForm = () => {
   const [file, setFile] = useState(null);
@@ -14,6 +17,23 @@ export const TemplateForm = () => {
   });
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
+
+  const schema = object({
+    formatName: string().required('Este campo es requerido*'),
+    internalCode: string().required('Este campo es requerido*'),
+    price: string().required('Este campo es requerido*'),
+    file: string().required('Es necesario insertar un archivo*')
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(schema),
+    defaultValues: { defendantName: 'ErnestoPerez', agreementDate: '20 de septiembre de 03' }
+  });
 
   function changeProfilePhoto(e) {
     setFile(e.target.files[0]);
@@ -58,7 +78,7 @@ export const TemplateForm = () => {
             <label className="form-label">AGREGA EL PRECIO EN CENTAVOS</label>
             <input
               className="form-input"
-              type="text"
+              type="number"
               placeholder="Escribe aqui el código interno"
               onChange={(e) => setTemplate({ ...newTemplate, price: parseInt(e.target.value) })}
             />
