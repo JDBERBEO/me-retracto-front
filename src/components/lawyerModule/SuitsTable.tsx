@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteClaimAsync, getClaimsAsync } from '../../store/features/claims/claimsSlice';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -10,23 +10,25 @@ import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 
 export const SuitsTable = () => {
-  const dispatch = useDispatch()
-  const { claims, loading } = useSelector((state:any) => (state.claims));
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const { claims, loading } = useSelector((state: any) => state.claims);
+  const navigate = useNavigate();
 
-  let rows 
-  if(!!claims) {
-    rows = claims.filter((claim) => claim.payment.status === "APPROVED").map((claim => {
-      return {
-        id: claim._id,
-        templateType: claim.templateType,
-        claimDate:  new Date( claim.createdAt).toDateString(),
-        claimerName: claim.claimFields.claimerName,
-        defendantName: claim.claimFields.defendantName,
-        revisionStatus: claimsStatusTraductor(claim.revisionStatus),
-        fileUrl: claim.fileUrl
-      }
-    }))
+  let rows;
+  if (!!claims) {
+    rows = claims
+      .filter((claim) => claim.payment.status === 'APPROVED')
+      .map((claim) => {
+        return {
+          id: claim._id,
+          templateType: claim.templateType,
+          claimDate: new Date(claim.createdAt).toDateString(),
+          claimerName: claim.claimFields.claimerName,
+          defendantName: claim.claimFields.defendantName,
+          revisionStatus: claimsStatusTraductor(claim.revisionStatus),
+          fileUrl: claim.fileUrl
+        };
+      });
   }
 
   const columns: GridColDef[] = [
@@ -37,24 +39,31 @@ export const SuitsTable = () => {
       headerAlign: 'center',
       width: 300,
       renderCell: (params) => {
-        return <>
-          <a href={`${params.row.fileUrl}`} style={{textDecoration: 'none'}} key={params.row._id}>
-                          <p 
-                            style={{
-                              fontFamily: 'Raleway, sans-serif',  
-                              textAlign: 'center', 
-                              fontWeight: 400, 
-                              fontSize: '15px', 
-                              letterSpacing: '1px', 
-                              color: 'white',
-                              marginRight:'40px', 
-                              marginLeft: '40px',
-                              marginTop: '10px'
-                            }} >
-                              {params.row.templateType}
-                            </p>
-                          </a>
-        </>
+        return (
+          <>
+            <a
+              href={`${params.row.fileUrl}`}
+              style={{ textDecoration: 'none' }}
+              key={params.row._id}
+            >
+              <p
+                style={{
+                  fontFamily: 'Raleway, sans-serif',
+                  textAlign: 'center',
+                  fontWeight: 400,
+                  fontSize: '15px',
+                  letterSpacing: '1px',
+                  color: 'white',
+                  marginRight: '40px',
+                  marginLeft: '40px',
+                  marginTop: '10px'
+                }}
+              >
+                {params.row.templateType}
+              </p>
+            </a>
+          </>
+        );
       }
     },
     {
@@ -70,7 +79,6 @@ export const SuitsTable = () => {
       headerClassName: 'header',
       headerAlign: 'center',
       width: 200
-
     },
     {
       headerName: 'DEMANDADO',
@@ -84,7 +92,7 @@ export const SuitsTable = () => {
       field: 'revisionStatus',
       headerClassName: 'header',
       headerAlign: 'center',
-      width: 200,
+      width: 200
     },
     {
       headerName: 'ACCIONES',
@@ -93,71 +101,93 @@ export const SuitsTable = () => {
       headerAlign: 'center',
       width: 200,
       renderCell: (params) => {
-        return <>
-          <button style={{border: 'none', background: 'transparent'}} onClick={() => handleOnClick(params.row.id)}>
-            <div className='iconBorder'>
-              <p className='iconBorder__icon'>+</p>
-            </div>
-          </button>
-          { token ? (<div className="stepNumberContainer">
-          <div className='iconBorder'>
-            <button className='iconBorder__icon' style={{backgroundColor: 'transparent', border:'none'}} onClick={() => handleDeleteClaim(params.row.id)}><RiDeleteBin6Line /></button>
-          </div>
-        </div>): null}
-        </>
-      }
-    },
-  ]
-  const token = localStorage.getItem("admin");
-
-    const handleOnClick = (id) => {
-      if(id) {
-        navigate(`/EditedClaimForm/${id}`)
+        return (
+          <>
+            <button
+              style={{ border: 'none', background: 'transparent' }}
+              onClick={() => handleOnClick(params.row.id)}
+            >
+              <div className="iconBorder">
+                <p className="iconBorder__icon">+</p>
+              </div>
+            </button>
+            {token ? (
+              <div className="stepNumberContainer">
+                <div className="iconBorder">
+                  <button
+                    className="iconBorder__icon"
+                    style={{ backgroundColor: 'transparent', border: 'none' }}
+                    onClick={() => handleDeleteClaim(params.row.id)}
+                  >
+                    <RiDeleteBin6Line />
+                  </button>
+                </div>
+              </div>
+            ) : null}
+          </>
+        );
       }
     }
-    
-    const handleDeleteClaim = (id) => {
-      dispatch(deleteClaimAsync(id))
-    }
+  ];
+  const token = localStorage.getItem('admin');
 
-    useEffect(() => {
-      dispatch(getClaimsAsync())
-    }, []);
-  
-    if (loading) return <LoadingMain  variant={'success'}/>
+  const handleOnClick = (id) => {
+    if (id) {
+      navigate(`/EditedClaimForm/${id}`);
+    }
+  };
+
+  const handleDeleteClaim = (id) => {
+    dispatch(deleteClaimAsync(id));
+  };
+
+  useEffect(() => {
+    dispatch(getClaimsAsync());
+  }, []);
+
+  if (loading) return <LoadingMain variant={'success'} />;
   return (
     <div>
       <DefaultNavbar />
-      <Box sx={{
-        height: 600,
-        width: '100%',
-        '& .header': {
-          fontFamily: 'Raleway, sans-serif',  letterSpacing: '2px', textAlign: 'justify', fontWeight: 400, color:'white', fontSize: '15px', paddingRight:'40px', paddingLeft: '40px'
-        },
-      }}>
-        <DataGrid
-        rows={rows} 
-        columns={columns} 
+      <Box
         sx={{
-          backgroundColor:'#00AC9E',
-          boxShadow: 2,
-          border: 2,
-          borderRadius: '25px',
-          fontFamily: 'Raleway, sans-serif',  
-          textAlign: 'center', 
-          fontWeight: 400, 
-          fontSize: '13px', 
-          letterSpacing: '1px', 
-          color: 'white',
-          marginRight:'40px', 
-          marginLeft: '40px',
-          borderColor: 'white',
-          '& .MuiDataGrid-cell:hover': {
-            color: '#F3F3F3',
-          },
-      }}
+          height: 600,
+          width: '100%',
+          '& .header': {
+            fontFamily: 'Raleway, sans-serif',
+            letterSpacing: '2px',
+            textAlign: 'justify',
+            fontWeight: 400,
+            color: 'white',
+            fontSize: '15px',
+            paddingRight: '40px',
+            paddingLeft: '40px'
+          }
+        }}
+      >
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          sx={{
+            backgroundColor: '#00AC9E',
+            boxShadow: 2,
+            border: 2,
+            borderRadius: '25px',
+            fontFamily: 'Raleway, sans-serif',
+            textAlign: 'center',
+            fontWeight: 400,
+            fontSize: '13px',
+            letterSpacing: '1px',
+            color: 'white',
+            marginRight: '40px',
+            marginLeft: '40px',
+            borderColor: 'white',
+            '& .MuiDataGrid-cell:hover': {
+              color: '#F3F3F3'
+            }
+          }}
         />
       </Box>
-    </div >
-  )
-}
+    </div>
+  );
+};
