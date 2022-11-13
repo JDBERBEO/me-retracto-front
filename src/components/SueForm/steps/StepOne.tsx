@@ -76,8 +76,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
             <Col
               xs={12}
               className="d-flex flex-column align-items-center justify-content-center"
-              style={{ height: '550px' }}
-            >
+              style={{ height: '550px' }}>
               <Loader variant={'danger'} />
               <p className="form-label mt-5">Cargando...</p>
             </Col>
@@ -96,8 +95,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
           justifyContent: 'center',
           height: '35vh',
           width: '100%'
-        }}
-      >
+        }}>
         {/* <div> */}
         <label className="form-label">SELECCIONE EL TIPO DE RECLAMO*</label>
         <Select
@@ -224,8 +222,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               alignItems: 'center',
               justifyContent: 'start',
               marginBottom: '15px'
-            }}
-          >
+            }}>
             <button className={`${step.nextStepButton}`} onClick={handleSubmit(uploadState)}>
               SIGUIENTE
             </button>

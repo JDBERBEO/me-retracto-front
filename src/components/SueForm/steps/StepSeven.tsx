@@ -17,6 +17,7 @@ export const StepSeven = () => {
 
   const payment = (e) => {
     e.preventDefault();
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     checkout.open(function (result) {});
   };
 
