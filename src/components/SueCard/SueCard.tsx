@@ -22,7 +22,8 @@ export const SueCard = ({
         index === 0
           ? { backgroundImage: `url(${background})` }
           : { backgroundColor: `${background}` }
-      }>
+      }
+    >
       {index === 0 ? (
         <Row>
           <Col>

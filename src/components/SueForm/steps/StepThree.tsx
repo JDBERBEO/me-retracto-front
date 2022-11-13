@@ -49,7 +49,8 @@ export const StepThree = ({
       </Col>
       <Col
         className="d-flex flex-column justify-content-center align-items-center mb-5 mt-5"
-        xs={12}>
+        xs={12}
+      >
         {/* <section style={{marginTop: '50px'}}> */}
         <label className="form-label">
           NOMBRE DEL PRESTADOR O PRESTADORES DE SERVICIOS TURÍSTICOS*
@@ -96,7 +97,8 @@ export const StepThree = ({
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '15px'
-          }}>
+          }}
+        >
           <button className={`${step.nextStepButton}`} onClick={handleSubmit(uploadState)}>
             SIGUIENTE
           </button>

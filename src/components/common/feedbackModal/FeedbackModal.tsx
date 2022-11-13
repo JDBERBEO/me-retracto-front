@@ -18,14 +18,16 @@ export const FeedbackModal = () => {
         show={feedbackModal.open}
         onHide={() => closeModal()}
         size="lg"
-        aria-labelledby="example-custom-modal-styling-title">
+        aria-labelledby="example-custom-modal-styling-title"
+      >
         <Modal.Header closeButton>
           <Modal.Title
             className={
               feedbackModal.operationStatus === 'success'
                 ? 'feedback-modal-title-success'
                 : 'feedback-modal-title-failed'
-            }>
+            }
+          >
             <Row>
               <Col className="align-items-center justify-content-center">
                 <FiAlertCircle size={70} />

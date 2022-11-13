@@ -1,7 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import { ErrorHandler } from '../common/ErrorHandler.tsx';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 

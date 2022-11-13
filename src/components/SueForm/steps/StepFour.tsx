@@ -50,7 +50,8 @@ export const StepFour = ({
     <>
       <Col
         className="d-flex flex-column justify-content-center align-items-center mb-3 mt-3"
-        xs={12}>
+        xs={12}
+      >
         <div style={{ marginTop: '40px' }}>
           <label className="form-label" style={{ width: '175px', marginLeft: '20px' }}>
             NOMBRE *
@@ -137,7 +138,8 @@ export const StepFour = ({
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '15px'
-          }}>
+          }}
+        >
           <button className={`${step.nextStepButton}`} onClick={handleSubmit(uploadState)}>
             SIGUIENTE
           </button>

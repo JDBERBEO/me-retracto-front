@@ -94,14 +94,16 @@ export const StepTwo = ({
             marginTop: '20px',
             marginBottom: '20px',
             height: '81px'
-          }}>
+          }}
+        >
           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
               justifyContent: 'center'
-            }}>
+            }}
+          >
             <input
               {...register('acceptTerms')}
               type="checkbox"
@@ -122,7 +124,8 @@ export const StepTwo = ({
                 fontSize: '11px',
                 letterSpacing: '1px',
                 color: 'white'
-              }}>
+              }}
+            >
               AUTORIZO EL TRATAMIENTO DE DATOS PERSONALES *
             </label>
           </div>
@@ -137,7 +140,8 @@ export const StepTwo = ({
                 color: 'white',
                 marginTop: '7vh',
                 marginBottom: '8vh'
-              }}>
+              }}
+            >
               {errors?.acceptTerms?.message}
             </span>
           </div>
@@ -158,7 +162,8 @@ export const StepTwo = ({
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '15px'
-          }}>
+          }}
+        >
           <button className={`${step.nextStepButton}`} onClick={handleSubmit(uploadState)}>
             SIGUIENTE
           </button>

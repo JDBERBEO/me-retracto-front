@@ -54,7 +54,8 @@ export const SuitsTemplates = () => {
               <button
                 className="iconBorder__icon"
                 style={{ backgroundColor: 'transparent', border: 'none' }}
-                onClick={() => handleOnClick(params.row.id)}>
+                onClick={() => handleOnClick(params.row.id)}
+              >
                 <RiDeleteBin6Line />
               </button>
             </div>
@@ -92,7 +93,8 @@ export const SuitsTemplates = () => {
             paddingRight: '40px',
             paddingLeft: '40px'
           }
-        }}>
+        }}
+      >
         <DataGrid
           rows={rows}
           columns={columns}
@@ -124,7 +126,8 @@ export const SuitsTemplates = () => {
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: '20px'
-        }}>
+        }}
+      >
         <Link to="/templateForm">
           <button className="outlinedButton__red">AGREGAR NUEVO FORMATO</button>
         </Link>

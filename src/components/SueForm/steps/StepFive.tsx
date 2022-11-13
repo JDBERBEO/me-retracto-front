@@ -56,7 +56,8 @@ export const StepFive = ({
     <>
       <Col
         className="d-flex flex-column justify-content-center align-items-center mb-3 mt-3"
-        xs={12}>
+        xs={12}
+      >
         <div style={{ marginTop: '40px' }}>
           <label className="form-label" style={{ width: '175px' }}>
             MES PARA EL DOCUMENTO
@@ -102,7 +103,8 @@ export const StepFive = ({
       </Col>
       <Col
         className="d-flex flex-column justify-content-center align-items-center mb-3 mt-3"
-        xs={12}>
+        xs={12}
+      >
         <div style={{ marginTop: '40px', marginBottom: '80px' }}>
           <div>
             <label className="form-label" style={{ width: '175px' }}>
@@ -120,7 +122,8 @@ export const StepFive = ({
               alignItems: 'center',
               justifyContent: 'center',
               marginTop: '20PX'
-            }}>
+            }}
+          >
             <span className="form-label">{errors?.facts?.message}</span>
             <textarea
               className="form-textArea"
@@ -129,7 +132,8 @@ export const StepFive = ({
           2. 3/4/2011 descripción del hecho
           3. 5/5/2011 descripción del hecho
           4. 6/6/2011 descripción del hecho"
-              {...register('facts')}></textarea>
+              {...register('facts')}
+            ></textarea>
           </div>
         </div>
       </Col>
@@ -148,7 +152,8 @@ export const StepFive = ({
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '15px'
-          }}>
+          }}
+        >
           <button className={`${step.nextStepButton}`} onClick={handleSubmit(uploadState)}>
             SIGUIENTE
           </button>

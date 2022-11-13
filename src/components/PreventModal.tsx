@@ -17,7 +17,8 @@ export const PreventModal = ({ buttonText, index, buttonColor }) => {
         show={show}
         onHide={() => setShow(false)}
         size="lg"
-        aria-labelledby="example-custom-modal-styling-title">
+        aria-labelledby="example-custom-modal-styling-title"
+      >
         <Modal.Header closeButton>
           <Modal.Title className="preventModalTitle">
             <Row>
