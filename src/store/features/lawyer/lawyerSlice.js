@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
-const axios = require("axios");
-const API_URL = process.env.REACT_APP_SERVER_URL
+import { createSlice } from '@reduxjs/toolkit';
+const axios = require('axios');
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 export const lawyerSlice = createSlice({
-  name: "lawyer",
+  name: 'lawyer',
   initialState: {
     user: [],
-    error: false,
+    error: false
   },
   reducers: {
     postLogin: (state, action) => {
       state.data.push(action.payload);
     },
     updateError: (state, action) => {
-      state.error = action.payload
+      state.error = action.payload;
     }
   }
 });
@@ -21,17 +21,17 @@ export const lawyerSlice = createSlice({
 export const postLawyerLoginAsync = (user, navigate) => async (dispatch) => {
   try {
     const { data } = await axios({
-      method: "POST",
+      method: 'POST',
       baseURL: API_URL,
       data: user,
       url: 'lawyer/signin'
-    })
-    localStorage.setItem('lawyer', data.token)
-    updateError(false)
-    navigate('/lawyerClaims')
+    });
+    localStorage.setItem('lawyer', data.token);
+    updateError(false);
+    navigate('/lawyerClaims');
   } catch (err) {
-    dispatch(updateError(true))
-    console.error(err.data)
+    dispatch(updateError(true));
+    console.error(err.data);
   }
 };
 

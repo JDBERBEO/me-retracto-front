@@ -52,8 +52,7 @@ export const StepperMain = ({ steps }) => {
               <>
                 <Row
                   style={{ backgroundColor: 'white', height: '20vh' }}
-                  className="align-items-center justify-content-center"
-                >
+                  className="align-items-center justify-content-center">
                   <Col sm={7} md={6} lg={6}>
                     <div>
                       <h2
@@ -64,8 +63,7 @@ export const StepperMain = ({ steps }) => {
                           fontWeight: 800,
                           color: `${step.backgroundColor}`,
                           fontSize: '20px'
-                        }}
-                      >
+                        }}>
                         RECLAMACIÓN PRESTADOR DE SERVICIOS TURÍSTICOS
                       </h2>
                     </div>
@@ -81,8 +79,7 @@ export const StepperMain = ({ steps }) => {
                           fontWeight: 800,
                           fontSize: '12px',
                           marginBottom: '0px'
-                        }}
-                      >
+                        }}>
                         Estimado usuario.
                       </p>
                       <p
@@ -92,8 +89,7 @@ export const StepperMain = ({ steps }) => {
                           fontWeight: 600,
                           fontSize: '11px',
                           letterSpacing: '1px'
-                        }}
-                      >
+                        }}>
                         Tenga en cuenta que el presente formulario está diseñado para allegar
                         reclamaciones por incumplimiento de prestadores turísticos ante la
                         Superintendencia de Industria y Comercio - SIC
@@ -120,8 +116,7 @@ export const StepperMain = ({ steps }) => {
                             fontSize: '20px',
                             marginBottom: '0px',
                             marginLeft: '30px'
-                          }}
-                        >
+                          }}>
                           {step.title}
                         </h2>
                       </div>
