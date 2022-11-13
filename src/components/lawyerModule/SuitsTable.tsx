@@ -15,7 +15,7 @@ export const SuitsTable = () => {
   const navigate = useNavigate();
 
   let rows;
-  if (!!claims) {
+  if (claims) {
     rows = claims
       .filter((claim) => claim.payment.status === 'APPROVED')
       .map((claim) => {
@@ -44,8 +44,7 @@ export const SuitsTable = () => {
             <a
               href={`${params.row.fileUrl}`}
               style={{ textDecoration: 'none' }}
-              key={params.row._id}
-            >
+              key={params.row._id}>
               <p
                 style={{
                   fontFamily: 'Raleway, sans-serif',
@@ -57,8 +56,7 @@ export const SuitsTable = () => {
                   marginRight: '40px',
                   marginLeft: '40px',
                   marginTop: '10px'
-                }}
-              >
+                }}>
                 {params.row.templateType}
               </p>
             </a>
@@ -105,8 +103,7 @@ export const SuitsTable = () => {
           <>
             <button
               style={{ border: 'none', background: 'transparent' }}
-              onClick={() => handleOnClick(params.row.id)}
-            >
+              onClick={() => handleOnClick(params.row.id)}>
               <div className="iconBorder">
                 <p className="iconBorder__icon">+</p>
               </div>
@@ -117,8 +114,7 @@ export const SuitsTable = () => {
                   <button
                     className="iconBorder__icon"
                     style={{ backgroundColor: 'transparent', border: 'none' }}
-                    onClick={() => handleDeleteClaim(params.row.id)}
-                  >
+                    onClick={() => handleDeleteClaim(params.row.id)}>
                     <RiDeleteBin6Line />
                   </button>
                 </div>
@@ -163,8 +159,7 @@ export const SuitsTable = () => {
             paddingRight: '40px',
             paddingLeft: '40px'
           }
-        }}
-      >
+        }}>
         <DataGrid
           rows={rows}
           columns={columns}

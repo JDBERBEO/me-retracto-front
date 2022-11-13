@@ -76,8 +76,7 @@ export const Login = () => {
           padding: '20px',
           margin: '20px',
           borderRadius: '50px'
-        }}
-      >
+        }}>
         <div
           style={{
             backgroundColor: '#00AC9E',
@@ -87,8 +86,7 @@ export const Login = () => {
             justifyContent: 'center',
             borderRadius: '50px',
             padding: '5px'
-          }}
-        >
+          }}>
           <h2
             style={{
               fontFamily: 'Raleway, sans-serif',
@@ -97,8 +95,7 @@ export const Login = () => {
               fontWeight: 800,
               color: 'white',
               fontSize: '30px'
-            }}
-          >
+            }}>
             LOGIN
           </h2>
         </div>
@@ -114,16 +111,14 @@ export const Login = () => {
             alignItems: 'center',
             justifyContent: 'center',
             margin: '40px'
-          }}
-        >
+          }}>
           <section
             style={{
               marginTop: '5vh',
               minHeight: '110px',
               display: 'flex',
               flexDirection: 'column'
-            }}
-          >
+            }}>
             <label className="form-label" htmlFor="email">
               EMAIL
             </label>
@@ -143,8 +138,7 @@ export const Login = () => {
               minHeight: '110px',
               display: 'flex',
               flexDirection: 'column'
-            }}
-          >
+            }}>
             <label className="form-label" htmlFor="password">
               CONTRASEÑA
             </label>
@@ -164,8 +158,7 @@ export const Login = () => {
               minHeight: '110px',
               display: 'flex',
               flexDirection: 'column'
-            }}
-          >
+            }}>
             <label className="form-label" htmlFor="userType">
               TIPO DE USUARIO
             </label>
@@ -297,8 +290,7 @@ export const Login = () => {
               color: '#00AC9E',
               fontSize: '22px',
               marginTop: '80px'
-            }}
-          >
+            }}>
             ENTRAR
           </button>
         </form>

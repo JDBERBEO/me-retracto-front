@@ -22,8 +22,7 @@ export const FeedbackMain = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
-          }}
-        >
+          }}>
           <h2
             style={{
               fontFamily: 'Raleway, sans-serif',
@@ -32,8 +31,7 @@ export const FeedbackMain = () => {
               fontWeight: 800,
               color: 'white',
               fontSize: '30px'
-            }}
-          >
+            }}>
             HAZ LLENADO TU SOLICITUD CORRECTAMENTE
           </h2>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
@@ -49,8 +47,7 @@ export const FeedbackMain = () => {
                 fontWeight: 500,
                 color: 'white',
                 fontSize: '22px'
-              }}
-            >
+              }}>
               VOLVER A LA PÁGINA INICIAL
             </button>
           </Link>
