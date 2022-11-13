@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';

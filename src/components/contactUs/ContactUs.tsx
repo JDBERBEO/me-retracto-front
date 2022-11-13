@@ -73,8 +73,7 @@ export const ContactUs = () => {
           <button
             className="containerButton__yellow"
             style={{ backgroundColor: '#FAB816', color: 'white' }}
-            onClick={handleSubmit(handleOnClick)}
-          >
+            onClick={handleSubmit(handleOnClick)}>
             ENVIAR
           </button>
         </div>

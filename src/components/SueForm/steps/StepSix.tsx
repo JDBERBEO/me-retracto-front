@@ -49,8 +49,7 @@ export const StepSix = ({
     <>
       <Col
         className="d-flex flex-column justify-content-start align-items-start mb-3 mt-3 ms-3"
-        xs={12}
-      >
+        xs={12}>
         <label className="form-label">DESCRIBA LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *</label>
         <label className="helperText">
           Por favor guarde cada archivo con su nombre. Tenga en cuenta que se permiten máximo 10
@@ -59,8 +58,7 @@ export const StepSix = ({
       </Col>
       <Col
         className="d-flex flex-column justify-content-center align-items-center mb-5 mt-5"
-        xs={12}
-      >
+        xs={12}>
         <input
           {...register('proofs')}
           className="form-input"
@@ -84,8 +82,7 @@ export const StepSix = ({
             alignItems: 'center',
             justifyContent: 'center',
             marginBottom: '15px'
-          }}
-        >
+          }}>
           <button className={`${step.nextStepButton}`} onClick={handleSubmit(sendClaim)}>
             ENVIAR
           </button>

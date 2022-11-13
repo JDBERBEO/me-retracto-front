@@ -5,7 +5,7 @@ export const AdminRoutes = () => {
   const [isAllowed, setstate] = useState(true);
 
   useEffect(() => {
-    let token = localStorage.getItem('admin');
+    const token = localStorage.getItem('admin');
     setstate(token);
   }, []);
 

@@ -20,8 +20,7 @@ export const ErrorHandler = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center'
-      }}
-    >
+      }}>
       <h2
         style={{
           fontFamily: 'Raleway, sans-serif',
@@ -30,8 +29,7 @@ export const ErrorHandler = () => {
           fontWeight: 800,
           color: 'white',
           fontSize: '30px'
-        }}
-      >
+        }}>
         Upps...hubo algún error y tu solicitud no fue creada. Porfavor, vuelve a intentar
       </h2>
       {/* TODO resend user depending its type (lawyer --> lawyertable, admin --> templates, customer --> main page ) */}
@@ -48,8 +46,7 @@ export const ErrorHandler = () => {
             fontWeight: 500,
             color: 'white',
             fontSize: '22px'
-          }}
-        >
+          }}>
           VOLVER A LA PÁGINA INICIAL
         </button>
       </Link>

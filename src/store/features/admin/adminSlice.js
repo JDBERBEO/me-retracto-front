@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const axios = require('axios');
+// eslint-disable-next-line no-undef
 const API_URL = process.env.REACT_APP_SERVER_URL;
 
 export const adminSlice = createSlice({

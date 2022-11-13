@@ -28,7 +28,7 @@ export const DefaultNavbar = ({ type }) => {
   useEffect(() => {
     const admin = localStorage.getItem('admin');
     const lawyer = localStorage.getItem('lawyer');
-    let token = lawyer || admin;
+    const token = lawyer || admin;
     setstate(token);
   }, []);
 

@@ -258,8 +258,7 @@ export const EditedClaimForm = () => {
             </Link>
             <button
               className={'nextStepButton__yellow'}
-              onClick={handleSubmit(handleOnClickStatus)}
-            >
+              onClick={handleSubmit(handleOnClickStatus)}>
               ACTUALIZAR
             </button>
           </section>

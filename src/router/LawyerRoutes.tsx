@@ -5,7 +5,7 @@ export const LawyerRoutes = () => {
   const [isAllowed, setstate] = useState(true);
 
   useEffect(() => {
-    let token = localStorage.getItem('lawyer') || localStorage.getItem('admin');
+    const token = localStorage.getItem('lawyer') || localStorage.getItem('admin');
     setstate(token);
   }, []);
 
