@@ -5,6 +5,7 @@ import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postContactUsAsync } from '../../store/features/contactUs/contactUsSlice';
 import { useDispatch } from 'react-redux';
+import types from '../../constants/types';
 
 export const ContactUs = () => {
   const [contactUs, setContactUs] = useState({
@@ -21,17 +22,7 @@ export const ContactUs = () => {
     message: string().required('El mensaje es requerido')
   });
 
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setContactUs((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
   const handleOnClick = (data) => {
-    // e.preventDefault()
-    // console.log(contactUs)
     dispatch(postContactUsAsync(data));
     console.log('data: ', data);
     reset({ name: '', email: '', message: '' });
@@ -51,11 +42,9 @@ export const ContactUs = () => {
     <>
       <Col className="d-flex justify-content-center align-items-center">
         <div className="sueCard">
-          <h1 className="sueCard__title">CONTÁCTENOS</h1>
-          <h5 className="sueCard__subtitle">amet, consectetuer adipiscing elit, </h5>
-          <p className="sueCard__description">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh{' '}
-          </p>
+          <h1 className="sueCard__title">{types.contactUs.title}</h1>
+          <h5 className="sueCard__subtitle">{types.contactUs.subtitle}</h5>
+          <p className="sueCard__description">{types.contactUs.description}</p>
         </div>
       </Col>
       <Col>
@@ -74,7 +63,7 @@ export const ContactUs = () => {
             className="containerButton__yellow"
             style={{ backgroundColor: '#FAB816', color: 'white' }}
             onClick={handleSubmit(handleOnClick)}>
-            ENVIAR
+            {types.contactUs.submitButton}
           </button>
         </div>
       </Col>

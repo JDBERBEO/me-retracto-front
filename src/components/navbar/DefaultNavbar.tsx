@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import '../../assets/styles/components/DefaultNavbar.scss';
+import types from '../../constants/types';
 
 export const DefaultNavbar = ({ type }) => {
   const [isAllowed, setstate] = useState<string | null | boolean>(true);
@@ -45,44 +46,48 @@ export const DefaultNavbar = ({ type }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Container className="justify-content-between">
         <Nav.Link href="/aboutUs" className="DefaultNavbar__link" style={styleNavItem}>
-          NOSOTROS
+          {types.navbar.links.us}
         </Nav.Link>
-        <NavDropdown title={<span style={styleNavItem}>DOCUMENTOS</span>} id="basic-nav-dropdown">
+        <NavDropdown
+          title={<span style={styleNavItem}>{types.navbar.dropdowns.documents.title}</span>}
+          id="basic-nav-dropdown">
           <NavDropdown.Item href="/#misleadingAdvertisement" style={styleNavDropDownItem}>
-            Publicidad Engañosa
+            {types.navbar.dropdowns.documents.itemOne}
           </NavDropdown.Item>
           <NavDropdown.Item href="/#missingInfo" style={styleNavDropDownItem}>
-            Falta de Información al Consumidor
+            {types.navbar.dropdowns.documents.itemTwo}
           </NavDropdown.Item>
           <NavDropdown.Item href="/#withdrawalRight" style={styleNavDropDownItem}>
-            Retracto y Desistimiento
+            {types.navbar.dropdowns.documents.itemThree}
           </NavDropdown.Item>
           <NavDropdown.Item href="/#exclusionLiability" style={styleNavDropDownItem}>
-            Eximentes de Responsabilidad
+            {types.navbar.dropdowns.documents.itemOne}
           </NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="#link" style={styleNavItem}>
-          CONTÁCTANOS
+          {types.navbar.links.contact}
         </Nav.Link>
         {!isAllowed ? null : (
-          <NavDropdown title={<span style={styleNavItem}>REGISTROS</span>} id="basic-nav-dropdown">
+          <NavDropdown
+            title={<span style={styleNavItem}>{types.navbar.dropdowns.records.title}</span>}
+            id="basic-nav-dropdown">
             <NavDropdown.Item href="/lawyerClaims" style={styleNavDropDownItem}>
-              - Demandas
+              {types.navbar.dropdowns.records.itemOne}
             </NavDropdown.Item>
             {localStorage.getItem('admin') ? (
               <NavDropdown.Item href="/suitsTemplates" style={styleNavDropDownItem}>
-                - Formatos
+                {types.navbar.dropdowns.records.itemTwo}
               </NavDropdown.Item>
             ) : null}
           </NavDropdown>
         )}
         {!isAllowed ? (
           <Nav.Link href="/login" style={styleNavItem}>
-            LOGIN
+            {types.navbar.links.login}
           </Nav.Link>
         ) : (
           <Nav.Link href="/" style={styleNavItem} onClick={logout}>
-            LOGOUT
+            {types.navbar.links.logout}
           </Nav.Link>
         )}
       </Container>
