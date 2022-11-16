@@ -3,8 +3,12 @@ export default {
     nextButton: 'SIGUIENTE',
     previousButton: 'ATRÁS'
   },
-  stepOne: {
+  selectClaimType: {
     selectEmptyMessage: 'No hay opciones relacionadas',
-    label: 'SELECCIONE EL TIPO DE RECLAMO*'
+    label: 'SELECCIONE EL TIPO DE RECLAMO*',
+    placeholder: 'Selecciona una opción...'
+  },
+  consentData: {
+    label: 'AUTORIZO EL TRATAMIENTO DE DATOS PERSONALES *'
   }
 };

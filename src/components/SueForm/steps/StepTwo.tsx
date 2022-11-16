@@ -1,23 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { Form, Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { object, string, bool, boolean } from 'yup';
+import { object, boolean } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { fillClaimAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
+import { useDispatch } from 'react-redux';
 
-export const StepTwo = ({
-  i,
-  goPreviousStep,
-  steps,
-  step,
-  handleOnClick,
-  goNextStep,
-  currentStep,
-  sendEmail
-}) => {
+export const StepTwo = ({ i, goPreviousStep, steps, step, goNextStep, currentStep }) => {
   const dispatch = useDispatch();
   const schema = object({
     acceptTerms: boolean().oneOf(
@@ -38,7 +28,6 @@ export const StepTwo = ({
   } = useForm({ resolver: yupResolver(schema), defaultValues: { acceptTerms: true } });
 
   return (
-    // <form>
     <>
       <Col xs={12}>
         <section style={{ padding: '20px' }}>

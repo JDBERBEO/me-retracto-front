@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Loader } from '../../common/spinner/Loader.tsx';
 import Tooltip from '@mui/material/Tooltip';
 import Select, { components } from 'react-select';
+import types from '../../../constants/typesSteps';
 
 export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
   const dispatch = useDispatch();
@@ -63,7 +64,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
   const NoOptionsMessage = (props) => {
     return (
       <components.NoOptionsMessage {...props}>
-        <span className="custom-css-class">no hay opciones relacionadas</span>
+        <span className="custom-css-class">{types.selectClaimType.selectEmptyMessage}</span>
       </components.NoOptionsMessage>
     );
   };
@@ -96,8 +97,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
           height: '35vh',
           width: '100%'
         }}>
-        {/* <div> */}
-        <label className="form-label">SELECCIONE EL TIPO DE RECLAMO*</label>
+        <label className="form-label">{types.selectClaimType.label}</label>
         <Select
           {...register('id')}
           onChange={(option) => setValue('id', option?.value, { shouldValidate: true })}
@@ -110,7 +110,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
           name={'loquesea'}
           isSearchable={false}
           options={options}
-          placeholder={'Selecciona una opción...'}
+          placeholder={types.selectClaimType.placeholder}
           styles={{
             menu: (base) => ({
               ...base,
@@ -121,7 +121,6 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               color: 'white'
             }),
             control: (base, state) => ({
-              // none of react-select's styles are passed to <Control />
               color: 'white',
               fontFamily: "'Raleway', 'sans-serif'",
               fontWeight: 400,
@@ -134,7 +133,6 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               height: '55px',
               width: '470px',
               border: state.isFocused ? '2px solid white' : '2px solid white',
-              // This line disable the blue border
               boxShadow: state.isFocused ? 0 : 0,
               '&:hover': {
                 border: state.isFocused ? '2px solid white' : '2px solid white'
@@ -146,11 +144,11 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
             }),
             dropdownIndicator: (base) => ({
               ...base,
-              color: 'white' // Custom colour
+              color: 'white'
             }),
             noOptionsMessage: (base) => ({
               ...base,
-              color: 'white' // Custom colour
+              color: 'white'
             }),
             container: (provided, state) => ({
               ...provided,
