@@ -7,8 +7,9 @@ import { SueCard } from '../components/SueCard/SueCard.tsx';
 export const Home = () => {
   const documents = [
     {
-      title: 'Lorem ipsum dolor sit',
-      subtitle: 'Lorem ipsum dolor sit amet',
+      title: 'Tienes una reclamación contra tu aerolínea o Agente de viajes?',
+      subtitle:
+        'En Me retracto.com tenemos un equipo que está dispuesto a ayudarte en tu reclamación de inmediato y es muy sencillo.',
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh',
       background:
         'https://res.cloudinary.com/me-retracto/image/upload/v1653931005/platform%20Imgs/main_xl9nki_nkce93.png',
@@ -18,7 +19,7 @@ export const Home = () => {
         'https://res.cloudinary.com/me-retracto/image/upload/v1653925607/platform%20Imgs/2_2_raambc.png'
     },
     {
-      title: 'Lorem ipsum dolor sit',
+      title: '¿Quieres saber como funciona?',
       subtitle: 'amet, consectetuer adipiscing elit, ',
       background: 'white',
       imgsUrl: {
@@ -37,7 +38,7 @@ export const Home = () => {
       title: 'PUBLICIDAD ENGAÑOSA',
       subtitle: 'Lorem ipsum dolor sit amet',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
+        'Si has recibido o has visto anuncios o publicidad y la aerolínea o agencia de viajes no cumple o lo ofrecido no corresponde a la realidad. Haz click aquí.',
       background: '#fab816',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__yellow',
@@ -49,7 +50,7 @@ export const Home = () => {
       title: 'FALTA DE INFORMACIÓN AL CONSUMIDOR',
       subtitle: 'Lorem ipsum dolor sit amet',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh',
+        'Si antes, durante o después de tu compra, la aerolínea o la agencia de viajes no dio la información completa, veraz y/o oportuna respecto a tu viaje. Haz click aquí.',
       background: '#eb646f',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__red',
@@ -61,12 +62,24 @@ export const Home = () => {
       title: 'DERECHO DE RETRACTO',
       subtitle: 'Lorem ipsum dolor sit amet',
       description:
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh Lorem ipsum dolor sit amet, consectetuer adipiscingelit, sed diam nonummy nibh',
+        'Si realizaste una compra por medios electrónicos , teléfono correo electrónico o catalogo aún faltan 5 días para tu viaje, y estás dentro de los 5 días siguientes a la compra de tus tiquetes y no puedes viajar. Haz click aqui',
       background: '#4e4b99',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__purple',
       imgUrl:
         'https://res.cloudinary.com/me-retracto/image/upload/v1654053830/platform%20Imgs/a4_1_yy5idp.png',
+      id: 'withdrawalRight'
+    },
+    {
+      title: 'FUERZA MAYOR O CASO FORTUITO O IMPOSIBILIDAD PARA VIAJAR PROBADA',
+      subtitle: 'Lorem ipsum dolor sit amet',
+      description:
+        'Si tienes una incapacidad o documento medico, o algún otro tipo de documento por medio del cual se pueda probar la imposibilidad para viajar. Haz click aquí.',
+      background: '#00AC9E',
+      buttonText: 'INICIA TU DEMANDA',
+      buttonColor: 'containerButton__size-m__green',
+      imgUrl:
+        'https://res.cloudinary.com/me-retracto/image/upload/v1668692715/platform%20Imgs/removal.ai__63529718-bd1c-41e1-9583-a112a719cd38_epbzys.png',
       id: 'withdrawalRight'
     }
   ];

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import types from '../constants/typesHome';
 
 export const PreventModal = ({ buttonText, index, buttonColor }) => {
   const [show, setShow] = useState(false);
@@ -25,22 +26,17 @@ export const PreventModal = ({ buttonText, index, buttonColor }) => {
                 <FiAlertCircle size={70} />
               </Col>
               <Col className="align-items-center justify-content-center">
-                <h2 className="preventModalTitle__text">IMPORTANTE</h2>
+                <h2 className="preventModalTitle__text">{types.preventModal.title}</h2>
               </Col>
             </Row>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem
-            ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum
-            dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor
-            sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-          </p>
+          <p>{types.preventModal.text}</p>
         </Modal.Body>
         <Modal.Footer>
           <Link to="/form">
-            <button className="containerButton__red">Continuar</button>
+            <button className="containerButton__red">{types.preventModal.button}</button>
           </Link>
         </Modal.Footer>
       </Modal>

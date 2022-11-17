@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { PreventModal } from '../PreventModal.tsx';
+import types from '../../constants/typesHome';
 
 export const TextContainer = ({
   title,
@@ -21,22 +22,22 @@ export const TextContainer = ({
           <Row className="pt-5 mt-5">
             <Col xs={12} md={3}>
               <img src={imgsUrl.yellowArrow} style={{ maxWidth: '50px' }} alt="yellow_arrow" />
-              <h6>ELIGE EL DOCUMENTO SEGÚN TU CASO</h6>
+              <h6>{types.instructionsCard.stepOne}</h6>
             </Col>
             <Col xs={12} md={3}>
               <img src={imgsUrl.redArrow} style={{ maxWidth: '50px' }} alt="red_arrow" />
-              <h6>LLENA LOS ESPACIOS</h6>
+              <h6>{types.instructionsCard.stepTwo}</h6>
             </Col>
             <Col xs={12} md={3}>
               <div>
                 <img src={imgsUrl.purpleArrow} style={{ maxWidth: '50px' }} alt="purple_arrow" />
-                <h6>UN ABOGADO REVISARÁ TÚ DOCUMENTO</h6>
+                <h6>{types.instructionsCard.stepThree}</h6>
               </div>
             </Col>
             <Col xs={12} md={3}>
               <div>
                 <img src={imgsUrl.greenArrow} style={{ maxWidth: '50px' }} alt="green_arrow" />
-                <h6>¡RADICAREMOS LA DEMANDA POR TI Y RECIBIRÁS EL DOCUMENTO A TÚ CORREO!</h6>
+                <h6>{types.instructionsCard.stepFour}</h6>
               </div>
             </Col>
           </Row>

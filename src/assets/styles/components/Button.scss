@@ -1,22 +1,22 @@
 .mainCardButton {
-    background-color: #fab816;
-    border: 1px solid #fab816;
-    color:  #F3F3F3;
-    border-radius: 25px;
-    font-family: "Raleway", sans-serif;
-    font-weight: 700;
-    letter-spacing: 2px;
+  background-color: #fab816;
+  border: 1px solid #fab816;
+  color: #f3f3f3;
+  border-radius: 25px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
 .sueCardButton {
-  background-color: #F3F3F3;
-  border: 1px solid #F3F3F3;
+  background-color: #f3f3f3;
+  border: 1px solid #f3f3f3;
   border-radius: 25px;
   // &___misleadingAdver {
   //   color: #fab816;
   // }
   // &__lackInfo {
-  //   color: 
+  //   color:
   // }
 }
 
@@ -32,9 +32,9 @@
   width: 140px;
   background-color: transparent;
   &__red {
-    border: solid 2px #EB646F;
+    border: solid 2px #eb646f;
     border-radius: 25px;
-    color: #EB646F;
+    color: #eb646f;
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -47,7 +47,7 @@
 
 .containerButton {
   &__red {
-    color: #EB646F;
+    color: #eb646f;
     border: none;
     border-radius: 25px;
     font-family: 'Raleway', sans-serif;
@@ -58,7 +58,7 @@
     background-color: white;
   }
   &__green {
-    color: #00AC9E;
+    color: #00ac9e;
     border: none;
     border-radius: 25px;
     font-family: 'Raleway', sans-serif;
@@ -72,7 +72,7 @@
     color: white;
   }
   &__yellow {
-    color: #FAB816;
+    color: #fab816;
     border: none;
     border-radius: 25px;
     font-family: 'Raleway', sans-serif;
@@ -83,7 +83,7 @@
     background-color: white;
   }
   &__purple {
-    color: #4E4B99;
+    color: #4e4b99;
     border: none;
     border-radius: 25px;
     font-family: 'Raleway', sans-serif;
@@ -96,7 +96,7 @@
   &__size-m {
     width: 280;
     &__yellow {
-      color: #FAB816;
+      color: #fab816;
       border: none;
       border-radius: 25px;
       font-family: 'Raleway', sans-serif;
@@ -106,7 +106,7 @@
       background-color: white;
     }
     &__red {
-      color: #EB646F;
+      color: #eb646f;
       border: none;
       border-radius: 25px;
       font-family: 'Raleway', sans-serif;
@@ -116,7 +116,17 @@
       background-color: white;
     }
     &__purple {
-      color: #4E4B99;
+      color: #4e4b99;
+      border: none;
+      border-radius: 25px;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      height: 35px;
+      background-color: white;
+    }
+    &__green {
+      color: #00ac9e;
       border: none;
       border-radius: 25px;
       font-family: 'Raleway', sans-serif;
