@@ -7,7 +7,7 @@ import { SueCard } from '../components/SueCard/SueCard.tsx';
 export const Home = () => {
   const documents = [
     {
-      title: 'Tienes una reclamación contra tu aerolínea o Agente de viajes?',
+      title: 'Tienes una reclamación contra tu aerolínea o agente de viajes?',
       subtitle:
         'En Me retracto.com tenemos un equipo que está dispuesto a ayudarte en tu reclamación de inmediato y es muy sencillo.',
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diamnonummy nibh',

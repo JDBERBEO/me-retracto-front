@@ -24,7 +24,6 @@ export const ContactUs = () => {
 
   const handleOnClick = (data) => {
     dispatch(postContactUsAsync(data));
-    console.log('data: ', data);
     reset({ name: '', email: '', message: '' });
   };
 

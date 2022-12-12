@@ -63,6 +63,7 @@ export const closeModalAsync = () => async (dispatch) => {
   }
 };
 export const postClaimAsync = (claim) => async (dispatch) => {
+  updateLoading(true);
   const completeClaim = {
     claimFields: claim
   };
@@ -71,17 +72,16 @@ export const postClaimAsync = (claim) => async (dispatch) => {
       method: 'POST',
       baseURL: API_URL,
       data: completeClaim,
-      url: `/customer/${completeClaim.claimFields.id}`
+      url: `/customer/${completeClaim.claimFields.id}`,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     });
+    dispatch(updateLoading(false));
     dispatch(postClaim(data));
-
-    // navigate('/formFeedback')
-    // sendEmail(e)
   } catch (err) {
-    console.dir('err:', err);
+    dispatch(updateLoading(false));
     dispatch(updateError(true));
-    // navigate('/formFeedback')
-    // throw new Error(err);
   }
 };
 

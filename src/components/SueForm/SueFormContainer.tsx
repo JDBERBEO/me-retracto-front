@@ -5,7 +5,7 @@ import { StepTwo } from './steps/StepTwo.tsx';
 import { StepThree } from './steps/StepThree.tsx';
 import { StepFour } from './steps/StepFour.tsx';
 import { StepFive } from './steps/StepFive.tsx';
-import { StepSix } from './steps/StepSix.tsx';
+import { StepSix } from './steps/stepsix/StepSix.tsx';
 import { StepSeven } from './steps/StepSeven.tsx';
 
 export const SueFormContainer = () => {

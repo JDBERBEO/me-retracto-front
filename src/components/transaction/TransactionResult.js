@@ -16,15 +16,9 @@ export const TransactionResult = () => {
 
   const { currentClaim: claim, loading } = useSelector((state) => state.claims);
 
-  // console.log('claim: ', claim)
-  // Object.keys(obj).length === 0
   useEffect(() => {
     dispatch(getClaimbyTransactionIdAsync(transactionId));
   }, []);
-
-  // if (claim.claim === undefined) {
-  //   console.log('loquese');
-  // }
 
   if (loading) return <LoadingMain variant={'danger'} />;
 

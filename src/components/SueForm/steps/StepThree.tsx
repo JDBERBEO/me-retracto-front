@@ -23,7 +23,6 @@ export const StepThree = ({
   });
 
   const uploadState = (data) => {
-    console.log('data:', data);
     dispatch(fillClaimAsync(data));
     goNextStep();
   };

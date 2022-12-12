@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { getClaimsAsync } from '../../../store/features/claims/claimsSlice';
+import { ErrorHandler } from '../../common/ErrorHandler.tsx';
 
 export const StepSeven = () => {
   const dispatch = useDispatch();
-  const { previousCheckoutClaim } = useSelector((state: any) => state.claims);
+  const { previousCheckoutClaim, error } = useSelector((state: any) => state.claims);
 
   const checkout = new WidgetCheckout({
     currency: 'COP',
-    amountInCents: previousCheckoutClaim.claimCreated.payment.amount,
+    amountInCents: parseFloat(previousCheckoutClaim.claimCreated.claimFields.casePrice) * 100,
     reference: previousCheckoutClaim.claimCreated._id,
     publicKey: process.env.REACT_APP_WOMPI_KEY,
     redirectUrl: process.env.REACT_APP_REDIRECT_URL // Opcional
@@ -24,6 +25,10 @@ export const StepSeven = () => {
   useEffect(() => {
     dispatch(getClaimsAsync());
   }, []);
+
+  if (error) {
+    return <ErrorHandler />;
+  }
 
   return (
     <>

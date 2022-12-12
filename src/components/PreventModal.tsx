@@ -35,6 +35,9 @@ export const PreventModal = ({ buttonText, index, buttonColor }) => {
           <p>{types.preventModal.text}</p>
         </Modal.Body>
         <Modal.Footer>
+          <a href="https://res.cloudinary.com/me-retracto/raw/upload/v1670812684/previous%20complaints%20models/reclamacion_previa_e08ljt.docx">
+            <button className="containerButton__purple">{types.preventModal.downloadButton}</button>
+          </a>
           <Link to="/form">
             <button className="containerButton__red">{types.preventModal.button}</button>
           </Link>
