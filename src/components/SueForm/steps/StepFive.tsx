@@ -43,7 +43,8 @@ export const StepFive = ({
     defaultValues: {
       documentMonth: 'septiembre',
       documentYear: '2022',
-      facts: 'que problema tan tetranutra',
+      facts:
+        '1 Pagué unos tiquetes septiembre por un valor de $2.000.000, no pude viajar por enfermedad y no me devolvieron el dinero',
       casePrice: '20000'
     }
   });
