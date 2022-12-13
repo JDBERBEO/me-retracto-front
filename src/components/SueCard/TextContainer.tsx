@@ -48,10 +48,8 @@ export const TextContainer = ({
           <h1 id={`${id}`} className={index === 0 ? 'sueCard__title' : 'docCard__title'}>
             {title}
           </h1>
-          <h5 className={index === 0 ? 'sueCard__subtitle' : 'docCard__subtitle'}>{subtitle}</h5>
-          <p className={index === 0 ? 'sueCard__description' : 'docCard__description'}>
-            {description}
-          </p>
+          {index === 0 ? <h5 className="sueCard__subtitle mt-5">{subtitle}</h5> : null}
+          {index === 0 ? null : <p className="docCard__description">{description}</p>}
           <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
         </div>
       ) : null}
