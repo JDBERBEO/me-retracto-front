@@ -11,9 +11,20 @@
   color: white;
   font-family: 'Raleway', sans-serif;
   letter-spacing: 3px;
-  // text-align: left;
   font-weight: 600;
   font-size: 14px;
+}
+
+.outlined-label {
+  padding: 10px;
+  margin-right: 10px;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 3px;
+  font-weight: 600;
+  font-size: 14px;
+  border: solid 1px white;
+  border-radius: 25px;
 }
 
 .form-labelStepOne {
@@ -29,11 +40,11 @@
 .form-select-basic {
   border-radius: 25px;
   border: 2px solid white;
-  background-color: #EB646F;
+  background-color: #eb646f;
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   height: 55px;
   width: 470px;
@@ -42,13 +53,13 @@
   border-color: aliceblue;
 }
 
-.form-select-basic:focus, .form-select-basic:hover {
+.form-select-basic:focus,
+.form-select-basic:hover {
   border-radius: 25px;
   border: 2px solid white;
   outline: none;
-  background-color: #EB646F;
+  background-color: #eb646f;
   border: 2px solid white;
-  
 }
 
 .form-select-basic option {
@@ -58,11 +69,11 @@
 .form-select-basic {
   border-radius: 25px;
   border: 2px solid white;
-  background-color: #EB646F;
+  background-color: #eb646f;
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   height: 55px;
   width: 470px;
@@ -71,13 +82,13 @@
   border-color: aliceblue;
 }
 
-.form-select-basic:focus, .form-select-basic:hover {
+.form-select-basic:focus,
+.form-select-basic:hover {
   border-radius: 25px;
   border: 2px solid white;
   outline: none;
-  background-color: #EB646F;
+  background-color: #eb646f;
   border: 2px solid white;
-  
 }
 
 .form-select-basic option {
@@ -91,7 +102,7 @@
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   height: 55px;
   width: 400px;
@@ -99,58 +110,60 @@
   padding-left: 30px;
 }
 
-
-.form-input:focus, .form-textArea:focus {
+.form-input:focus,
+.form-textArea:focus {
   outline-width: 0;
 }
 
-.form-input::-webkit-input-placeholder, .form-textArea::-webkit-input-placeholder {
+.form-input::-webkit-input-placeholder,
+.form-textArea::-webkit-input-placeholder {
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   margin-left: 30px;
 }
 
-
-.form-input::-webkit-input-placeholder, .form-textArea::-webkit-input-placeholder {
+.form-input::-webkit-input-placeholder,
+.form-textArea::-webkit-input-placeholder {
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   margin-left: 30px;
- // padding-left: 30px;
+  // padding-left: 30px;
 }
 
-.form-input:-ms-input-placeholder, .form-textArea:-ms-input-placeholder  {
+.form-input:-ms-input-placeholder,
+.form-textArea:-ms-input-placeholder {
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
-  letter-spacing: 2px;
-  margin-left: 30px;
-
-}
-
-.form-input:-moz-placeholder, .form-textArea:-moz-placeholder  {
-  color: white;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   margin-left: 30px;
 }
 
-.form-input::-moz-placeholder, .form-textArea::-moz-placeholder {
+.form-input:-moz-placeholder,
+.form-textArea:-moz-placeholder {
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   margin-left: 30px;
+}
 
+.form-input::-moz-placeholder,
+.form-textArea::-moz-placeholder {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-left: 30px;
 }
 
 .helperText {
@@ -169,7 +182,7 @@
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
-  font-size: 12px; 
+  font-size: 12px;
   letter-spacing: 2px;
   height: 250px;
   width: 100%;

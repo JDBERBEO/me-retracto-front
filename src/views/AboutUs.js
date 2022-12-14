@@ -1,21 +1,22 @@
-import React from 'react'
-import { Row } from 'react-bootstrap'
-import { FooterMain } from '../components/common/footer/FooterMain'
-import { DefaultNavbar } from '../components/navbar/DefaultNavbar.tsx'
+import React from 'react';
+import { Row } from 'react-bootstrap';
+import { FooterMain } from '../components/common/footer/FooterMain';
+import { DefaultNavbar } from '../components/navbar/DefaultNavbar.tsx';
+import typesAboutUs from '../constants/typesAboutUs';
 
 export const AboutUs = () => {
   return (
     <>
       <DefaultNavbar />
-      <Row style={{height: '100%'}}>
-        <div className='stepsDescriptionCard'>
-          <h1>Un Poco de Nuestra Historia</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+      <Row style={{ height: '100%' }}>
+        <div className="stepsDescriptionCard">
+          <h1>{typesAboutUs.title}</h1>
+          <p>{typesAboutUs.text}</p>
         </div>
       </Row>
-      <Row className='mt-5'  style={{backgroundColor: '#F3F3F3'}} >
+      <Row className="mt-5" style={{ backgroundColor: '#F3F3F3' }}>
         <FooterMain />
-      </Row>  
+      </Row>
     </>
-  )
-}
+  );
+};

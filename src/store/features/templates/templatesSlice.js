@@ -8,28 +8,34 @@ export const templatesSlice = createSlice({
     templates: [],
     newTemplate: {},
     deleted: {},
-    error: false
+    error: false,
+    loading: false
   },
   reducers: {
-    postTemplate: (state, action ) => {
-      state.newTemplate = action.payload
+    postTemplate: (state, action) => {
+      state.newTemplate = action.payload;
     },
     getTemplates: (state, action) => {
-      state.templates= action.payload;
+      state.templates = action.payload;
     },
     deleteTemplates: (state, action) => {
-      state.deleted= action.payload;
+      state.deleted = action.payload;
     },
     updateError: (state, action) => {
-      state.error = action.payload
+      state.error = action.payload;
+    },
+    updateLoading: (state, action) => {
+      state.loading = action.payload;
     }
   }
-})
+});
 
 export const getTemplatesAsync = () => async (dispatch) => {
+  dispatch(updateLoading(true));
   try {
     const response = await axios.get(`${API_URL}/administrator`);
     dispatch(getTemplates(response.data));
+    dispatch(updateLoading(false));
   } catch (err) {
     throw new Error(err);
   }
@@ -37,39 +43,44 @@ export const getTemplatesAsync = () => async (dispatch) => {
 
 export const postTemplateAsync = (navigate, payload) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('admin');
     const { data } = await axios({
-      method: "POST",
+      method: 'POST',
       baseURL: API_URL,
       data: payload,
       url: `/administrator`,
       headers: {
-        "Content-Type": "multipart/form-data"
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`
       }
-    })
-    dispatch(postTemplate([data]))
-    navigate('/formFeedback')
+    });
+    dispatch(postTemplate([data]));
+    navigate('/formFeedback');
   } catch (err) {
-    dispatch(updateError(true))
-    navigate('/formFeedback')  }
+    dispatch(updateError(true));
+    navigate('/formFeedback');
+  }
 };
 
 export const deleteTemplateAsync = (id) => async (dispatch) => {
   try {
+    const token = localStorage.getItem('admin');
     const { data } = await axios({
-      method: "DELETE",
+      method: 'DELETE',
       baseURL: API_URL,
       url: `/administrator/${id}`,
-    })
-    dispatch(getTemplates(data))
+      Authorization: `Bearer ${token}`
+    });
+    dispatch(getTemplates(data));
   } catch (err) {
     throw new Error(err);
   }
 };
 
 export const cleanError = () => async (dispatch) => {
-  dispatch(updateError(false))
-}
+  dispatch(updateError(false));
+};
 
-export const { postTemplate, getTemplates, updateError } = templatesSlice.actions;
+export const { postTemplate, getTemplates, updateError, updateLoading } = templatesSlice.actions;
 
 export default templatesSlice.reducer;

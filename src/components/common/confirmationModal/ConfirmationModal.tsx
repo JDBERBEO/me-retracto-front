@@ -1,37 +1,44 @@
-import React, { useState } from "react";
-import { Col, Modal, Row } from "react-bootstrap";
+import React, { useState } from 'react';
+import { Col, Modal, Row } from 'react-bootstrap';
 import { FiAlertCircle } from 'react-icons/fi';
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom'
-import { getOneClaimAsync } from "../../../store/features/claims/claimsSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { getOneClaimAsync } from '../../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
 
-
-export const  ConfimationModal = ({claimId}) => {
+export const ConfimationModal = ({ claimId }) => {
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch()
-  const claim = useSelector((state) => state.claims.currentClaim)
+  const dispatch = useDispatch();
+  const claim = useSelector((state: any) => state.claims.currentClaim);
 
   const handleOnClick = () => {
-    setShow(true)
-    dispatch(getOneClaimAsync(claimId))
-  }
-  
-  const sendEmail = (e: { preventDefault: () => void; } | undefined) => {
+    setShow(true);
+    dispatch(getOneClaimAsync(claimId));
+  };
+
+  const sendEmail = (e: { preventDefault: () => void } | undefined) => {
     e.preventDefault();
-    emailjs.send('service_cc2049t',"template_wh3iaz4",{
-      claimer_name: claim.claim.claimer,
-      file_url: claim.claim.fileUrl,
-      claimer_email:claim.claim.claimerEmail
-
-      }, process.env.EMAIL_KEY).then((result) => {
+    emailjs
+      .send(
+        'service_cc2049t',
+        'template_wh3iaz4',
+        {
+          claimer_name: claim.claim.claimer,
+          file_url: claim.claim.fileUrl,
+          claimer_email: claim.claim.claimerEmail
+        },
+        process.env.REACT_APP_EMAIL_KEY
+      )
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
-      });
-      setShow(false)
-
-  }
+        }
+      );
+    setShow(false);
+  };
   return (
     <>
       <button className="containerButton__size-m__yellow" onClick={handleOnClick}>
@@ -41,11 +48,10 @@ export const  ConfimationModal = ({claimId}) => {
         show={show}
         onHide={() => setShow(false)}
         size="lg"
-        aria-labelledby="example-custom-modal-styling-title"
-      >
-        <Modal.Header closeButton >
+        aria-labelledby="example-custom-modal-styling-title">
+        <Modal.Header closeButton>
           <Modal.Title className="preventModalTitle">
-            <Row >
+            <Row>
               <Col className="align-items-center justify-content-center">
                 <FiAlertCircle size={70} />
               </Col>
@@ -55,10 +61,8 @@ export const  ConfimationModal = ({claimId}) => {
             </Row>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body >
-          <p>
-            Por favor, confirma si quieres enviar el documento al usuario.
-          </p>
+        <Modal.Body>
+          <p>Por favor, confirma si quieres enviar el documento al usuario.</p>
         </Modal.Body>
         <Modal.Footer>
           <button className="containerButton__purple" onClick={() => setShow(false)}>
@@ -71,4 +75,4 @@ export const  ConfimationModal = ({claimId}) => {
       </Modal>
     </>
   );
-}
+};
