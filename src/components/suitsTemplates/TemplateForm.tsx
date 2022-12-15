@@ -40,64 +40,6 @@ export const TemplateForm = () => {
   return (
     <div>
       <DefaultNavbar />
-<<<<<<< HEAD
-      <div  className="formContainer">
-      <form>
-        <section className="formContainer__section" >
-          <label className='form-label'>NOMBRE DEL FORMATO</label>
-          <input 
-          className="form-input" 
-          type="text" 
-          placeholder="Escribe aqui el nombre de tu nuevo formato de demanda"
-          onChange={(e) => setTemplate({ ...newTemplate, name: e.target.value })} />
-        </section>
-        <section className="formContainer__section">
-          <label className='form-label'>CÓDIGO INTERNO</label>
-          <input 
-          className="form-input" 
-          type="text" 
-          placeholder="Escribe aqui el código interno"
-          onChange={(e) => setTemplate({ ...newTemplate, internalCode: e.target.value })}
-          />
-        </section>
-        <section className="formContainer__section">
-          <label className='form-label'>AGREGA EL PRECIO EN CENTAVOS</label>
-          <input 
-          className="form-input" 
-          type="text" 
-          placeholder="Escribe aqui el código interno"
-          onChange={(e) => setTemplate({ ...newTemplate, price: parseInt(e.target.value) })}
-          />
-        </section>
-        <section className="formContainer__section">
-          <label className='form-label'>SELECCIONA EL ARCHIVO:</label>
-          <input 
-            type="file" 
-            id="file"
-            multiple
-            onChange={changeProfilePhoto}
-            style={{color:'white'}}
-              />
-        </section>
-        <section className='formContainer__section' >
-          <Link to={'/suitsTemplates'}>
-            <button className={'nextStepButton__yellow'} >
-              ATRÁS
-            </button>
-          </Link>
-          <button 
-            className={'nextStepButton__yellow'}
-            onClick={handleOnClick}>
-              ENVIAR 
-          </button>
-        </section>
-      </form>
-      </div>
-    </div>
-  )
-}
-
-=======
       <div className="formContainer">
         <form>
           <section className="formContainer__section-template-form">
@@ -165,4 +107,3 @@ export const TemplateForm = () => {
     </div>
   );
 };
->>>>>>> bd0e73ce935d17cc308b4bdc3f58c003475d2962

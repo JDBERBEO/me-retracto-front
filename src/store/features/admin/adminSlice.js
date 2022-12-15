@@ -23,20 +23,6 @@ export const adminSlice = createSlice({
 export const postLoginAsync = (user, navigate) => async (dispatch) => {
   try {
     const { data } = await axios({
-<<<<<<< HEAD
-      method: "POST",
-      baseURL: API_URL,
-      data: user,
-      url: `/administrator/signin`
-    })
-    localStorage.setItem('admin', data.token)
-    updateError(false)
-    navigate('/suitsTemplates')
-  } catch (err) {
-    dispatch(updateError(true))
-    // navigate('/formFeedback')
-    console.error(err.data)
-=======
       method: 'POST',
       baseURL: API_URL,
       data: user,
@@ -49,15 +35,10 @@ export const postLoginAsync = (user, navigate) => async (dispatch) => {
     dispatch(updateError(true));
     // navigate('/formFeedback')
     console.error(err.data);
->>>>>>> bd0e73ce935d17cc308b4bdc3f58c003475d2962
     // throw new Error(err);
   }
 };
 
 export const { postLogin, updateError } = adminSlice.actions;
 
-<<<<<<< HEAD
 export default adminSlice.reducer;
-=======
-export default adminSlice.reducer;
->>>>>>> bd0e73ce935d17cc308b4bdc3f58c003475d2962

@@ -23,20 +23,6 @@ export const contactUsSlice = createSlice({
 export const postContactUsAsync = (contactUs) => async (dispatch) => {
   try {
     const { data } = await axios({
-<<<<<<< HEAD
-      method: "POST",
-      baseURL: API_URL,
-      data: contactUs,
-      url: 'contactUs/postContactUs'
-    })
-    updateError(false)
-    postContactUs(data)
-    alert('TU MENSAJE HA SIDO ENVIADO CORRECTAMENTE')
-  } catch (err) {
-    dispatch(updateError(true))
-    alert('UPPS..ALGO SALIÓ MAL Y TÚ MENSAJE NO HA SIDO ENVIADO CORRECTAMENTE')
-    console.error(err.data)
-=======
       method: 'POST',
       baseURL: API_URL,
       data: contactUs,
@@ -49,14 +35,9 @@ export const postContactUsAsync = (contactUs) => async (dispatch) => {
     dispatch(updateError(true));
     alert('UPPS..ALGO SALIÓ MAL Y TÚ MENSAJE NO HA SIDO ENVIADO CORRECTAMENTE');
     console.error(err.data);
->>>>>>> bd0e73ce935d17cc308b4bdc3f58c003475d2962
   }
 };
 
 export const { postContactUs, updateError } = contactUsSlice.actions;
 
-<<<<<<< HEAD
 export default contactUsSlice.reducer;
-=======
-export default contactUsSlice.reducer;
->>>>>>> bd0e73ce935d17cc308b4bdc3f58c003475d2962
