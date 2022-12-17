@@ -26,7 +26,8 @@ export const SuitsTable = () => {
           claimerName: claim.claimFields.claimerName,
           defendantName: claim.claimFields.defendantName,
           revisionStatus: claimsStatusTraductor(claim.revisionStatus),
-          fileUrl: claim.fileUrl
+          fileUrl: claim.fileUrl,
+          attachProofs: claim.claimFields.attachProofs
         };
       });
   }
@@ -123,6 +124,35 @@ export const SuitsTable = () => {
           </>
         );
       }
+    },
+    {
+      headerName: 'PRUEBAS',
+      field: 'proofs',
+      headerClassName: 'header',
+      headerAlign: 'center',
+      width: 600,
+      renderCell: (params) => (
+        <ul className="flex">
+          {params.row.attachProofs.map((proofUrl, index) => (
+            <a key={index} style={{ textDecoration: 'none' }} href={proofUrl}>
+              <li
+                style={{
+                  fontFamily: 'Raleway, sans-serif',
+                  textAlign: 'center',
+                  fontWeight: 400,
+                  fontSize: '15px',
+                  letterSpacing: '1px',
+                  color: 'white',
+                  marginRight: '40px',
+                  marginLeft: '40px',
+                  marginTop: '10px'
+                }}>
+                {proofUrl}
+              </li>
+            </a>
+          ))}
+        </ul>
+      )
     }
   ];
   const token = localStorage.getItem('admin');
