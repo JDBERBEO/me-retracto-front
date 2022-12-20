@@ -44,7 +44,9 @@ export const TransactionResult = () => {
           }
           buttonText={'HACER OTRA DEMANDA'}
           imgUrl={
-            'https://res.cloudinary.com/me-retracto/image/upload/v1654053822/platform%20Imgs/a3_1_ppqexe.png'
+            !!claim.claim && claim.claim[0].payment.status === 'APPROVED'
+              ? 'https://res.cloudinary.com/me-retracto/image/upload/v1671556661/a6_eced5y.png'
+              : 'https://res.cloudinary.com/me-retracto/image/upload/v1671556661/a7_qm1jnl.png'
           }
         />
       </Row>

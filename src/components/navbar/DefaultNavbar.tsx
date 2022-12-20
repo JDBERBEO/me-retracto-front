@@ -38,7 +38,7 @@ export const DefaultNavbar = ({ type }) => {
       <Container>
         <Navbar.Brand href="/">
           <img
-            src="https://res.cloudinary.com/me-retracto/image/upload/v1667914984/platform%20Imgs/reducedLogo_jxkj1w.png"
+            src="https://res.cloudinary.com/me-retracto/image/upload/v1671555730/logo2_y4qhnd.png"
             alt="logo"
           />
         </Navbar.Brand>
