@@ -15,8 +15,7 @@ export const Home = () => {
         'https://res.cloudinary.com/me-retracto/image/upload/v1653931005/platform%20Imgs/main_xl9nki_nkce93.png',
       buttonText: 'CONÓCENOS',
       buttonColor: 'mainCardButton',
-      imgUrl:
-        'https://res.cloudinary.com/me-retracto/image/upload/v1653925607/platform%20Imgs/2_2_raambc.png'
+      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555074/a1_jxqite.png'
     },
     {
       title: '¿Quieres saber como funciona?',
@@ -54,8 +53,7 @@ export const Home = () => {
       background: '#eb646f',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__red',
-      imgUrl:
-        'https://res.cloudinary.com/me-retracto/image/upload/v1654053822/platform%20Imgs/a3_1_ppqexe.png',
+      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555054/a3_lzlez9.png',
       id: 'missingInfo'
     },
     {
@@ -66,8 +64,7 @@ export const Home = () => {
       background: '#4e4b99',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__purple',
-      imgUrl:
-        'https://res.cloudinary.com/me-retracto/image/upload/v1654053830/platform%20Imgs/a4_1_yy5idp.png',
+      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555053/a4_gnb1ym.png',
       id: 'withdrawalRight'
     },
     {
@@ -78,8 +75,7 @@ export const Home = () => {
       background: '#00AC9E',
       buttonText: 'INICIA TU DEMANDA',
       buttonColor: 'containerButton__size-m__green',
-      imgUrl:
-        'https://res.cloudinary.com/me-retracto/image/upload/v1668692715/platform%20Imgs/removal.ai__63529718-bd1c-41e1-9583-a112a719cd38_epbzys.png',
+      imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555052/a5_lbrflc.png',
       id: 'withdrawalRight'
     }
   ];
