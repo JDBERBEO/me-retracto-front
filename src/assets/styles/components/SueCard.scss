@@ -4,14 +4,16 @@
   padding: 0px;
   background-size: cover;
   &__title {
-    color: #EB646F;
+    color: #eb646f;
+    margin-left: 20px;
   }
   &__subtitle {
     font-weight: normal;
+    margin-left: 20px;
   }
   &__description {
     font-weight: lighter;
-    font-size:medium;
+    font-size: medium;
     // text-align: left;
   }
 }
