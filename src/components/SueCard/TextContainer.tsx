@@ -16,10 +16,10 @@ export const TextContainer = ({
   return (
     <>
       {index === 1 ? (
-        <div className="stepsDescriptionCard mt-5">
+        <div className="stepsDescriptionCard mt-5 ">
           <h1>{title}</h1>
-          <h5>{subtitle}</h5>
-          <Row className="pt-5 mt-5">
+          <h6 className="stepsDescriptionCard__main-content mt-5 mx-5">{subtitle}</h6>
+          <Row className="pt-5 mt-5 mx-5">
             <Col xs={12} md={3}>
               <img src={imgsUrl.yellowArrow} style={{ maxWidth: '50px' }} alt="yellow_arrow" />
               <h6>{types.instructionsCard.stepOne}</h6>

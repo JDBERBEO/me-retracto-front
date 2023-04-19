@@ -19,7 +19,8 @@ export const Home = () => {
     },
     {
       title: '¿Quieres saber como funciona?',
-      subtitle: 'amet, consectetuer adipiscing elit, ',
+      subtitle:
+        'Me retracto es una plataforma por medio de la cual se ofrece a los consumidores la posibilidad de entablar una acción de protección al consumidor bajo la asesoría de un abogado para radicar la demanda y que la misma tenga los requisitos de forma y de fondo exigidos por la ley. Lo hacemos por ti de una  forma muy sencilla y práctica. Solo necesitas presentar tu queja directamente al prestador de servicios y enviarnos el radicado, con esto y con  tus respuestas a nuestro formulario podremos radicar por ti la demanda en la Superintendencia de Industria y comercio. Recuerda que no necesitas un abogado para la audiencia única, a la cual puedes asistir en tu propia representación o puedes elegirnos y te brindaremos el acompañamiento por un valor adicional.',
       background: 'white',
       imgsUrl: {
         purpleArrow:

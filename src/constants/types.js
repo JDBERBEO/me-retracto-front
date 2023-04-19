@@ -23,8 +23,8 @@ export default {
   },
   contactUs: {
     title: 'CONTÁCTENOS',
-    subtitle: 'amet, consectetuer adipiscing elit',
-    description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh',
+    subtitle: 'Para contactarte con nosotros por favor diligencia el formulario.',
+    description: '',
     submitButton: 'ENVIAR'
   }
 };
