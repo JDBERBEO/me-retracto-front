@@ -26,5 +26,23 @@ export default {
     subtitle: 'Para contactarte con nosotros por favor diligencia el formulario.',
     description: '',
     submitButton: 'ENVIAR'
+  },
+  footer: {
+    habeasData: {
+      link: 'Política de tratamiento de datos personales',
+      modal: {
+        title: 'Política de tratamiento de datos personales',
+        content: 'LOREM IPSO..',
+        closeButton: 'Cerrar'
+      }
+    },
+    liabilityClause: {
+      link: '',
+      modal: {
+        title: '',
+        content: '',
+        closeButton: ''
+      }
+    }
   }
 };

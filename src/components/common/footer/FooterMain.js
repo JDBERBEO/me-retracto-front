@@ -1,13 +1,40 @@
-import React from 'react';
-import { Col } from 'react-bootstrap';
+import { useState } from 'react';
+import { Col, Modal, Row } from 'react-bootstrap';
+import { FiAlertCircle } from 'react-icons/fi';
+import { HabeasDataModal } from './HabeasDataModal';
+import types from '../../../constants/types';
 
 export const FooterMain = () => {
+  const [show, setShow] = useState(false);
+
+  const openModal = () => {
+    setShow(true);
+  };
+  const closeModal = () => {
+    setShow(false);
+  };
+
   return (
     <>
       <Col className="d-flex justify-content-center align-items-center mt-5 mb-5" xs={12} md={6}>
         <div>
-          <h5 className="sueCard_subtitle">Politica de tratamiento de datos</h5>
-          <p className="sueCard_description">Cláusula de Responsabilidad</p>
+          <h5
+            className="sueCard_subtitle"
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+            onClick={openModal}>
+            {types.footer.habeasData.link}
+          </h5>
+          <HabeasDataModal
+            openModal={openModal}
+            show={show}
+            closeModal={closeModal}
+            types={types}
+          />
+          <p
+            className="sueCard_description"
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}>
+            Cláusula de Responsabilidad
+          </p>
           <p className="sueCard_description"></p>
           <p className="sueCard_description"></p>
         </div>

@@ -10,7 +10,7 @@ import { LoadingMain } from '../common/LoadingMain.tsx';
 
 export const TransactionResult = () => {
   const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const transactionId = searchParams.get('id');
 
