@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 
 export const HabeasDataModal = (props) => {
-  const { openModal, show, closeModal, types } = props;
+  const { show, closeModal, types, isLiability } = props;
   return (
     <div>
       <Modal
@@ -14,13 +15,21 @@ export const HabeasDataModal = (props) => {
           <Modal.Title className="habeas-data-modal__title">
             <Row className="align-items-center justify-content-center">
               <Col className="align-items-center justify-content-center">
-                <h2 className="habeas-data-modal__title">{types.footer.habeasData.modal.title}</h2>
+                <h2 className="habeas-data-modal__title">
+                  {isLiability
+                    ? types.footer.liabilityClause.modal.title
+                    : types.footer.habeasData.modal.title}
+                </h2>
               </Col>
             </Row>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{types.footer.habeasData.modal.content}</p>
+          <p>
+            {isLiability
+              ? types.footer.liabilityClause.modal.content
+              : types.footer.habeasData.modal.content}
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <button className="containerButton__black" onClick={() => closeModal()}>

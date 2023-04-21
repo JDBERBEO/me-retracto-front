@@ -1,17 +1,24 @@
 import { useState } from 'react';
-import { Col, Modal, Row } from 'react-bootstrap';
-import { FiAlertCircle } from 'react-icons/fi';
+import { Col } from 'react-bootstrap';
 import { HabeasDataModal } from './HabeasDataModal';
 import types from '../../../constants/types';
 
 export const FooterMain = () => {
   const [show, setShow] = useState(false);
+  const [showLiability, setShowLiability] = useState(false);
 
   const openModal = () => {
     setShow(true);
   };
   const closeModal = () => {
     setShow(false);
+  };
+
+  const openLiabilityModal = () => {
+    setShowLiability(true);
+  };
+  const closeLiabilityModal = () => {
+    setShowLiability(false);
   };
 
   return (
@@ -29,12 +36,21 @@ export const FooterMain = () => {
             show={show}
             closeModal={closeModal}
             types={types}
+            isLiability={false}
           />
           <p
             className="sueCard_description"
-            style={{ cursor: 'pointer', textDecoration: 'underline' }}>
-            Cláusula de Responsabilidad
+            style={{ cursor: 'pointer', textDecoration: 'underline' }}
+            onClick={openLiabilityModal}>
+            {types.footer.liabilityClause.link}
           </p>
+          <HabeasDataModal
+            openModal={openLiabilityModal}
+            show={showLiability}
+            closeModal={closeLiabilityModal}
+            types={types}
+            isLiability={true}
+          />
           <p className="sueCard_description"></p>
           <p className="sueCard_description"></p>
         </div>
