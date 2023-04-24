@@ -33,15 +33,16 @@ export const StepTwo = ({ i, goPreviousStep, steps, step, goNextStep, currentSte
         <section style={{ padding: '20px' }}>
           <p className="helperText">
             Dando cumplimiento a lo dispuesto en la Ley 1581 de 2012, "Por el cual se dictan
-            disposiciones generales parala protección de datos personales" y de conformidad con lo
+            disposiciones generales para la protección de datos personales" y de conformidad con lo
             señalado en el Decreto 1377 de 2013, con la aceptación del presente formulario autorizo
-            de manera expresa y previa sin lugar a pagos ni retribuciones a AVIA LEGAL SAS, para que
-            efectúe el tratamiento de mis datos personales de la manera y para las finalidades
-            señaladas a continuación:
+            de manera expresa y previa sin lugar a pagos ni retribuciones a LEGAL COUNSELORS SAS,
+            para que efectúe el tratamiento de mis datos personales de la manera y para las
+            finalidades señaladas en la política de datos que declaro conocer y las que se señalan a
+            continuación:
             <br />
             <br />
-            1. AVIA LEGAL S.A.S., actuará como responsable del Tratamiento de datos personales de
-            los cuales soy titular y que, conjunta o separadamente podrá recolectar, tomando como
+            1. LEGAL COUNSELORS S.A.S., actuará como responsable del Tratamiento de datos personales
+            de los cuales soy titular y que, conjunta o separadamente podrá recolectar, tomando como
             datos personales cualquier información personal que suministre por cualquier este medio.
             <br />
             <br />
@@ -51,25 +52,27 @@ export const StepTwo = ({ i, goPreviousStep, steps, step, goNextStep, currentSte
             de datos personales.
             <br />
             <br />
-            3. Los derechos pueden ser ejercidos a través de los canales dispuestos por AVIA LEGAL
-            S.A.S., y observando la Política de Tratamiento de Datos Personales de AVIA LEGAL S.A.S.
+            3. Los derechos pueden ser ejercidos a través de los canales dispuestos por LEGAL
+            COUNSELORS S.A.S., y observando la Política de Tratamiento de Datos Personales de LEGAL
+            COUNSELORS S.A.S. publicada en la pagina web www.meretracto.com
             <br />
             <br />
-            4. AVIA LEGAL S.A.S informa que el tratamiento de sus datos personales se efectuará de
-            acuerdo a la política de la entidad en dicho campo, la cual puede ser consultada
-            mediante la página web(www.avialegal.com.co), podrá radicar cualquier tipo de
+            4. LEGAL COUNSELORS S.A.S informa que el tratamiento de sus datos personales se
+            efectuará de acuerdo a la política de la entidad en dicho campo, la cual puede ser
+            consultada mediante la página web (www.meretracto.com), podrá radicar cualquier tipo de
             requerimiento relacionado con el tratamiento de sus datos personales. Para la atención
-            de consultas y reclamos, puede dirigirse a nuestra oficina(Cra. 11 No.82-01 Piso 4 /
-            calle 20 # 4 -55, piso 2) o comunicarse al teléfono 1 381 71 11. <br />
+            de consultas y reclamos, puede dirigirse a “contactenos” ubicado en la parte final de la
+            pagina web.
             <br />
-            5. AVIA LEGAL S.A.S., garantizará la confidencialidad, libertad, seguridad, veracidad,
-            transparencia, acceso y circulación restringida de mis datos y se reservará el derecho
-            de modificar su Política de Tratamiento de Datos Personales en cualquier momento.
-            Cualquier cambio será informado.
+            <br />
+            5. LEGAL COUNSELORS S.A.S., garantizará la confidencialidad, libertad, seguridad,
+            veracidad, transparencia, acceso y circulación restringida de mis datos y se reservará
+            el derecho de modificar su Política de Tratamiento de Datos Personales en cualquier
+            momento. Cualquier cambio será informado.
             <br />
             <br />
             6. Teniendo en cuenta lo anterior, autorizo de manera voluntaria, previa, explícita,
-            informada a AVIA LEGAL S.A.S., para tratar mis datos personales de acuerdo con su
+            informada a LEGAL COUNSELORS S.A.S., para tratar mis datos personales de acuerdo con su
             Política de Tratamiento de Datos Personales para los fines relacionados con su objeto.
           </p>
         </section>
