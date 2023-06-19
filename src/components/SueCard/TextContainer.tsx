@@ -4,7 +4,7 @@ import { PreventModal } from '../PreventModal.tsx';
 import types from '../../constants/typesHome';
 import { updateStepper } from '../../store/features/claims/claimsSlice.js';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const TextContainer = ({
   title,
@@ -16,8 +16,10 @@ export const TextContainer = ({
   index,
   imgsUrl
 }) => {
+  const navigate = useNavigate();
   const redirectStepper = () => {
     useDispatch(updateStepper(7));
+    navigate('/form', { replace: true });
   };
 
   return (
@@ -59,11 +61,9 @@ export const TextContainer = ({
           {index === 0 ? null : <p className="docCard__description">{description}</p>}
           buttonText: {buttonText}
           {buttonText === 'CONTINUAR' ? (
-            <Link to={'/form'}>
-              <button className={buttonColor} onClick={() => redirectStepper()}>
-                CONTINUAR
-              </button>
-            </Link>
+            <button className={buttonColor} onClick={() => redirectStepper()}>
+              CONTINUAR
+            </button>
           ) : (
             <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
           )}
