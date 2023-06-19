@@ -3,14 +3,25 @@ import { Col, Modal, Row } from 'react-bootstrap';
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import types from '../constants/typesHome';
+import { updateStepper } from '../store/features/claims/claimsSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const PreventModal = ({ buttonText, index, buttonColor }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const redirectStepper = () => {
+    dispatch(updateStepper(7));
+    navigate('form');
+  };
 
   return (
     <>
       {index === 0 ? null : (
-        <button className={buttonColor} onClick={() => setShow(true)}>
+        <button
+          className={buttonColor}
+          onClick={buttonText === 'CONTINUAR' ? () => redirectStepper() : () => setShow(true)}>
           {buttonText}
         </button>
       )}

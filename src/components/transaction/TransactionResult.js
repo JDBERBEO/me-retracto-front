@@ -42,7 +42,11 @@ export const TransactionResult = () => {
               ? 'containerButton__size-m__purple'
               : 'containerButton__size-m__red'
           }
-          buttonText={'HACER OTRA DEMANDA'}
+          buttonText={
+            !!claim.claim && claim.claim[0].payment.status === 'APPROVED'
+              ? 'CONTINUAR'
+              : 'HACER OTRA DEMANDA'
+          }
           imgUrl={
             !!claim.claim && claim.claim[0].payment.status === 'APPROVED'
               ? 'https://res.cloudinary.com/me-retracto/image/upload/v1671556661/a6_eced5y.png'

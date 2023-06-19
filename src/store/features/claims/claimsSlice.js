@@ -14,7 +14,8 @@ export const claimSlide = createSlice({
     filledClaim: {},
     loading: false,
     feedbackModal: false,
-    currentClaim: {}
+    currentClaim: {},
+    currentStep: 1
   },
   reducers: {
     postClaim: (state, action) => {
@@ -40,6 +41,9 @@ export const claimSlide = createSlice({
     },
     getClaim: (state, action) => {
       state.currentClaim = action.payload;
+    },
+    updateCurrentStep: (state, action) => {
+      state.currentStep = action.payload;
     }
     // getFilledClaim: (state, action) => {
     //   state.claim =action.payload
@@ -50,6 +54,13 @@ export const claimSlide = createSlice({
 export const fillClaimAsync = (info) => async (dispatch) => {
   try {
     dispatch(fillClaim(info));
+  } catch (error) {
+    console.error(error);
+  }
+};
+export const updateStepper = (step) => (dispatch) => {
+  try {
+    dispatch(updateCurrentStep(step));
   } catch (error) {
     console.error(error);
   }
@@ -242,7 +253,8 @@ export const {
   getFilledClaim,
   updateLoading,
   openModal,
-  getClaim
+  getClaim,
+  updateCurrentStep
 } = claimSlide.actions;
 
 export default claimSlide.reducer;
