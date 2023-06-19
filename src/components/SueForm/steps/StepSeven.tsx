@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { getClaimsAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
+import { getClaimsAsync } from '../../../store/features/claims/claimsSlice';
 import { Loader } from '../../common/spinner/Loader.tsx';
 
 export const StepSeven = ({ i, goPreviousStep }) => {
@@ -14,14 +14,12 @@ export const StepSeven = ({ i, goPreviousStep }) => {
   let checkout;
   console.log('previousCheckoutClaim: ', previousCheckoutClaim);
   console.log('filledClaim: ', filledClaim);
-  const paymentRef = Math.random().toString(16).substr(2, 9);
-  console.log('aymentRef: ', paymentRef);
 
   if (filledClaim) {
     checkout = new WidgetCheckout({
       currency: 'COP',
       amountInCents: parseFloat(filledClaim.casePrice) * 100,
-      reference: paymentRef,
+      reference: filledClaim.paymentRef,
       publicKey: process.env.REACT_APP_WOMPI_KEY,
       redirectUrl: process.env.REACT_APP_REDIRECT_URL // Opcional
     });
