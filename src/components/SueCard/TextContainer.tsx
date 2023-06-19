@@ -2,6 +2,9 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { PreventModal } from '../PreventModal.tsx';
 import types from '../../constants/typesHome';
+import { updateStepper } from '../../store/features/claims/claimsSlice.js';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export const TextContainer = ({
   title,
@@ -13,6 +16,10 @@ export const TextContainer = ({
   index,
   imgsUrl
 }) => {
+  const redirectStepper = () => {
+    useDispatch(updateStepper(7));
+  };
+
   return (
     <>
       {index === 1 ? (
@@ -50,7 +57,13 @@ export const TextContainer = ({
           </h1>
           {index === 0 ? <h5 className="sueCard__subtitle mt-5">{subtitle}</h5> : null}
           {index === 0 ? null : <p className="docCard__description">{description}</p>}
-          <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
+          {buttonText === 'CONTINUAR ' ? (
+            <Link to={'/form'}>
+              <button className={buttonColor}>CONTINUAR</button>
+            </Link>
+          ) : (
+            <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
+          )}
         </div>
       ) : null}
     </>
