@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { Col } from 'react-bootstrap/';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTemplatesAsync } from '../../../store/features/templates/templatesSlice';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { fillClaimAsync } from '../../../store/features/claims/claimsSlice';
+import { fillClaimAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
 
 export const StepFive = ({
   i,
@@ -18,6 +18,7 @@ export const StepFive = ({
   currentStep
 }) => {
   const dispatch = useDispatch();
+  const { filledClaim } = useSelector((state: any) => state.claims);
 
   const schema = object({
     // id: string().required('Este campo es requerido*'),
@@ -30,6 +31,11 @@ export const StepFive = ({
 
   const uploadState = (data) => {
     dispatch(fillClaimAsync(data));
+    const completedClaim = {
+      ...filledClaim,
+      payment: { status: 'not paid' }
+    };
+    dispatch(postClaimAsync(completedClaim));
     goNextStep();
   };
 
