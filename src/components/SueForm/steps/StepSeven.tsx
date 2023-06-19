@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { getClaimsAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
+import { getClaimsAsync } from '../../../store/features/claims/claimsSlice';
 import { Loader } from '../../common/spinner/Loader.tsx';
 
 export const StepSeven = ({ i, goPreviousStep }) => {
