@@ -57,6 +57,7 @@ export const TextContainer = ({
           </h1>
           {index === 0 ? <h5 className="sueCard__subtitle mt-5">{subtitle}</h5> : null}
           {index === 0 ? null : <p className="docCard__description">{description}</p>}
+          buttonText: {buttonText}
           {buttonText === 'CONTINUAR ' ? (
             <Link to={'/form'}>
               <button className={buttonColor} onClick={() => redirectStepper()}>
