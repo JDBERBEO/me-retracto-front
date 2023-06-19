@@ -10,7 +10,7 @@ import { LoadingMain } from '../common/LoadingMain.tsx';
 
 export const TransactionResult = () => {
   const dispatch = useDispatch();
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
   const transactionId = searchParams.get('id');
 
@@ -42,7 +42,11 @@ export const TransactionResult = () => {
               ? 'containerButton__size-m__purple'
               : 'containerButton__size-m__red'
           }
-          buttonText={'HACER OTRA DEMANDA'}
+          buttonText={
+            !!claim.claim && claim.claim[0].payment.status === 'APPROVED'
+              ? 'CONTINUAR'
+              : 'HACER OTRA DEMANDA'
+          }
           imgUrl={
             !!claim.claim && claim.claim[0].payment.status === 'APPROVED'
               ? 'https://res.cloudinary.com/me-retracto/image/upload/v1671556661/a6_eced5y.png'

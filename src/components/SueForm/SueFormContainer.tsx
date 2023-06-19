@@ -50,17 +50,17 @@ export const SueFormContainer = () => {
           },
           {
             stepNumber: '6',
-            backgroundColor: '#4E4B99',
-            title: 'PRUEBAS DOCUMENTALES',
-            nextStepButton: 'nextStepButton__purple',
-            element: (stepProps) => <StepSix {...stepProps} />
-          },
-          {
-            stepNumber: '7',
             backgroundColor: '#00AC9E',
             title: '¡HEMOS CREADO TU DEMANDA EXITÓSAMENTE!',
             nextStepButton: 'nextStepButton__green',
             element: (stepProps) => <StepSeven {...stepProps} />
+          },
+          {
+            stepNumber: '7',
+            backgroundColor: '#4E4B99',
+            title: 'PRUEBAS DOCUMENTALES',
+            nextStepButton: 'nextStepButton__purple',
+            element: (stepProps) => <StepSix {...stepProps} />
           }
         ]}
       />

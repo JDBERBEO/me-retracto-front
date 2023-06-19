@@ -1,34 +1,51 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { getClaimsAsync } from '../../../store/features/claims/claimsSlice';
-import { ErrorHandler } from '../../common/ErrorHandler.tsx';
+import { getClaimsAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
 import { Loader } from '../../common/spinner/Loader.tsx';
 
 export const StepSeven = ({ i, goPreviousStep }) => {
   const dispatch = useDispatch();
-  const { previousCheckoutClaim, error, loading } = useSelector((state: any) => state.claims);
+  const { previousCheckoutClaim, error, loading, filledClaim } = useSelector(
+    (state: any) => state.claims
+  );
 
   let checkout;
-  if (previousCheckoutClaim && previousCheckoutClaim.claimCreated !== undefined) {
+  console.log('previousCheckoutClaim: ', previousCheckoutClaim);
+  console.log('filledClaim: ', filledClaim);
+  const paymentRef = Math.random().toString(16).substr(2, 9);
+  console.log('aymentRef: ', paymentRef);
+
+  if (filledClaim) {
     checkout = new WidgetCheckout({
       currency: 'COP',
-      amountInCents: parseFloat(previousCheckoutClaim.claimCreated.claimFields.casePrice) * 100,
-      reference: previousCheckoutClaim.claimCreated._id,
+      amountInCents: parseFloat(filledClaim.casePrice) * 100,
+      reference: paymentRef,
       publicKey: process.env.REACT_APP_WOMPI_KEY,
       redirectUrl: process.env.REACT_APP_REDIRECT_URL // Opcional
     });
   }
 
+  const handleclick = (e) => {
+    payment(e);
+    // const completedClaim = {
+    //   ...filledClaim,
+    //   completeClaim: { status: 'not paid' }
+    // };
+    // console.log('completeClain: ', completedClaim);
+    // dispatch(postClaimAsync(completedClaim));
+  };
   const payment = (e) => {
     e.preventDefault();
+
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     checkout.open(function (result) {});
   };
 
-  useEffect(() => {
-    dispatch(getClaimsAsync());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getClaimsAsync());
+  // }, []);
 
   if (loading) {
     return (
@@ -62,7 +79,7 @@ export const StepSeven = ({ i, goPreviousStep }) => {
             <button className="previousStepbutton mb-5" onClick={goPreviousStep}>
               {'ATRÁS'}
             </button>
-            <button className="containerButton__size-m__green pd-3 mb-5" onClick={payment}>
+            <button className="containerButton__size-m__green pd-3 mb-5" onClick={handleclick}>
               PAGAR
             </button>
           </div>
