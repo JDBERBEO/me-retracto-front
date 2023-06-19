@@ -31,6 +31,7 @@ export const StepFive = ({
 
   const uploadState = (data) => {
     const paymentRef = Math.random().toString(16).substr(2, 9);
+
     data.payment = { status: 'not paid' };
     data.paymentRef = paymentRef;
     dispatch(fillClaimAsync(data));
