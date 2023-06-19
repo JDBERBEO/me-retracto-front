@@ -59,7 +59,9 @@ export const TextContainer = ({
           {index === 0 ? null : <p className="docCard__description">{description}</p>}
           {buttonText === 'CONTINUAR ' ? (
             <Link to={'/form'}>
-              <button className={buttonColor}>CONTINUAR</button>
+              <button className={buttonColor} onClick={() => redirectStepper()}>
+                CONTINUAR
+              </button>
             </Link>
           ) : (
             <PreventModal buttonText={buttonText} buttonColor={buttonColor} index={index} />
