@@ -20,6 +20,7 @@ export const claimSlide = createSlice({
   reducers: {
     postClaim: (state, action) => {
       state.previousCheckoutClaim = action.payload;
+      console.log('state postPreviousCheckClaim: ', state.previousCheckoutClaim);
     },
     updateClaim: (state, action) => {
       state.updateClaim = action.payload;
@@ -89,6 +90,7 @@ export const postClaimAsync = (claim) => async (dispatch) => {
       }
     });
     dispatch(updateLoading(false));
+    console.log('data: ', data);
     dispatch(postClaim(data));
   } catch (err) {
     dispatch(updateLoading(false));
