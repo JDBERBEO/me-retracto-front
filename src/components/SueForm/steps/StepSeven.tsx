@@ -19,7 +19,7 @@ export const StepSeven = ({ i, goPreviousStep }) => {
     checkout = new WidgetCheckout({
       currency: 'COP',
       amountInCents: parseFloat(filledClaim.casePrice) * 100,
-      reference: filledClaim.paymentRef,
+      reference: previousCheckoutClaim.claimCreated.claimFields.paymentRef,
       publicKey: process.env.REACT_APP_WOMPI_KEY,
       redirectUrl: process.env.REACT_APP_REDIRECT_URL // Opcional
     });
@@ -41,9 +41,9 @@ export const StepSeven = ({ i, goPreviousStep }) => {
     checkout.open(function (result) {});
   };
 
-  // useEffect(() => {
-  //   dispatch(getClaimsAsync());
-  // }, []);
+  useEffect(() => {
+    dispatch(getClaimsAsync());
+  }, []);
 
   if (loading) {
     return (
