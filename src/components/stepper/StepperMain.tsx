@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postClaimAsync } from '../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
 
 export const StepperMain = ({ steps }) => {
-  const [currentStep, setCurrentStep] = useState<number>(1);
+  // const [currentStep, setCurrentStep] = useState<number>(1);
+  const { currentStep } = useSelector((state: any) => state.claims);
   const stepperSelector = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<any>();
   const navigate = useNavigate();
