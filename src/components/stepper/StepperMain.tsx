@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { postClaimAsync } from '../../store/features/claims/claimsSlice';
+import { postClaimAsync, updateStepper } from '../../store/features/claims/claimsSlice';
 import emailjs from 'emailjs-com';
 
 export const StepperMain = ({ steps }) => {
@@ -33,14 +33,16 @@ export const StepperMain = ({ steps }) => {
   const goNextStep = () => {
     const nextStep = currentStep + 1;
     if (nextStep <= steps.length) {
-      setCurrentStep(nextStep);
+      // setCurrentStep(nextStep);
+      dispatch(updateStepper(nextStep));
     }
   };
 
   const goPreviousStep = () => {
     const previousStep = currentStep - 1;
     if (previousStep >= 1) {
-      setCurrentStep(previousStep);
+      // setCurrentStep(previousStep);
+      dispatch(updateStepper(previousStep));
     }
   };
 
