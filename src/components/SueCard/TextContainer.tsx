@@ -16,9 +16,10 @@ export const TextContainer = ({
   index,
   imgsUrl
 }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const redirectStepper = () => {
-    useDispatch(updateStepper(7));
+    dispatch(updateStepper(7));
     navigate('/form', { replace: true });
   };
 
