@@ -12,8 +12,6 @@ export const StepSeven = ({ i, goPreviousStep }) => {
   );
 
   let checkout;
-  console.log('previousCheckoutClaim: ', previousCheckoutClaim);
-  console.log('filledClaim: ', filledClaim);
 
   if (filledClaim) {
     checkout = new WidgetCheckout({
@@ -67,7 +65,10 @@ export const StepSeven = ({ i, goPreviousStep }) => {
   return (
     <div style={{ height: '500px' }}>
       <Col className="d-flex justify-content-center align-items-center flex-column" xs={12}>
-        <p className="form-label py-5">Solo falta un paso para finalizar el proceso</p>
+        <p className="form-label py-5 ml-5" style={{ marginLeft: 20 }}>
+          Solo falta un paso para finalizar el proceso. Recuerda verificar que todos los datos estén
+          correctos ya que no es posible modificarlos luego de realizar el pago.
+        </p>
         {/* <div style={{ height: '200px' }}> */}
         {/* <button className="outlinedButton mb-5" onClick={payment}>
           PAGAR

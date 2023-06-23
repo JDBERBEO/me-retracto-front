@@ -6,7 +6,6 @@ import { postClaimAsync, updateStepper } from '../../store/features/claims/claim
 import emailjs from 'emailjs-com';
 
 export const StepperMain = ({ steps }) => {
-  // const [currentStep, setCurrentStep] = useState<number>(1);
   const { currentStep } = useSelector((state: any) => state.claims);
   const stepperSelector = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<any>();
@@ -33,7 +32,6 @@ export const StepperMain = ({ steps }) => {
   const goNextStep = () => {
     const nextStep = currentStep + 1;
     if (nextStep <= steps.length) {
-      // setCurrentStep(nextStep);
       dispatch(updateStepper(nextStep));
     }
   };
@@ -41,7 +39,6 @@ export const StepperMain = ({ steps }) => {
   const goPreviousStep = () => {
     const previousStep = currentStep - 1;
     if (previousStep >= 1) {
-      // setCurrentStep(previousStep);
       dispatch(updateStepper(previousStep));
     }
   };

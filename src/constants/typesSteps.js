@@ -15,6 +15,10 @@ export default {
   proofs: {
     label: 'AGREGUE LOS DOCUMENTOS QUE SOPORTAN ESTE RECLAMO. *',
     helperText: 'Tenga en cuenta que se permite máximo 10 megas en la carga de sus archivos.',
-    uploadLabel: 'Agregue un archivo'
+    uploadLabel: 'Agregue un archivo',
+    downloadables: {
+      label: 'AQUÍ PUEDE DESCARGAR LAS PLANTILLAS DE SUS RECLAMACIONES',
+      directedClaim: 'Reclamación previa'
+    }
   }
 };

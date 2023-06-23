@@ -9,6 +9,7 @@ import typesSteps from '../../../../constants/typesSteps';
 import AddInputs from './AddInputs.tsx';
 import { Loader } from '../../../common/spinner/Loader.tsx';
 import Tooltip from '@mui/material/Tooltip';
+import typesHome from '../../../../constants/typesHome';
 
 export const StepSix = ({
   i,
@@ -100,15 +101,12 @@ export const StepSix = ({
 
   return (
     <>
-      <Col
+      {/* <Col
         className="d-flex flex-column justify-content-start align-items-start mb-3 mt-3 ms-3"
-        xs={12}>
+        xs={12}></Col> */}
+      <Col className="d-flex flex-column justify-content-start align-items-center mb-5 mt-5" xs={6}>
         <label className="form-label">{typesSteps.proofs.label}</label>
         <label className="helperText">{typesSteps.proofs.helperText}</label>
-      </Col>
-      <Col
-        className="d-flex flex-column justify-content-center align-items-center mb-5 mt-5"
-        xs={12}>
         <AddInputs
           inputFields={inputFields}
           addInputField={addInputField}
@@ -118,8 +116,14 @@ export const StepSix = ({
           totalSize={totalSize}
         />
       </Col>
+      <Col className="d-flex flex-column justify-content-start align-items-center mb-5 mt-5">
+        <label className="form-label">{typesSteps.proofs.downloadables.label}</label>
+        <a href="https://res.cloudinary.com/me-retracto/raw/upload/v1670812684/previous%20complaints%20models/reclamacion_previa_e08ljt.docx">
+          <span className="helperText">{typesSteps.proofs.downloadables.directedClaim}</span>
+        </a>
+      </Col>
       <Col xs={6}>
-        {i === 0 ? null : (
+        {i === 0 || i === 7 ? null : (
           <button className="previousStepbutton" onClick={goPreviousStep}>
             {typesSteps.common.previousButton}
           </button>
