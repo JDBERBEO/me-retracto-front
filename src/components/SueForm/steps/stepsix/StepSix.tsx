@@ -123,7 +123,7 @@ export const StepSix = ({
         </a>
       </Col>
       <Col xs={6}>
-        {i === 0 || i === 7 ? null : (
+        {i === 0 || i === 6 ? null : (
           <button className="previousStepbutton" onClick={goPreviousStep}>
             {typesSteps.common.previousButton}
           </button>
