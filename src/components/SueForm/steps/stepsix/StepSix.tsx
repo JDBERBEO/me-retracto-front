@@ -26,7 +26,7 @@ export const StepSix = ({
 }) => {
   const dispatch = useDispatch();
   const [inputFields, setInputFields] = useState([{ name: '', size: '0 bytes' }]);
-  const { filledClaim, error, loading } = useSelector((state: any) => state.claims);
+  const { currentClaim, error, loading } = useSelector((state: any) => state.claims);
   const stateRef = useRef();
   stateRef.current = error;
 
@@ -40,10 +40,10 @@ export const StepSix = ({
   };
 
   const sendClaim = (data, e) => {
-    console.log('filledClaim: ', filledClaim);
+    console.log('currentedClaim: ', currentClaim);
     const completedClaim = {
       ...data,
-      ...filledClaim,
+      ...currentClaim.claim[0],
       files: inputFields
     };
     // completedClaim.payment = { status: 'not paid' };
