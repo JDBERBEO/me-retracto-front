@@ -141,6 +141,7 @@ export const updateClaimAsync = (payload) => async (dispatch) => {
 export const updateClaimWithFiles = (payload) => async (dispatch) => {
   dispatch(updateLoading(true));
   try {
+    console.log('payload updateClaimWithFile', payload);
     const { data } = await axios({
       method: 'PUT',
       baseURL: API_URL,
