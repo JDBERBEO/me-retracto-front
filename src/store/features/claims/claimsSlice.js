@@ -15,7 +15,7 @@ export const claimSlide = createSlice({
     loading: false,
     feedbackModal: false,
     currentClaim: {},
-    currentStep: 1
+    currentStep: 7
   },
   reducers: {
     postClaim: (state, action) => {
@@ -133,6 +133,27 @@ export const updateClaimAsync = (payload) => async (dispatch) => {
           'No se ha podido cargar ningún archivo. Recuerda que debes seleccionar un archivo antes.'
       })
     );
+  }
+};
+
+export const updateClaimWithFiles = (payload) => async (dispatch) => {
+  dispatch(updateLoading(true));
+  try {
+    const { data } = await axios({
+      method: 'PUT',
+      baseURL: API_URL,
+      data: payload,
+      url: `/customer/${payload.id}`,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    dispatch(updateLoading(false));
+    console.log('data: ', data);
+    dispatch(updateClaim(data));
+  } catch (error) {
+    dispatch(updateLoading(false));
+    dispatch(updateError(true));
   }
 };
 

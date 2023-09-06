@@ -20,7 +20,7 @@ function AddRemoveInputField({
 
   return (
     <>
-      <button className="containerButton__size-m__purple mb-4" onClick={addInputField}>
+      <button className="containerButton__size-m__purple mb-4 mt-4" onClick={addInputField}>
         Agregar un campo nuevo
       </button>
       {!!inputFields &&
