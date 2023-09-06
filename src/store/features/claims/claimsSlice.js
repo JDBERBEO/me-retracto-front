@@ -145,7 +145,7 @@ export const updateClaimWithFiles = (payload) => async (dispatch) => {
       method: 'PUT',
       baseURL: API_URL,
       data: payload,
-      url: `/customer/${payload.id}`,
+      url: `/customer/${payload._id}`,
       headers: {
         'Content-Type': 'multipart/form-data'
       }
