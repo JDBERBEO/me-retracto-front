@@ -242,6 +242,7 @@ export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) 
       baseURL: API_URL,
       url: `/customer/getClaim/${transactionId}`
     });
+    console.log('data: ', data);
     dispatch(getClaim(data));
     dispatch(updateLoading(false));
   } catch (error) {
