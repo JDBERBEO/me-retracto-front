@@ -46,6 +46,7 @@ export const StepSix = ({
       files: inputFields
     };
     // completedClaim.payment = { status: 'not paid' };
+    console.log('complete claim: ', completedClaim);
     dispatch(updateClaimWithFiles(completedClaim));
     uploadState(data);
   };
