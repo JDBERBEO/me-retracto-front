@@ -42,6 +42,7 @@ export const claimSlide = createSlice({
     },
     getClaim: (state, action) => {
       state.currentClaim = action.payload;
+      console.log('state currentClaim: ', state.currentClaim);
     },
     updateCurrentStep: (state, action) => {
       state.currentStep = action.payload;
