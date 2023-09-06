@@ -245,7 +245,7 @@ export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) 
     });
     console.log('data actual: ', data);
 
-    dispatch(getClaim(data.claim[0]));
+    dispatch(getClaim(data));
     dispatch(updateLoading(false));
   } catch (error) {
     console.error('error:', error);
