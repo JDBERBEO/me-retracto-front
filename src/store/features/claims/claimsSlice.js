@@ -15,7 +15,7 @@ export const claimSlide = createSlice({
     loading: false,
     feedbackModal: false,
     currentClaim: {},
-    currentStep: 0
+    currentStep: 1
   },
   reducers: {
     postClaim: (state, action) => {
