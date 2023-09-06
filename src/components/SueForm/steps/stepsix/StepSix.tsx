@@ -40,6 +40,7 @@ export const StepSix = ({
   };
 
   const sendClaim = (data, e) => {
+    console.log('filledClaim: ', filledClaim);
     const completedClaim = {
       ...data,
       ...filledClaim,

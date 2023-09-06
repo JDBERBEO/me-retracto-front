@@ -33,6 +33,7 @@ export const claimSlide = createSlice({
     },
     fillClaim: (state, action) => {
       state.filledClaim = { ...state.filledClaim, ...action.payload };
+      console.log('filledClaim in fillClaim: ', state.filledClaim);
     },
     updateLoading: (state, action) => {
       state.loading = action.payload;
