@@ -49,7 +49,13 @@ export const FeedbackModal = () => {
           <p>{feedbackModal.message ? feedbackModal.message : null}</p>
         </Modal.Body>
         <Modal.Footer>
-          <button className="containerButton__red" onClick={() => closeModal()}>
+          <button
+            className={
+              feedbackModal.operationStatus === 'failed'
+                ? 'containerButton__red'
+                : 'containerButton__green'
+            }
+            onClick={() => closeModal()}>
             Cerrar
           </button>
         </Modal.Footer>
