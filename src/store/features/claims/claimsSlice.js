@@ -152,10 +152,24 @@ export const updateClaimWithFiles = (payload) => async (dispatch) => {
       }
     });
     dispatch(updateLoading(false));
-    console.log('data: ', data);
     dispatch(updateClaim(data));
+    dispatch(
+      openModal({
+        open: true,
+        operationStatus: 'success',
+        message: 'Los archivos se han cargado con éxito.'
+      })
+    );
   } catch (error) {
     dispatch(updateLoading(false));
+    dispatch(
+      openModal({
+        open: true,
+        operationStatus: 'failed',
+        status: error.response.status,
+        message: 'No se ha podido realizar la carga de tus archivos, porfavor contacta a soportes.'
+      })
+    );
     dispatch(updateError(true));
   }
 };

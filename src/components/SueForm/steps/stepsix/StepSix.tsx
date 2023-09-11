@@ -13,6 +13,7 @@ import AddInputs from './AddInputs.tsx';
 import { Loader } from '../../../common/spinner/Loader.tsx';
 import Tooltip from '@mui/material/Tooltip';
 import typesHome from '../../../../constants/typesHome';
+import { FeedbackModal } from '../../../common/feedbackModal/FeedbackModal.tsx';
 
 export const StepSix = ({
   i,
@@ -127,6 +128,7 @@ export const StepSix = ({
       {/* <Col
         className="d-flex flex-column justify-content-start align-items-start mb-3 mt-3 ms-3"
         xs={12}></Col> */}
+      <FeedbackModal />
       <Col className="d-flex flex-column justify-content-start align-items-center mb-5 mt-5" xs={6}>
         <label className="form-label">{typesSteps.proofs.label}</label>
         <label className="helperText">{typesSteps.proofs.helperText}</label>
