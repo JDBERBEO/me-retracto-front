@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Image } from 'react-bootstrap';
 import '../../assets/styles/components/DefaultNavbar.scss';
 import types from '../../constants/types';
 
@@ -10,21 +10,6 @@ export const DefaultNavbar = ({ type }) => {
     localStorage.removeItem('admin');
     localStorage.removeItem('lawyer');
   };
-  const styleNavDropDownItem = {
-    color: type === 'white' ? 'white' : 'black',
-    fontSize: '15px',
-    fontWeight: 'bold',
-    letterSpacing: '5px'
-  };
-
-  const styleNavItem = {
-    color: type === 'white' ? 'white' : 'black',
-    fontFamily: 'Raleway, sans-serif',
-    letterSpacing: '3px',
-    fontWeight: 450,
-    fontSize: '15px'
-    // borderBottom: 'solid 3px'
-  };
 
   useEffect(() => {
     const admin = localStorage.getItem('admin');
@@ -34,63 +19,120 @@ export const DefaultNavbar = ({ type }) => {
   }, []);
 
   return (
-    <Navbar className="defaultNavbar" variant="light" expand="lg">
-      <Container>
+    <>
+      <Navbar bg="transparent" expand="lg">
         <Navbar.Brand href="/">
-          <img
+          <Image
             src="https://res.cloudinary.com/me-retracto/image/upload/v1671555730/logo2_y4qhnd.png"
-            alt="logo"
-          />
+            alt="Logo"></Image>
         </Navbar.Brand>
-      </Container>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Container className="justify-content-between">
-        <Nav.Link href="/aboutUs" className="DefaultNavbar__link" style={styleNavItem}>
-          {types.navbar.links.us}
-        </Nav.Link>
-        <NavDropdown
-          title={<span style={styleNavItem}>{types.navbar.dropdowns.documents.title}</span>}
-          id="basic-nav-dropdown">
-          <NavDropdown.Item href="/#misleadingAdvertisement" style={styleNavDropDownItem}>
-            {types.navbar.dropdowns.documents.itemOne}
-          </NavDropdown.Item>
-          <NavDropdown.Item href="/#missingInfo" style={styleNavDropDownItem}>
-            {types.navbar.dropdowns.documents.itemTwo}
-          </NavDropdown.Item>
-          <NavDropdown.Item href="/#withdrawalRight" style={styleNavDropDownItem}>
-            {types.navbar.dropdowns.documents.itemThree}
-          </NavDropdown.Item>
-          <NavDropdown.Item href="/#exclusionLiability" style={styleNavDropDownItem}>
-            {types.navbar.dropdowns.documents.itemOne}
-          </NavDropdown.Item>
-        </NavDropdown>
-        <Nav.Link href="#link" style={styleNavItem}>
-          {types.navbar.links.contact}
-        </Nav.Link>
-        {!isAllowed ? null : (
-          <NavDropdown
-            title={<span style={styleNavItem}>{types.navbar.dropdowns.records.title}</span>}
-            id="basic-nav-dropdown">
-            <NavDropdown.Item href="/lawyerClaims" style={styleNavDropDownItem}>
-              {types.navbar.dropdowns.records.itemOne}
-            </NavDropdown.Item>
-            {localStorage.getItem('admin') ? (
-              <NavDropdown.Item href="/suitsTemplates" style={styleNavDropDownItem}>
-                {types.navbar.dropdowns.records.itemTwo}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="d-flex justify-content-end w-100 nav-item nav-item-medium">
+            {' '}
+            <Nav.Link
+              href="/aboutUs"
+              // className="nav-item nav-item-medium"
+              style={type === 'white' ? {} : { color: 'black' }}>
+              {types.navbar.links.us}
+            </Nav.Link>
+            <NavDropdown
+              title={
+                <span
+                  // className="nav-item nav-item-medium"
+                  style={type === 'white' ? {} : { color: 'black' }}>
+                  {types.navbar.dropdowns.documents.title}
+                </span>
+              }
+              id="basic-nav-dropdown">
+              <NavDropdown.Item
+                href="/#misleadingAdvertisement"
+                className={
+                  type === 'white'
+                    ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                    : 'text-black'
+                }>
+                {types.navbar.dropdowns.documents.itemOne}
               </NavDropdown.Item>
-            ) : null}
-          </NavDropdown>
-        )}
-        {!isAllowed ? (
-          <Nav.Link href="/login" style={styleNavItem}>
-            {types.navbar.links.login}
-          </Nav.Link>
-        ) : (
-          <Nav.Link href="/" style={styleNavItem} onClick={logout}>
-            {types.navbar.links.logout}
-          </Nav.Link>
-        )}
-      </Container>
-    </Navbar>
+              <NavDropdown.Item
+                href="/#missingInfo"
+                className={
+                  type === 'white'
+                    ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                    : 'text-black'
+                }>
+                {types.navbar.dropdowns.documents.itemTwo}
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href="/#withdrawalRight"
+                className={
+                  type === 'white'
+                    ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                    : 'text-black'
+                }>
+                {types.navbar.dropdowns.documents.itemThree}
+              </NavDropdown.Item>
+              <NavDropdown.Item
+                href="/#exclusionLiability"
+                className={
+                  type === 'white'
+                    ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                    : 'text-black'
+                }>
+                {types.navbar.dropdowns.documents.itemOne}
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link
+              href="#link"
+              // className="nav-item nav-item-medium"
+              style={type === 'white' ? {} : { color: 'black' }}>
+              {types.navbar.links.contact}
+            </Nav.Link>
+            {!isAllowed ? null : (
+              <NavDropdown
+                title={
+                  <span style={type === 'white' ? {} : { color: 'black' }}>
+                    {types.navbar.dropdowns.records.title}
+                  </span>
+                }
+                id="basic-nav-dropdown">
+                <NavDropdown.Item
+                  href="/lawyerClaims"
+                  className={
+                    type === 'white'
+                      ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                      : 'text-black'
+                  }>
+                  {types.navbar.dropdowns.records.itemOne}
+                </NavDropdown.Item>
+                {localStorage.getItem('admin') ? (
+                  <NavDropdown.Item
+                    href="/suitsTemplates"
+                    className={
+                      type === 'white'
+                        ? 'dropdown-item dropdown-item-custom dropdown-item-medium'
+                        : 'text-black'
+                    }>
+                    {types.navbar.dropdowns.records.itemTwo}
+                  </NavDropdown.Item>
+                ) : null}
+              </NavDropdown>
+            )}
+            {!isAllowed ? (
+              <Nav.Link href="/login" style={type === 'white' ? {} : { color: 'black' }}>
+                {types.navbar.links.login}
+              </Nav.Link>
+            ) : (
+              <Nav.Link
+                href="/"
+                style={type === 'white' ? {} : { color: 'black' }}
+                onClick={logout}>
+                {types.navbar.links.logout}
+              </Nav.Link>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </>
   );
 };

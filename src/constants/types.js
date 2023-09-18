@@ -10,7 +10,7 @@ export default {
       documents: {
         title: 'DOCUMENTOS',
         itemOne: 'Publicidad Engañosa',
-        itemTwo: 'Falta de Información al consumidor',
+        itemTwo: 'Falta de Información',
         itemThree: 'Retracto y Desistimiento',
         itemFour: 'Eximentes de Responsabilidad'
       },
