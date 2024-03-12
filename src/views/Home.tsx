@@ -41,7 +41,7 @@ export const Home = () => {
         'Si has recibido o has visto anuncios o publicidad y la aerolínea o agencia de viajes no cumple o lo ofrecido no corresponde a la realidad. Haz click aquí.',
       background: '#fab816',
       buttonText: 'INICIA TU DEMANDA',
-      buttonColor: 'containerButton__size-m__yellow',
+      buttonColor: 'containerButton__size-m__yellow mb-5',
       imgUrl:
         'https://res.cloudinary.com/me-retracto/image/upload/v1654053833/platform%20Imgs/a2_1_ax73mo.png',
       id: 'misleadingAdvertisement'
@@ -53,7 +53,7 @@ export const Home = () => {
         'Si antes, durante o después de tu compra, la aerolínea o la agencia de viajes no dio la información completa, veraz y/o oportuna respecto a tu viaje. Haz click aquí.',
       background: '#eb646f',
       buttonText: 'INICIA TU DEMANDA',
-      buttonColor: 'containerButton__size-m__red',
+      buttonColor: 'containerButton__size-m__red mb-5',
       imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555054/a3_lzlez9.png',
       id: 'missingInfo'
     },
@@ -64,7 +64,7 @@ export const Home = () => {
         'Si realizaste una compra por medios electrónicos , teléfono correo electrónico o catalogo aún faltan 5 días para tu viaje, y estás dentro de los 5 días siguientes a la compra de tus tiquetes y no puedes viajar. Haz click aqui',
       background: '#4e4b99',
       buttonText: 'INICIA TU DEMANDA',
-      buttonColor: 'containerButton__size-m__purple',
+      buttonColor: 'containerButton__size-m__purple mb-5',
       imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555053/a4_gnb1ym.png',
       id: 'withdrawalRight'
     },
@@ -75,7 +75,7 @@ export const Home = () => {
         'Si tienes una incapacidad o documento medico, o algún otro tipo de documento por medio del cual se pueda probar la imposibilidad para viajar. Haz click aquí.',
       background: '#00AC9E',
       buttonText: 'INICIA TU DEMANDA',
-      buttonColor: 'containerButton__size-m__green',
+      buttonColor: 'containerButton__size-m__green mb-5',
       imgUrl: 'https://res.cloudinary.com/me-retracto/image/upload/v1671555052/a5_lbrflc.png',
       id: 'withdrawalRight'
     }

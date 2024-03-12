@@ -3,12 +3,17 @@ import { Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { fillClaimAsync, postClaimAsync } from '../../../../store/features/claims/claimsSlice';
+import {
+  fillClaimAsync,
+  updateClaimWithFiles
+} from '../../../../store/features/claims/claimsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import typesSteps from '../../../../constants/typesSteps';
 import AddInputs from './AddInputs.tsx';
 import { Loader } from '../../../common/spinner/Loader.tsx';
 import Tooltip from '@mui/material/Tooltip';
+import typesHome from '../../../../constants/typesHome';
+import { FeedbackModal } from '../../../common/feedbackModal/FeedbackModal.tsx';
 
 export const StepSix = ({
   i,
@@ -22,7 +27,7 @@ export const StepSix = ({
 }) => {
   const dispatch = useDispatch();
   const [inputFields, setInputFields] = useState([{ name: '', size: '0 bytes' }]);
-  const { filledClaim, error, loading } = useSelector((state: any) => state.claims);
+  const { currentClaim, error, loading } = useSelector((state: any) => state.claims);
   const stateRef = useRef();
   stateRef.current = error;
 
@@ -36,13 +41,15 @@ export const StepSix = ({
   };
 
   const sendClaim = (data, e) => {
+    console.log('currentedClaim: ', currentClaim);
     const completedClaim = {
       ...data,
-      ...filledClaim,
+      ...currentClaim.claim[0],
       files: inputFields
     };
-    completedClaim.payment = { status: 'not paid' };
-    dispatch(postClaimAsync(completedClaim));
+    // completedClaim.payment = { status: 'not paid' };
+    console.log('complete claim: ', completedClaim);
+    dispatch(updateClaimWithFiles(completedClaim));
     uploadState(data);
   };
 
@@ -73,6 +80,24 @@ export const StepSix = ({
     setInputFields(list);
   };
 
+  const disableUploadButton = () => {
+    console.log('!!steref', !!stateRef.current);
+    console.log(
+      'disableupload: ',
+      !!stateRef.current
+      // ||
+      //   totalSize(inputFields) > 10000000 ||
+      //   totalSize(inputFields) === 0 ||
+      //   (inputFields.length === 1 && inputFields[0].size === '0 bytes')
+    );
+    return (
+      !!stateRef.current ||
+      totalSize(inputFields) > 10000000 ||
+      totalSize(inputFields) === 0 ||
+      (inputFields.length === 1 && inputFields[0].size === '0 bytes')
+    );
+  };
+
   const {
     register,
     handleSubmit,
@@ -100,15 +125,13 @@ export const StepSix = ({
 
   return (
     <>
-      <Col
+      {/* <Col
         className="d-flex flex-column justify-content-start align-items-start mb-3 mt-3 ms-3"
-        xs={12}>
+        xs={12}></Col> */}
+      <FeedbackModal />
+      <Col className="d-flex flex-column justify-content-start align-items-center mb-5 mt-5" xs={6}>
         <label className="form-label">{typesSteps.proofs.label}</label>
         <label className="helperText">{typesSteps.proofs.helperText}</label>
-      </Col>
-      <Col
-        className="d-flex flex-column justify-content-center align-items-center mb-5 mt-5"
-        xs={12}>
         <AddInputs
           inputFields={inputFields}
           addInputField={addInputField}
@@ -117,34 +140,21 @@ export const StepSix = ({
           setInputFields={setInputFields}
           totalSize={totalSize}
         />
-      </Col>
-      <Col xs={6}>
-        {i === 0 ? null : (
-          <button className="previousStepbutton" onClick={goPreviousStep}>
-            {typesSteps.common.previousButton}
-          </button>
-        )}
-      </Col>
-      <Col xs={6}>
         <div
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            marginBottom: '15px'
+            marginBottom: '15px',
+            marginTop: '15px'
           }}>
           <Tooltip
             placement="right"
             title="Recuerda que debes insertar al menos un archivo y el peso total de tus adjuntos no puede ser mayor a 10MB">
             <span>
               <button
-                disabled={
-                  !!stateRef.current ||
-                  totalSize(inputFields) > 10000000 ||
-                  totalSize(inputFields) === 0 ||
-                  (inputFields.length === 1 && inputFields[0].size === '0 bytes')
-                }
+                disabled={disableUploadButton()}
                 style={
                   !!stateRef.current ||
                   totalSize(inputFields) > 10000000 ||
@@ -166,6 +176,20 @@ export const StepSix = ({
           </div>
         </div>
       </Col>
+      <Col className="d-flex flex-column justify-content-start align-items-center mb-5 mt-5">
+        <label className="form-label">{typesSteps.proofs.downloadables.label}</label>
+        <a href="https://res.cloudinary.com/me-retracto/raw/upload/v1670812684/previous%20complaints%20models/reclamacion_previa_e08ljt.docx">
+          <span className="helperText">{typesSteps.proofs.downloadables.directedClaim}</span>
+        </a>
+      </Col>
+      {/* <Col xs={6}>
+        {i === 0 || i === 6 ? null : (
+          <button className="previousStepbutton" onClick={goPreviousStep}>
+            {typesSteps.common.previousButton}
+          </button>
+        )}
+      </Col> */}
+      {/* <Col xs={6}></Col> */}
     </>
   );
 };

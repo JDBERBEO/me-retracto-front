@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Modal, Row } from 'react-bootstrap';
+import { Col, Modal, Row } from 'react-bootstrap';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeModalAsync } from '../../../store/features/claims/claimsSlice';
@@ -49,7 +49,15 @@ export const FeedbackModal = () => {
           <p>{feedbackModal.message ? feedbackModal.message : null}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => closeModal()}>Cerrar</Button>
+          <button
+            className={
+              feedbackModal.operationStatus === 'failed'
+                ? 'containerButton__red'
+                : 'containerButton__green'
+            }
+            onClick={() => closeModal()}>
+            Cerrar
+          </button>
         </Modal.Footer>
       </Modal>
     </>

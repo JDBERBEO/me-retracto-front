@@ -3,7 +3,7 @@ import { Col, Modal, Row } from 'react-bootstrap';
 import { FiAlertCircle } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import types from '../constants/typesHome';
-import { updateStepper } from '../store/features/claims/claimsSlice';
+
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,17 +11,11 @@ export const PreventModal = ({ buttonText, index, buttonColor }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const redirectStepper = () => {
-    dispatch(updateStepper(7));
-    navigate('form');
-  };
 
   return (
     <>
       {index === 0 ? null : (
-        <button
-          className={buttonColor}
-          onClick={buttonText === 'CONTINUAR' ? () => redirectStepper() : () => setShow(true)}>
+        <button className={buttonColor} onClick={() => setShow(true)}>
           {buttonText}
         </button>
       )}
@@ -46,9 +40,9 @@ export const PreventModal = ({ buttonText, index, buttonColor }) => {
           <p>{types.preventModal.text}</p>
         </Modal.Body>
         <Modal.Footer>
-          <a href="https://res.cloudinary.com/me-retracto/raw/upload/v1670812684/previous%20complaints%20models/reclamacion_previa_e08ljt.docx">
+          {/* <a href="https://res.cloudinary.com/me-retracto/raw/upload/v1670812684/previous%20complaints%20models/reclamacion_previa_e08ljt.docx">
             <button className="containerButton__purple">{types.preventModal.downloadButton}</button>
-          </a>
+          </a> */}
           <Link to="/form">
             <button className="containerButton__red">{types.preventModal.button}</button>
           </Link>

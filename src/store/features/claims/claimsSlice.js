@@ -20,6 +20,7 @@ export const claimSlide = createSlice({
   reducers: {
     postClaim: (state, action) => {
       state.previousCheckoutClaim = action.payload;
+      console.log('state postPreviousCheckClaim: ', state.previousCheckoutClaim);
     },
     updateClaim: (state, action) => {
       state.updateClaim = action.payload;
@@ -32,6 +33,7 @@ export const claimSlide = createSlice({
     },
     fillClaim: (state, action) => {
       state.filledClaim = { ...state.filledClaim, ...action.payload };
+      console.log('filledClaim in fillClaim: ', state.filledClaim);
     },
     updateLoading: (state, action) => {
       state.loading = action.payload;
@@ -41,6 +43,7 @@ export const claimSlide = createSlice({
     },
     getClaim: (state, action) => {
       state.currentClaim = action.payload;
+      console.log('state currentClaim: ', state.currentClaim);
     },
     updateCurrentStep: (state, action) => {
       state.currentStep = action.payload;
@@ -89,6 +92,7 @@ export const postClaimAsync = (claim) => async (dispatch) => {
       }
     });
     dispatch(updateLoading(false));
+    console.log('data: ', data);
     dispatch(postClaim(data));
   } catch (err) {
     dispatch(updateLoading(false));
@@ -131,6 +135,42 @@ export const updateClaimAsync = (payload) => async (dispatch) => {
           'No se ha podido cargar ningún archivo. Recuerda que debes seleccionar un archivo antes.'
       })
     );
+  }
+};
+
+export const updateClaimWithFiles = (payload) => async (dispatch) => {
+  dispatch(updateLoading(true));
+  try {
+    console.log('payload updateClaimWithFile', payload);
+    const { data } = await axios({
+      method: 'PUT',
+      baseURL: API_URL,
+      data: payload,
+      url: `/customer/${payload._id}`,
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    dispatch(updateLoading(false));
+    dispatch(updateClaim(data));
+    dispatch(
+      openModal({
+        open: true,
+        operationStatus: 'success',
+        message: 'Los archivos se han cargado con éxito.'
+      })
+    );
+  } catch (error) {
+    dispatch(updateLoading(false));
+    dispatch(
+      openModal({
+        open: true,
+        operationStatus: 'failed',
+        status: error.response.status,
+        message: 'No se ha podido realizar la carga de tus archivos, porfavor contacta a soportes.'
+      })
+    );
+    dispatch(updateError(true));
   }
 };
 
@@ -219,6 +259,8 @@ export const getClaimbyTransactionIdAsync = (transactionId) => async (dispatch) 
       baseURL: API_URL,
       url: `/customer/getClaim/${transactionId}`
     });
+    console.log('data actual: ', data);
+
     dispatch(getClaim(data));
     dispatch(updateLoading(false));
   } catch (error) {

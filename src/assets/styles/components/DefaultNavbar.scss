@@ -21,15 +21,45 @@
   border: none;
 }
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav.show {
-  color: white;
-
+.nav-item .nav-link {
+  color: black;
+  font-family: 'Raleway', 'sans-serif';
+  letter-spacing: 3px;
+  font-weight: 450;
+  font-size: 15px;
+  margin: 0 10px;
+  &__black {
+    color: black;
+  }
 }
 
-// .navbarItem {
-//   color: 'white';
-//   font-family: 'Raleway', sans-serif;
-//   letter-spacing: 3px;
-//   font-weight: 200;
-//   font-size: '15px'
-// }
+.dropdown-item-custom,
+.dropdown-item {
+  color: black !important;
+  font-family: 'Raleway', 'sans-serif';
+  letter-spacing: 3px;
+  font-weight: 450;
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .nav-item-medium .nav-link {
+    color: white;
+    margin-right: 40px;
+    font-family: 'Raleway', 'sans-serif';
+    letter-spacing: 3px;
+    font-weight: 450;
+    font-size: 15px;
+    &__black {
+      color: black;
+    }
+  }
+
+  .dropdown-item-medium {
+    color: white !important;
+    font-family: 'Raleway', 'sans-serif';
+    letter-spacing: 3px;
+    font-weight: 450;
+    font-size: 15px;
+  }
+}

@@ -41,8 +41,9 @@ export const StepFive = ({
       paymentRef
     };
     console.log('completedClain_: ', completedClaim);
-    dispatch(postClaimAsync(completedClaim));
-    goNextStep();
+    dispatch(postClaimAsync(completedClaim)).then(() => {
+      goNextStep();
+    });
   };
 
   const {
