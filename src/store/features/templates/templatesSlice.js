@@ -69,7 +69,9 @@ export const deleteTemplateAsync = (id) => async (dispatch) => {
       method: 'DELETE',
       baseURL: API_URL,
       url: `/administrator/${id}`,
-      Authorization: `Bearer ${token}`
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     });
     dispatch(getTemplates(data));
   } catch (err) {
