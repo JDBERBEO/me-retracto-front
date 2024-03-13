@@ -66,7 +66,6 @@ export const SuitsTemplates = () => {
 
   const handleOnClick = (id) => {
     dispatch(deleteTemplateAsync(id));
-    setId('');
   };
 
   useEffect(() => {
