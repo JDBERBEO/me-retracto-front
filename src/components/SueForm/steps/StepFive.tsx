@@ -37,6 +37,7 @@ export const StepFive = ({
     dispatch(fillClaimAsync(data));
     const completedClaim = {
       ...filledClaim,
+      ...data,
       payment: { status: 'not paid' },
       paymentRef
     };
