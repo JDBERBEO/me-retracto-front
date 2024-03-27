@@ -21,6 +21,7 @@ export const StepFour = ({
   const schema = object({
     claimerName: string().required('Este campo es requerido*'),
     claimerIdNumber: string().required('Este campo es requerido*'),
+    claimerIdCity: string().required('Este campo es requerido*'),
     claimerCity: string().required('Este campo es requerido*'),
     claimerAddress: string().required('Este campo es requerido*'),
     claimerEmail: string().email('El correo es inválido*').required('El correo es requerido*')
@@ -40,6 +41,7 @@ export const StepFour = ({
     defaultValues: {
       claimerName: 'manglar',
       claimerIdNumber: '1024863',
+      claimerIdCity: 'bogotá',
       claimerCity: 'bogotá',
       claimerAddress: 'cllae 5 numero 3333',
       claimerEmail: 'manglar@gmail.com'
@@ -76,8 +78,19 @@ export const StepFour = ({
             {...register('claimerIdNumber')}
           />
         </div>
+        <div style={{ marginTop: '40px' }}>
+          <label className="form-label" style={{ width: '175px', marginLeft: '5px' }}>
+            CIUDAD DE EXPEDICIÓN DEL DOCUMENTO
+          </label>
+          <input
+            className="form-input"
+            type="text"
+            placeholder="Escribe aquí el lugar de expedición del documento"
+            {...register('claimerIdCity')}
+          />
+        </div>
         <span className="form-label" style={{ marginLeft: '90px', marginTop: '10px' }}>
-          {errors?.claimerIdNumber?.message}
+          {errors?.claimerIdCity?.message}
         </span>
         <div style={{ marginTop: '40px' }}>
           <label className="form-label" style={{ width: '175px', marginLeft: '5px' }}>
