@@ -2,14 +2,14 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { postTemplateAsync } from '../../store/features/templates/templatesSlice';
+import { postTemplateAsync } from '../../store/features/templates/templatesSlice.js';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 export const TemplateForm = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const schema = object({

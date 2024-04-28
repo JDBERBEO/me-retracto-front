@@ -7,7 +7,7 @@ import { SueForm } from './views/SueForm.tsx';
 import { FeedbackMain } from './components/SueForm/FeedbackMain.tsx';
 import { Login } from './components/login/Login.tsx';
 import { SuitsTemplates } from './components/suitsTemplates/SuitsTemplates.tsx';
-import { TemplateForm } from './components/suitsTemplates/TemplateForm.tsx';
+import { TemplateForm } from './components/suitsTemplates/TemplateForm';
 import { SuitsTable } from './components/lawyerModule/SuitsTable.tsx';
 import { EditedClaimForm } from './components/lawyerModule/EditedClaimForm.tsx';
 import { AdminRoutes } from './router/AdminRoutes.tsx';

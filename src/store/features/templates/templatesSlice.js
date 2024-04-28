@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+// eslint-disable-next-line no-undef
 const API_URL = process.env.REACT_APP_SERVER_URL;
 
 export const templatesSlice = createSlice({

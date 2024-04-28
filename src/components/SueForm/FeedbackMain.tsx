@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ErrorHandler } from '../common/ErrorHandler.tsx';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
+import { useSelector } from 'react-redux';
 
 export const FeedbackMain = () => {
   const { claims, templates }: any = useSelector((state) => state);
