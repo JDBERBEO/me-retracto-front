@@ -2,20 +2,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { postTemplateAsync } from '../../store/features/templates/templatesSlice';
+import { postTemplateAsync } from '../../store/features/templates/templatesSlice.js';
 import { DefaultNavbar } from '../navbar/DefaultNavbar.tsx';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 export const TemplateForm = () => {
-  const dispatch = useDispatch<any>();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const schema = object({
     formatName: string().required('Este campo es requerido*'),
-    internalCode: string().required('Este campo es requerido*'),
-    price: string().required('Este campo es requerido*')
+    internalCode: string().required('Este campo es requerido*')
   });
 
   const {
@@ -66,19 +65,6 @@ export const TemplateForm = () => {
                 {...register('internalCode')}
               />
               <span className="form-label span-error">{errors?.internalCode?.message}</span>
-            </div>
-          </section>
-          <section className="formContainer__section-template-form">
-            <label className="form-label">AGREGA EL PRECIO EN CENTAVOS</label>
-            <div className="formContainer__section-template-form__inputContainer">
-              <input
-                className="form-input"
-                type="number"
-                placeholder="Escribe aqui el código interno"
-                // onChange={(e) => setTemplate({ ...newTemplate, price: parseInt(e.target.value) })}
-                {...register('price')}
-              />
-              <span className="form-label span-error">{errors?.price?.message}</span>
             </div>
           </section>
           <section className="formContainer__section-template-form">
