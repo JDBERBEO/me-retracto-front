@@ -116,9 +116,27 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               ...base,
               marginTop: '5px',
               background: '#EB646F',
-              borderRadius: 25,
               border: '2px solid white',
               color: 'white'
+            }),
+            menuList: (base) => ({
+              ...base,
+              maxHeight: '150px',
+              '&::-webkit-scrollbar': {
+                width: '5px',
+                backgroundColor: 'white',
+                borderRadius: '10px',
+                height: '50px',
+                margin: '10px'
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: 'white',
+                borderRadius: '10px',
+                margin: '10px',
+                width: '5px', // Adjust width
+                height: '20px' // Adjust height
+                // marginRight: '50px' // Add margin-right
+              }
             }),
             control: (base, state) => ({
               color: 'white',
@@ -131,7 +149,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               borderRadius: 25,
               display: 'flex',
               height: '55px',
-              width: '470px',
+              width: '350px',
               border: state.isFocused ? '2px solid white' : '2px solid white',
               boxShadow: state.isFocused ? 0 : 0,
               '&:hover': {
@@ -153,12 +171,12 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
             container: (provided, state) => ({
               ...provided,
               marginTop: 8,
+
               color: 'white',
               fontFamily: "'Raleway', 'sans-serif'",
               fontWeight: 400,
               fontSize: '12px',
-              letterSpacing: '2px',
-              marginWeft: '30px'
+              letterSpacing: '2px'
             }),
             valueContainer: (provided, state) => ({
               ...provided,
@@ -167,8 +185,7 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               fontFamily: "'Raleway', 'sans-serif'",
               fontWeight: 400,
               fontSize: '12px',
-              letterSpacing: '2px',
-              marginWeft: '30px'
+              letterSpacing: '2px'
             }),
             placeholder: (provided, state) => ({
               ...provided,
@@ -186,14 +203,13 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               fontWeight: 400,
               fontSize: '12px',
               letterSpacing: '2px',
-              marginWeft: '30px',
               padding: 10,
-              background: state.isSelected ? '#EB646F' : null,
+              background: '#EB646F',
               borderRadius: '25px',
 
               '&:hover': {
-                color: state.isSelected ? 'white' : '#EB646F',
-                borderRadius: '25px',
+                color: 'white',
+                // borderRadius: '25px'
                 border: '2px solid white'
               }
             }),
@@ -204,7 +220,6 @@ export const StepOne = ({ steps, step, goNextStep, currentStep }) => {
               fontWeight: 400,
               fontSize: '12px',
               letterSpacing: '2px',
-              marginWeft: '30px',
               padding: 10
             })
           }}
