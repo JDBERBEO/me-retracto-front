@@ -24,7 +24,8 @@ export const DefaultNavbar = ({ type }) => {
         <Navbar.Brand href="/">
           <Image
             src="https://res.cloudinary.com/me-retracto/image/upload/v1671555730/logo2_y4qhnd.png"
-            alt="Logo"></Image>
+            alt="Logo"
+            style={{ paddingLeft: '10px' }}></Image>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

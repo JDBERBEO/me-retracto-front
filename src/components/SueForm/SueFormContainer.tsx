@@ -10,7 +10,14 @@ import { StepSeven } from './steps/StepSeven.tsx';
 
 export const SueFormContainer = () => {
   return (
-    <div style={{ height: 'cover', maxWidth: '100%' }}>
+    <div
+      className="prueba"
+      style={{
+        maxWidth: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%'
+      }}>
       <StepperMain
         steps={[
           {

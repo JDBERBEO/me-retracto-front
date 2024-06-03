@@ -16,7 +16,7 @@ export const StepSeven = ({ i, goPreviousStep }) => {
   if (filledClaim) {
     checkout = new WidgetCheckout({
       currency: 'COP',
-      amountInCents: parseFloat(filledClaim.casePrice) * 100,
+      amountInCents: parseFloat(filledClaim.claimPrice) * 100,
       reference: previousCheckoutClaim.claimCreated._id,
       publicKey: process.env.REACT_APP_WOMPI_KEY,
       redirectUrl: process.env.REACT_APP_REDIRECT_URL // Opcional

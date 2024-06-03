@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap/';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTemplatesAsync } from '../../../store/features/templates/templatesSlice';
 import { useForm } from 'react-hook-form';
-import { object, string } from 'yup';
+import { object, string, number } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { fillClaimAsync, postClaimAsync } from '../../../store/features/claims/claimsSlice';
 
@@ -19,18 +19,25 @@ export const StepFive = ({
 }) => {
   const dispatch = useDispatch();
   const { filledClaim } = useSelector((state: any) => state.claims);
+  const MIN_CASE_PRICE = 50000;
 
   const schema = object({
-    // id: string().required('Este campo es requerido*'),
     documentMonth: string().required('Este campo es requerido*'),
     documentYear: string().required('Este campo es requerido*'),
     facts: string().required('Este campo es requerido*'),
-    //TODO: use number validation
-    casePrice: string().required('Este campo es requerido')
+    casePrice: number().required('Este campo es requerido')
   });
-
   const uploadState = (data) => {
     const paymentRef = Math.random().toString(16).substr(2, 9);
+
+    const calculatedCasePrice = data.casePrice * 0.1;
+
+    // Ensure calculated casePrice is at least MIN_CASE_PRICE
+    if (calculatedCasePrice < MIN_CASE_PRICE) {
+      data.claimPrice = MIN_CASE_PRICE;
+    } else {
+      data.claimPrice = calculatedCasePrice;
+    }
 
     data.payment = { status: 'not paid' };
     data.paymentRef = paymentRef;
@@ -100,14 +107,21 @@ export const StepFive = ({
         <span className="form-label" style={{ marginLeft: '90px', marginTop: '10px' }}>
           {errors?.documentYear?.message}
         </span>
-        <div style={{ marginTop: '40px' }}>
+        <p className="helperText" style={{ maxWidth: '550px' }}>
+          *El precio de las pretensiones se refiere al valor monetario que le estás reclamando a tu
+          proveedor de servicios turísticos. El precio que te cobraremos se calcula con este valor
+          de la siguiente manera: <br />
+          <br /> Tomaremos el 10% del valor de las pretensiones, en caso en que este sea menor a
+          $50.000 COP, el precio final corresponderá a esta última cifra.
+        </p>
+        <div style={{ marginTop: '10px' }}>
           <label className="form-label" style={{ width: '175px' }}>
             PRECIO DE LAS PRETENSIONES
           </label>
           <input
             {...register('casePrice')}
             className="form-input"
-            type="text"
+            type="number"
             placeholder="Escribe aqui el precio de tus pretensiones"
           />
         </div>
