@@ -108,11 +108,10 @@ export const StepFive = ({
           {errors?.documentYear?.message}
         </span>
         <p className="helperText" style={{ maxWidth: '550px' }}>
-          *El precio de las pretensiones se refiere al valor monetario que le estás reclamando a tu
-          proveedor de servicios turísticos. El precio que te cobraremos se calcula con este valor
-          de la siguiente manera: <br />
-          <br /> Tomaremos el 10% del valor de las pretensiones, en caso en que este sea menor a
-          $50.000 COP, el precio final corresponderá a esta última cifra.
+          *El valor de las pretensiones se refiere al importe que estás reclamando a tu proveedor de
+          servicios turísticos. Nuestro costo de servicio se calcula sobre este importe de la
+          siguiente manera: cobraremos el 10% del valor de las pretensiones. Sin embargo, si este
+          10% resulta ser inferior a COP 50.000, el costo final será de COP 50.000.
         </p>
         <div style={{ marginTop: '10px' }}>
           <label className="form-label" style={{ width: '175px' }}>

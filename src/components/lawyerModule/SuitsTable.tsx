@@ -147,7 +147,7 @@ export const SuitsTable = () => {
                   marginLeft: '40px',
                   marginTop: '10px'
                 }}>
-                {proofUrl}
+                {proofUrl.name}: {proofUrl.url}
               </li>
             </a>
           ))}
